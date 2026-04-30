@@ -1,0 +1,37 @@
+.signUpBox{
+    border: 2px solid burlywood; 
+    border-radius: 50px;
+    width: 300px;
+    margin: 50px auto; 
+    padding: 40px;
+}
+.logInBox{
+    border: 2px solid burlywood; 
+    border-radius: 50px;
+    width: 300px;
+    margin: 50px auto; 
+    padding: 40px;
+}
+.signUpTitle{
+    text-align: center;
+    color:burlywood; 
+}
+.logInTitle{
+    text-align: center;
+    color:burlywood; 
+}
+.signUp{
+    text-align: center;
+    color:burlywood; 
+}
+.logIn{
+    text-align: center;
+    color:burlywood; 
+}
+.link{
+    color:burlywood; 
+}
+h3 {
+    text-align: center;
+    color:burlywood; 
+}
