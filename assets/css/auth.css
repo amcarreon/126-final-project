@@ -4,50 +4,43 @@
     box-sizing: border-box; 
 }
 
-@font-face {
-    font-family: 'Gladiola';
-    src: url('Fonts/Gladiola.otf') format('opentype');
-    font-weight: 400; 
-    font-style: normal;
-}
 
 @font-face {
     font-family: 'Gladiola';
-    src: url('Fonts/Gladiola.ttf') format('truetype');
+    src: url('../../Fonts/gladiola-regular-regular.ttf') format('truetype');
     font-weight: 400; 
-    font-style: italic;
-}
-@font-face {
-    font-family:'Badhorse';
-    src: url('Fonts/badhorse-script.otf') format('opentype');
-    font-weight: 400;
     font-style: normal;
 }
 @font-face {
+    font-family:'Badhorse';
+    src: url('../../Fonts/BurtonsScript.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+
+}
+@font-face {
     font-family: 'Montserrat';
-    src: url('Fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+    src: url('../../Fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
     font-weight: 100 900;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('Fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+    src: url('../../Fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
     font-weight: 100 900;
     font-style: italic;
 }
 @font-face{
     font-family: 'Tomorrow';
-    src: url('Fonts/Tomorrow/Tomorrow-Bold.ttf') format('truetype');
+    src: url('../../Fonts/Tomorrow/Tomorrow-Bold.ttf') format('truetype');
     font-weight: 100 900;
     font-style: bold;
 
 }
 
-
-
 body {
-    background-image: url('Images/bg.jpg');
+    background-image: url('../../Images/bg.jpg');
     background-size: cover;
     background-position: center;
 
@@ -93,7 +86,7 @@ white -- #FBF9F5
     font-size: 30px;
     font-style: bold;
     color: white;
-    -webkit-text-stroke: .1px rgb(90, 6, 6); 
+    text-shadow: 0 0 10px white;
     text-align: left; 
     padding: 10px;
     letter-spacing: 2px;
@@ -108,7 +101,6 @@ white -- #FBF9F5
     
     text-align: center;
     color: white;
-    text-transform: uppercase;
     border-radius: 3px;
     font-family: 'Badhorse', sans-serif;
     letter-spacing: 2px;
@@ -119,6 +111,8 @@ white -- #FBF9F5
     color:  #ECD0C2;
     margin: 20px auto;
     letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
+
 }
 input[type="email"], 
 input[type="password"],
