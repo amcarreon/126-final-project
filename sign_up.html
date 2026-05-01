@@ -3,6 +3,8 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="authentication_style.css">
+        <script src="sign_in.js"></script>
+
         <title>Authentication Page</title>
     </head>
     <body>
@@ -12,22 +14,27 @@
             </header>
         </div>
         <div class="signUpBox" id="signUpBox">
-            <h1 class="signUpTitle">Welcome!</h1>
+            <h1 class="signUpTitle">Get Started!</h1>
             <form class="signUp">
-                <input type="email" id="email" name="email" placeholder="Email">
+                <input type="text" id="name" name="name" placeholder="Name" required>
                 <br><br>
-                <input type="password" id="password" name="password" placeholder="Password">
+                <input type="email" id="email" name="email" placeholder="Email" required>
                 <br><br>
-                <p class="role">Role</p>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <br><br>
+                <input type="tel" id="phone" name="phone" placeholder="Phone Number" pattern="09[0-9]{9}" title="Please enter an 11-digit number starting with 09" required>
+                <br><br>
+                <p class="role">Register as:</p>
+                <br>
                 <div class="roles">
-                    <input type="radio" id="seller" class="seller" name="seller" value="seller">
-                    <label for="seller">Seller</label><br><br>
-                    <input type="radio" id="buyer" class="buyer" name="buyer" value="buyer">
+                    <input type="radio" id="seller" class="seller" name="userRole" value="seller">
+                    <label for="seller">Seller</label>
+                    <input type="radio" id="buyer" class="buyer" name="userRole" value="buyer">
                     <label for="buyer">Buyer</label><br>
                 </div>
   
                 <br><br>
-                <button type="submit" class="button">Sign Up</button>
+                <button type="submit" class="button">Create Account</button>
                 
             </form>
         <h4>Already signed up? <a href="log_in.html" class="link">Log in</a></h4>

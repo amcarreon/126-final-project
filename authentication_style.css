@@ -3,10 +3,30 @@
     padding: 0;
     box-sizing: border-box; 
 }
+
+@font-face {
+    font-family: 'Gladiola';
+    src: url('Fonts/Gladiola.otf') format('opentype');
+    font-weight: 400; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gladiola';
+    src: url('Fonts/Gladiola.ttf') format('truetype');
+    font-weight: 400; 
+    font-style: italic;
+}
+@font-face {
+    font-family:'Badhorse';
+    src: url('Fonts/badhorse-script.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
 @font-face {
     font-family: 'Montserrat';
     src: url('Fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
-    font-weight: 100 900; 
+    font-weight: 100 900;
     font-style: normal;
 }
 
@@ -16,39 +36,20 @@
     font-weight: 100 900;
     font-style: italic;
 }
+@font-face{
+    font-family: 'Tomorrow';
+    src: url('Fonts/Tomorrow/Tomorrow-Bold.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: bold;
 
-@font-face {
-    font-family: 'Talina DEMO';
-    src: url('Fonts/Talina DEMO.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Talina DEMO';
-    src: url('Fonts/Talina DEMO Italic.otf') format('opentype');
-    font-weight: 400;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'Vetro DEMO';
-    src: url('Fonts/Vetro DEMO.otf') format('opentype');
-    font-weight: 400; /* Regular */
-    font-style: normal;
 }
 
-@font-face {
-    font-family: 'Vetro DEMO';
-    src: url('Fonts/Vetro DEMO Italic.otf') format('opentype');
-    font-weight: 400; /* Regular Italic */
-    font-style: italic;
-}
+
 
 body {
     background-image: url('Images/bg.jpg');
     background-size: cover;
     background-position: center;
-    font-family: 'Talina DEMO', sans-serif; /* Set global font here */
 
 }
 
@@ -79,7 +80,7 @@ white -- #FBF9F5
 
 .signUpBox, .logInBox {
     background-color:#630116;
-    max-width: 520px;   
+    max-width: 400px;   
     margin: 25px auto; 
     padding: 40px;    
     width: auto;         /* Allows it to expand to fit the text */
@@ -89,64 +90,100 @@ white -- #FBF9F5
 }
 
 .appName {
-    color: #EDEEE9;
-    text-shadow: 2px 2px #842B2F;
+    font-size: 35px;
+    font-style: bold;
+    color: white;
+    -webkit-text-stroke: .1px rgb(90, 6, 6); 
     text-align: left; 
     padding: 20px;
-    letter-spacing: 8px;
+    letter-spacing: 2px;
+    font-family: 'Gladiola', sans-serif; 
+
 }
 
-.signUpTitle, .logInTitle{
-    margin: 12px auto; 
-    padding: 5px 50px;
-    max-width: 500px;  
+.signUpTitle, .logInTitle{ /*style for the greeting*/
+    font-size: 30px;
+    margin: 10px auto; 
+    padding: 5px 10px;
+    
     text-align: center;
-    color: #ECD0C2;
+    color: white;
     text-transform: uppercase;
-    text-shadow: 1px 1px #929F52; 
     border-radius: 3px;
+    font-family: 'Badhorse', sans-serif;
+    letter-spacing: 2px;
+
 }
 .signUp, .logIn, h4 {
     text-align: center;
-    color:  #7E892B;
+    color:  #ECD0C2;
     margin: 20px auto;
-    font-family: 'Talina DEMO', sans-serif !important;
     letter-spacing: 2px;
 }
 input[type="email"], 
-input[type="password"] {
-  width: 450px; 
-  background-color:#EDEEE9;
-  padding: 4px 10px;
-  background-color: rgb(225, 206, 212);
-  border: 2px solid #ECD0C2;
-  border-radius: 15px;
+input[type="password"],
+input[type="text"],
+input[type="tel"]{
+    width: 300px; 
+    background-color:#EDEEE9;
+    padding: 4px 10px;
+    background-color: #fcc0c5;
+    border: 2px solid #ECD0C2;
+    border-radius: 15px;
+    font-family: 'Montserrat', sans-serif;
+
 
 }
-.role{
+p {
+    font-size: 13px;
     text-align: left;
-    margin-left: 40px;
-    font-family: 'Verto DEMO', sans-serif !important;
+    text-indent: 70px; 
+    color:#ffde59;
+    font-family: 'Montserrat', sans-serif;
 
+}
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none; 
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fcc0c5; 
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  background-color: #fcc0c5;
+  margin-left: 30px; /* Adjust as needed */
+  margin-right: 1px;
+}
 
+input[type="radio"]:checked {
+  background-color: #ff5733; /* Fills the whole circle */
+  border-color: #ff5733;
 }
 .roles {
-    margin-right: 30px;
-    text-align: right;
+    font-size: 12px;
+    color: #fcc0c5;
+    margin-right: 3px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+
 }
 
  .button {
-    border: 3px solid #7E892B;
+    border: 3px solid #f59191;
     border-radius: 8px;
     padding: 4px 10px;
     margin: 5px auto;
-    color: #7E892B;
+    color: #630116;
     text-align: right;
     display: block;       
     width: fit-content;    
-    background: transparent;
+    background: #f59191;
     cursor: pointer;      
     transition: all 0.3s ease;
+    font-family: 'Tomorrow', sans-serif; 
+    text-transform: uppercase;
+
 }
 
 .button:hover {
@@ -154,7 +191,7 @@ input[type="password"] {
     color: #ffffff;
 }
 .link {
-    color:#929F52;
+    color:#ECD0C2;
     text-decoration: none;
     transition: color 0.3s ease; 
 }
