@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="authentication_style.css">
         <title>Authentication Page</title>
     </head>
@@ -10,22 +11,27 @@
                 <h1 class="appName">ByteExpress</h1>
             </header>
         </div>
-        <h1 class="logInTitle">Log In</h1>
+        
         <div class="logInBox" id="logInBox">
+            <h1 class="logInTitle">Welcome Back!</h1>
             <form class="logIn">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name">
+                <input type="email" id="email" name="email" placeholder="Email">
                 <br><br>
-                <label for="password">Password:</label>
-                <input type="text" id="password" name="password" placeholder="Enter your password"><!--Should have a verifcation password-->
+                <input type="password" id="password" name="password" placeholder="Password">
                 <br><br>
-                <label for="phoneNumber">Phone Number:</label>
-                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number"><!--Should have a verifcation password-->
+                <p class="role">Role</p>
+                <div class="roles">
+                    <input type="radio" id="seller" class="seller" name="seller" value="seller">
+                    <label for="seller">Seller</label><br><br>
+                    <input type="radio" id="buyer" class="buyer" name="buyer" value="buyer">
+                    <label for="buyer">Buyer</label><br>
+                </div>
+  
                 <br><br>
-
-
-        </form>
-        <h3>Don't have an account? <a href="sign_up.html" class="link">Sign Up</a></h3>
+                <button type="submit" class="button">Log In</button>
+            </form>
+            
+        <h4>Don't have an account? <a href="sign_up.html" class="link">Sign Up</a></h4>
         </div>
     </body>
 </html>

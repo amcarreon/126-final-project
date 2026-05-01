@@ -1,7 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
 @font-face {
     font-family: 'Montserrat';
     src: url('Fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
-    font-weight: 100 900; /* Supports all weights in a variable font */
+    font-weight: 100 900; 
     font-style: normal;
 }
 
@@ -12,76 +17,162 @@
     font-style: italic;
 }
 
-.appName {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400; 
+@font-face {
+    font-family: 'Talina DEMO';
+    src: url('Fonts/Talina DEMO.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
 }
 
-.appDiv{
-    border: 2px solid rgb(231, 209, 179); 
+@font-face {
+    font-family: 'Talina DEMO';
+    src: url('Fonts/Talina DEMO Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Vetro DEMO';
+    src: url('Fonts/Vetro DEMO.otf') format('opentype');
+    font-weight: 400; /* Regular */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vetro DEMO';
+    src: url('Fonts/Vetro DEMO Italic.otf') format('opentype');
+    font-weight: 400; /* Regular Italic */
+    font-style: italic;
+}
+
+body {
+    background-image: url('Images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: 'Talina DEMO', sans-serif; /* Set global font here */
+
+}
+
+/*
+red -- #630116
+another red -- #842B2F
+pink -- #AF5B73
+green -- #7E892B
+another green (warm?) -- #929F52
+gray -- #CEC3C1
+dark grey -- #3D4547
+beige -- #ECD0C2
+light greenblue - #EDEEE9
+white -- #FBF9F5
+ */
+
+.container { 
+    width: 80%;
+    margin: 0 auto;
+}
+
+.appDiv {
+    margin-left: 30px; 
+    width: 100%;       
+    max-width: 800px;  
+
+}
+
+.signUpBox, .logInBox {
+    background-color:#630116;
+    max-width: 520px;   
+    margin: 25px auto; 
+    padding: 40px;    
+    width: auto;         /* Allows it to expand to fit the text */
+    min-width: 400px;    /* Or set a specific width wide enough for one line */
+    padding: 20px;
+    border-radius: 3px;
 }
 
 .appName {
-    color: rgb(67, 10, 10);
-    margin-left: 10%; 
+    color: #EDEEE9;
+    text-shadow: 2px 2px #842B2F;
     text-align: left; 
-    font-family: 'Montserrat', sans-serif;
+    padding: 20px;
+    letter-spacing: 8px;
 }
 
-.signUpBox{
-    border: 2px solid burlywood; 
-    border-radius: 50px;
-    width: 300px;
-    margin: 50px auto; 
-    padding: 40px;
-}
-
-.logInBox{
-    border: 2px solid burlywood; 
-    border-radius: 50px;
-    width: 300px;
-    margin: 50px auto; 
-    padding: 40px;
-}
-
-.signUpTitle{
+.signUpTitle, .logInTitle{
+    margin: 12px auto; 
+    padding: 5px 50px;
+    max-width: 500px;  
     text-align: center;
-    color: rgb(67, 10, 10);
-    font-family: 'Montserrat', sans-serif;
+    color: #ECD0C2;
+    text-transform: uppercase;
+    text-shadow: 1px 1px #929F52; 
+    border-radius: 3px;
+}
+.signUp, .logIn, h4 {
+    text-align: center;
+    color:  #7E892B;
+    margin: 20px auto;
+    font-family: 'Talina DEMO', sans-serif !important;
+    letter-spacing: 2px;
+}
+input[type="email"], 
+input[type="password"] {
+  width: 450px; 
+  background-color:#EDEEE9;
+  padding: 4px 10px;
+  background-color: rgb(225, 206, 212);
+  border: 2px solid #ECD0C2;
+  border-radius: 15px;
 
 }
+.role{
+    text-align: left;
+    margin-left: 40px;
+    font-family: 'Verto DEMO', sans-serif !important;
 
-.logInTitle{
-    text-align: center;
-    color: rgb(67, 10, 10);
-    font-family: 'Montserrat', sans-serif;
 
 }
-
-.signUp{
-    text-align: center;
-    color:burlywood; 
+.roles {
+    margin-right: 30px;
+    text-align: right;
 }
 
-.logIn{
-    text-align: center;
-    color:burlywood; 
+ .button {
+    border: 3px solid #7E892B;
+    border-radius: 8px;
+    padding: 4px 10px;
+    margin: 5px auto;
+    color: #7E892B;
+    text-align: right;
+    display: block;       
+    width: fit-content;    
+    background: transparent;
+    cursor: pointer;      
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #7E892B;
+    color: #ffffff;
 }
 .link {
-    color: rgb(67, 10, 10);
+    color:#929F52;
     text-decoration: none;
     transition: color 0.3s ease; 
 }
 
-.link:hover {
-    color: burlywood;
+.link:hover { 
+    color: burlywood; 
 }
-
 .link:active {
     color: coral; 
     transform: scale(0.98); 
 }
-h3 {
-    text-align: center;
-    color:burlywood; 
+
+
+@media (max-width: 768px) {
+  .container { width: 90%; }
+}
+
+@media (max-width: 480px) {
+  .container { width: 100%; padding: 10px; }
+  .signUpBox, .logInBox { padding: 20px; }
 }
