@@ -12,12 +12,18 @@
     font-style: normal;
 }
 @font-face {
-    font-family:'Badhorse';
-    src: url('../../Fonts/BurtonsScript.otf') format('opentype');
-    font-weight: 400;
+    font-family: 'Shrikhand';
+    src: url('../../Fonts/Shrikhand-Regular.ttf') format('truetype');
+    font-weight: 400; 
     font-style: normal;
-
 }
+@font-face {
+    font-family: 'Haettenschweiler';
+    src: url('../../Fonts/Haettenschweiler.ttf') format('truetype');
+    font-weight: 400; 
+    font-style: normal;
+}
+
 @font-face {
     font-family: 'Montserrat';
     src: url('../../Fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
@@ -38,9 +44,15 @@
     font-style: bold;
 
 }
+@font-face{
+    font-family:'Gulya';
+    src: url('../../Fonts/Gulya.otf') format('opnentype');
+    font-weight: 400;
+    font-style: normal;
+}
 
 body {
-    background-image: url('../../Images/bg.jpg');
+    background-image: url('../../Images/bg1.jpg');
     background-size: cover;
     background-position: center;
 
@@ -72,21 +84,22 @@ white -- #FBF9F5
 }
 
 .signUpBox, .logInBox {
-    background-color:#630116;
+    background-color: rgba(252, 252, 252, 0.5);
     max-width: 400px;   
     margin: 25px auto; 
     padding: 40px;    
     width: auto;       
     min-width: 300px; 
     padding: 20px;
-    border-radius: 3px;
+    border-radius: 10px;
 }
 
 .appName {
-    font-size: 30px;
+    font-size: 35px;
     font-style: bold;
     color: white;
-    text-shadow: 0 0 10px white;
+    -webkit-text-stroke: .2px rgb(23, 86, 152);
+    text-shadow: 0 0 0px white;
     text-align: left; 
     padding: 10px;
     letter-spacing: 2px;
@@ -95,20 +108,20 @@ white -- #FBF9F5
 }
 
 .signUpTitle, .logInTitle{
-    font-size: 30px;
+    font-size: 40px;
     margin: 10px auto; 
     padding: 5px 10px;
-    
     text-align: center;
-    color: white;
+    color: darkblue;
     border-radius: 3px;
-    font-family: 'Badhorse', sans-serif;
+    font-family: 'Shrikhand', cursive;
     letter-spacing: 2px;
+    font-style: bold, italic;
 
 }
 .signUp, .logIn, h4 {
     text-align: center;
-    color:  #ECD0C2;
+    color:  rgb(9, 41, 41);
     margin: 20px auto;
     letter-spacing: 2px;
     font-family: 'Montserrat', sans-serif;
@@ -116,32 +129,29 @@ white -- #FBF9F5
 }
 input[type="email"], 
 input[type="password"],
-input[type="text"],
-input[type="tel"]{
+input[type="text"]{
+    color:rgb(255, 255, 255);
     width: 300px; 
-    background-color:#EDEEE9;
     padding: 4px 10px;
-    background-color: #fcc0c5;
-    border: 2px solid #ECD0C2;
+    background-color: #70c0e1;
+    border: 2px solid #70c0e1;
     border-radius: 15px;
     font-family: 'Montserrat', sans-serif;
-
-
 }
 
  .register_button, .login_button {
-    border: 3px solid #f59191;
+    border: 3px solid #6a9ebf;
     border-radius: 8px;
     padding: 4px 10px;
     margin: 5px auto;
-    color: #630116;
+    color: #014663;
     text-align: right;
     display: block;       
     width: fit-content;    
-    background: #f59191;
+    background: #91cff5;
     cursor: pointer;      
     transition: all 0.3s ease;
-    font-family: 'Tomorrow', sans-serif; 
+    font-family: 'Gulya', sans-serif;
     text-transform: uppercase;
 
 }
@@ -151,16 +161,16 @@ input[type="tel"]{
     color: #ffffff;
 }
 .link {
-    color:#ECD0C2;
+    color:#b02a60;
     text-decoration: none;
     transition: color 0.3s ease; 
 }
 
 .link:hover { 
-    color: burlywood; 
+    color: rgb(8, 116, 59); 
 }
 .link:active {
-    color: coral; 
+    color: rgb(225, 71, 15); 
     transform: scale(0.98); 
 }
 

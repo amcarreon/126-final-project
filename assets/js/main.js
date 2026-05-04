@@ -1,13 +1,17 @@
 const registrationForm = document.getElementById('signUp'); 
 const nameInput = document.getElementById('register_name');
-const emailInput = document.getElementById('register_email');
-const passwordInput = document.getElementById('register_password');
+const registerEmailInput = document.getElementById('register_email');
+const registerPasswordInput = document.getElementById('register_password');
+const loginForm = document.getElementById('logIn');
+const loginEmailInput = document.getElementById('login_email');
+const loginPasswordInput = document.getElementById('login_password');
+
 /*const confirmInput = document.getElementById('confirm_password');*/
 
 function validateForm() {
     const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
+    const email = registerEmailInput.value.trim();
+    const password = registerPasswordInput.value;
     /*const confirmPassword = confirmInput.value;*/
 
     let isValid = true;
@@ -52,11 +56,37 @@ registrationForm.addEventListener('submit', function(event) {
     }
 });
 
-const form = document.querySelector('#signUp');
 
-form.addEventListener('submit', function(event) {
-  const isValid = validateForm(); 
-  if (!isValid) {
-    event.preventDefault(); 
-  }
+loginForm.addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    if (validateLogin()) {
+        const formData = new FormData(loginForm);
+
+        try {
+            const response = await fetch('login_process.php', {
+                method: 'POST',
+                body: formData
+            });
+
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.includes("application/json")) {
+                const data = await response.json();
+                if (data.success) {
+                    window.location.href = "home.php";
+                } else {
+                    alert(data.message);
+                }
+            } else {
+                const text = await response.text();
+                console.log("Server said:", text);
+            }
+        } catch (error) {
+            console.error("Connection error:", error);
+        }
+    }
 });
+
+function validateLogin() {
+    return loginEmailInput.value.trim() !== "" && loginPasswordInput.value.trim() !== "";
+}
