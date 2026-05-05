@@ -18,7 +18,7 @@
 
         <div class="signUpBox" id="signUpBox">
             <h1 class="signUpTitle">Get Started!</h1>
-            <form class="signUp" id="signUp" method="POST" action="register.php">
+            <form class="signUp" id="signUp" method="POST" action="../../pages/auth/register.php">
                 <input type="text" id="register_name" name="register_name" placeholder="Name" required>
                 <br><br>
                 <input type="email" id="register_email" name="register_email" placeholder="Email" required>
@@ -30,7 +30,7 @@
                 <button type="submit" id="register_button" class="register_button">Create Account</button>
                 
             </form>
-        <h4>Already signed up? <a href="login_form.html" class="link">Log in</a></h4>
+        <h4>Already signed up? <a href="login_form.php" class="link">Log in</a></h4>
         </div>
 
 

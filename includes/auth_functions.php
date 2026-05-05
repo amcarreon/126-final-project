@@ -1,11 +1,11 @@
 <?php
-require_once '126-final-project/config/database.php';
+require_once '../../config/database.php';
 require_once 'utility_functions.php';
 
-function register_user($email, $full_name, $password, $user_type, $phone_number) {
+function register_user($email, $full_name, $password) {
     global $conn;
 
-    $valid_email = validate_email($email)
+    $valid_email = validate_email($email);
     $valid_pass = validate_password($password);
 
     if (!$valid_email && !$valid_pass) {
@@ -14,10 +14,10 @@ function register_user($email, $full_name, $password, $user_type, $phone_number)
 
     $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users (email, full_name, password_hash, phone_number, user_type)
-            VALUES (?, ?, ?, ?, ?)"
-    $stmt = $conn->prepare();
-    $stmt->bind_param("sssss", $email, $full_name, $hashed_pass, $phone_number, $user_type);
+    $sql = "INSERT INTO users (email, full_name, password_hash)
+            VALUES (?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sss", $email, $full_name, $hashed_pass);
 
     if ($stmt->execute()) {
         return true;
