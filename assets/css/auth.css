@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+
+@font-face {
+    font-family: 'Gladiola';
+    src: url('../../Fonts/gladiola-regular-regular.ttf') format('truetype');
+    font-weight: 400; 
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Shrikhand';
+    src: url('../../Fonts/Shrikhand-Regular.ttf') format('truetype');
+    font-weight: 400; 
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Haettenschweiler';
+    src: url('../../Fonts/Haettenschweiler.ttf') format('truetype');
+    font-weight: 400; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../../Fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../../Fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+}
+@font-face{
+    font-family: 'Tomorrow';
+    src: url('../../Fonts/Tomorrow/Tomorrow-Bold.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: bold;
+
+}
+@font-face{
+    font-family:'Gulya';
+    src: url('../../Fonts/Gulya.otf') format('opnentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-image: url('../../Images/bg1.jpg');
+    background-size: cover;
+    background-position: center;
+
+}
+
+/*
+red -- #630116
+another red -- #842B2F
+pink -- #AF5B73
+green -- #7E892B
+another green (warm?) -- #929F52
+gray -- #CEC3C1
+dark grey -- #3D4547
+beige -- #ECD0C2
+light greenblue - #EDEEE9
+white -- #FBF9F5
+ */
+
+.container { 
+    width: 80%;
+    margin: 0 auto;
+}
+
+.appDiv {
+    margin-left: 30px; 
+    width: 100%;       
+    max-width: 800px;  
+
+}
+
+.signUpBox, .logInBox {
+    background-color: rgba(252, 252, 252, 0.5);
+    max-width: 400px;   
+    margin: 25px auto; 
+    padding: 40px;    
+    width: auto;       
+    min-width: 300px; 
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.appName {
+    font-size: 35px;
+    font-style: bold;
+    color: white;
+    -webkit-text-stroke: .2px rgb(23, 86, 152);
+    text-shadow: 0 0 0px white;
+    text-align: left; 
+    padding: 10px;
+    letter-spacing: 2px;
+    font-family: 'Gladiola', sans-serif; 
+
+}
+
+.signUpTitle, .logInTitle{
+    font-size: 40px;
+    margin: 10px auto; 
+    padding: 5px 10px;
+    text-align: center;
+    color: darkblue;
+    border-radius: 3px;
+    font-family: 'Shrikhand', cursive;
+    letter-spacing: 2px;
+    font-style: bold, italic;
+
+}
+.signUp, .logIn, h4 {
+    text-align: center;
+    color:  rgb(9, 41, 41);
+    margin: 20px auto;
+    letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
+
+}
+input[type="email"], 
+input[type="password"],
+input[type="text"]{
+    color:rgb(255, 255, 255);
+    width: 300px; 
+    padding: 4px 10px;
+    background-color: #70c0e1;
+    border: 2px solid #70c0e1;
+    border-radius: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+ .register_button, .login_button {
+    border: 3px solid #6a9ebf;
+    border-radius: 8px;
+    padding: 4px 10px;
+    margin: 5px auto;
+    color: #014663;
+    text-align: right;
+    display: block;       
+    width: fit-content;    
+    background: #91cff5;
+    cursor: pointer;      
+    transition: all 0.3s ease;
+    font-family: 'Gulya', sans-serif;
+    text-transform: uppercase;
+
+}
+
+.login_button:hover {
+    background-color: #7E892B;
+    color: #ffffff;
+}
+.link {
+    color:#b02a60;
+    text-decoration: none;
+    transition: color 0.3s ease; 
+}
+
+.link:hover { 
+    color: rgb(8, 116, 59); 
+}
+.link:active {
+    color: rgb(225, 71, 15); 
+    transform: scale(0.98); 
+}
+
+
+@media (max-width: 768px) {
+  .container { width: 90%; }
+}
+
+@media (max-width: 480px) {
+  .container { width: 100%; padding: 10px; }
+  .signUpBox, .logInBox { padding: 20px; }
+}

@@ -1,0 +1,7 @@
+<?php
+define('PASSWORD_MIN_LENGTH', 8);
+define('PASSWORD_REQUIRE_UPPERCASE', true);
+define('PASSWORD_REQUIRE_NUMBERS', true);
+define('PASSWORD_REQUIRE_SPECIAL', true);
+
+?>
