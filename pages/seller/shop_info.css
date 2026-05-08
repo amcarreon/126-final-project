@@ -1,0 +1,47 @@
+.storeProfile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 5px;
+    margin: 100px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+body {
+    background-image: url('../../Images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+#storeImageUpload {
+    margin-bottom: 20px;
+    color:#f9f9f9
+}
+#storeName, #storeDescription, #contactInfo, #socialMediaProfiles, #location {
+    margin-bottom: 20px;
+    width: 100%;
+    background-color:#70c0e1;
+    border: none;
+    padding: 10px;
+}
+.customUpload{
+    padding: 5px 10px;
+    background-color: #2b96c5;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.customUpload:hover {
+    background-color: #1e304d;
+}
+button {
+    padding: 10px 20px;
+    background-color: #2b96c5;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
