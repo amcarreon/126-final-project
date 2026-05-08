@@ -55,7 +55,8 @@ body {
     background-image: url('../../Images/bg1.jpg');
     background-size: cover;
     background-position: center;
-
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 /*
@@ -69,6 +70,12 @@ dark grey -- #3D4547
 beige -- #ECD0C2
 light greenblue - #EDEEE9
 white -- #FBF9F5
+.appDiv {
+    margin-left: 30px; 
+    width: 100%;       
+    max-width: 800px;  
+
+}
  */
 
 .container { 
@@ -76,12 +83,7 @@ white -- #FBF9F5
     margin: 0 auto;
 }
 
-.appDiv {
-    margin-left: 30px; 
-    width: 100%;       
-    max-width: 800px;  
 
-}
 
 .signUpBox, .logInBox {
     background-color: rgba(252, 252, 252, 0.5);
