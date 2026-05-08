@@ -1,7 +1,8 @@
 <?php
-require_once '126-final-project/config/constants.php';
-
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../config/constants.php';
     function validate_email($email) {
+        global $conn;
         // Validation of format
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             //return "Invalid email format.";
@@ -9,7 +10,7 @@ require_once '126-final-project/config/constants.php';
         }
 
         // Checking for duplicates
-        $findDupe = $conn->prepare("SELECT email FROM Users WHERE email = ?");
+        $findDupe = $conn->prepare("SELECT email FROM users WHERE email = ?");
         $findDupe->bind_param("s", $email);
         $findDupe->execute();
         $res = $findDupe->get_result();
@@ -18,6 +19,8 @@ require_once '126-final-project/config/constants.php';
             //return "Email already exists.";
             return false;
         }
+
+        return true;
             
     }
 
