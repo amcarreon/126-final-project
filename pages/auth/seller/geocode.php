@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST METHOD'] === 'POST' && !empty($_POST['location'])) {
 
     $res = file_get_contents($url);
 
-    $data = json_decode($response, true);
+    $data = json_decode($res, true);
 
     if ($data['status'] !== 'OK') {
         return [
