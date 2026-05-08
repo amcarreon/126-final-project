@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../assets/css/auth.css">
         <script src="../../assets/js/main.js" defer></script>
@@ -9,9 +8,17 @@
         <title>Authentication Page</title>
     </head>
     <body>
+        <!-- Header 
+        <div class="appDiv">
+            <header >
+                <h1 class="appName">BubbleFinder</h1>
+            </header> 
+        </div>-->
+        <br><br><br><br><br><br><br><br><br><br>
+
         <div class="signUpBox" id="signUpBox">
             <h1 class="signUpTitle">Get Started!</h1>
-            <form class="signUp" id="signUp" method="POST" action="register.php">
+            <form class="signUp" id="signUp" method="POST" action="../../pages/auth/register.php">
                 <input type="text" id="register_name" name="register_name" placeholder="Name" required>
                 <br><br>
                 <input type="email" id="register_email" name="register_email" placeholder="Email" required>
@@ -23,7 +30,7 @@
                 <button type="submit" id="register_button" class="register_button">Create Account</button>
                 
             </form>
-        <h4>Already signed up? <a href="login_form.html" class="link">Log in</a></h4>
+        <h4>Already signed up? <a href="login_form.php" class="link">Log in</a></h4>
         </div>
 
 
@@ -31,9 +38,3 @@
 
     </body>
 </html>
-<!-- <div class="appDiv">
-            <header >
-                <h1 class="appName">BubbleFinder</h1>
-            </header> 
-        </div>
-        -->
