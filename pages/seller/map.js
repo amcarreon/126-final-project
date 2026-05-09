@@ -24,19 +24,20 @@ async function detect_loc () {
 }
 
 // Display map
-const defaultLoc = { lat: 10.640624654172045, lng: 122.22802900295375 }; // UPV
+const defaultLoc = { lat: 10.6409604, lng: 122.2377498 }; // Miagao Plaza
 
 function initMap() {
     const parameters = new URLSearchParams(window.location.search);
-    const lat = parseFloat(parameters.get('lat')) || defaultLoc.lat;
-    const lng = parseFloat(parameters.get('lng')) || defaultLoc.lng;
+    const lat_coords = parseFloat(parameters.get('lat')) || defaultLoc.lat;
+    const lng_coords = parseFloat(parameters.get('lng')) || defaultLoc.lng;
+    const shop_loc = { lat: lat_coords, lng: lng_coords };
 
     const map = new google.maps.Map(map, {
-        zoom: 18, center: { lat, lng }
+        zoom: 18, center: shop_loc
     });
 
     const marker = new google.maps.Marker({
-        position: { lat, lng },
+        position: shop_loc,
         map: map
     });
     // const shop_loc = { lat: lat_coords, lng:lng_coords };
@@ -49,6 +50,3 @@ function initMap() {
     // });
 }
 initMap();
-
-
-// insert event listeners wala ko pa natapos
