@@ -1,0 +1,6 @@
+# ignore api key
+config/config.php
+
+# ignore OS
+.DS_Store
+Thumbs.db
