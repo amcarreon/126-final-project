@@ -1,0 +1,52 @@
+/*---------------shop_info_form.html------------------*/
+body {
+    background-image: url('../../Images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+.shopProfile {
+    width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 100px;
+    background-color: rgba(255, 255, 255, 0.55);
+}
+.imgBox {
+    text-align: left;
+    background-color:#70c0e1;
+    border-radius: 10px;
+    padding: 10px 30px 50px 100px;
+
+}
+
+.imgDiv{
+    text-align: right;
+    padding-right: 335px;
+
+}
+input[type="file"] {
+    display: none;
+}
+.customUpload {
+    display: inline-block;
+    padding: 8px 25px;
+    cursor: pointer;
+    background-color: #004aad;
+    color: white;
+    border-radius: 4px;
+}
+.customUpload:hover {
+    background-color: #0056b3;
+}
+h1{
+    text-align: right;
+    color: #1800ad;
+    padding-right: 200px;
+
+}
+/*---------------shop_services_form.html------------------*/
+/*---------------shop_photo_form.html------------------*/
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../assets/css/shop_profile.css">
+        <title>Shop Profile</title>
+    </head>
+    <body>
+        <div class="shopProfile" id="shopProfileID">
+            <form class="shopProfileForm" id="shopProfileFormID" action="/seller/shop_info_form" method="post" enctype="multipart/form-data">
+                <div class="photoUploadDiv"></div>
+                <h1>Store Profile Picture</h1>
+                
+                <div class="imgDiv">
+                    <label for="photoUpload" class="customUpload">Upload Image</label>
+                </div>
+                
+                <br><br>
+
+                <div class="nameDiv">
+                    <input type="text" id="shopName" name="shopName" placeholder="Shop Name">
+                </div>
+                <div class="descriptionDiv">
+                    <input type="text" id="shopDescription" name="shopDescription" placeholder="Shop Description">
+                </div>        
+                <div class="contactDiv">
+                    <input type="tel" id="contactInfo" name="contactInfo" placeholder="Contact Information">
+                </div>
+                <div class="socialMediaDiv">
+                    <input type="text" id="socialMediaProfiles" name="socialMediaProfiles" placeholder="Social Media Profiles ">
+                </div>
+                <label for="addressRegion">Address:</label>
+                <input type="dropdown" id="addressRegion" name="addressRegion" placeholder="Address">
+                <button type="submit" class="submit">Save</button>
+            <button type="button" id="cancelEdit">Cancel</button>
+        </div>
+
+            </form>
+            
+</body>
+</html>
