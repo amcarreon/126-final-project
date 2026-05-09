@@ -4,33 +4,33 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../assets/css/shop_profile.css">
+
         <title>Laundry Services</title>
     </head>
     <body>
-        
         <div id="customModal" class="modal-hidden">
+            <div id="formContainer"></div>
             <div class="modal-content">
                 <p>Are you sure you want to cancel?</p>
                 <button id="confirmYes">Yes, Clear it</button>
                 <button id="confirmNo">No, Go Back</button>
             </div>
         </div>
-
         <h1 class="laundryTitle">Services</h1>
-        <div class="templateButtons" action="../..//save_service.php" method="POST">
-            <button id="washBtn" class="templateBtn">Wash</button>
-            <button id="dryBtn" class="templateBtn">Dry</button>
-            <button id="deliverBtn" class="templateBtn">Wash, Dry, Deliver</button>
+        <div class="templateButtons">
+            <button type="button" id="washBtn" class="templateBtn">Wash</button>
+            <button type="button" id="dryBtn" class="templateBtn">Dry</button>
+            <button type="button" id="deliverBtn" class="templateBtn">Deliver</button>
         </div>
-        <br>
+        
             <div class="servicesBox">
-                <form class="serviceForm" id="serviceForm" novalidate>
+                <form class="serviceForm" id="serviceForm"  action="../../includes/save_service.php" method="POST" novalidate>
+                    <br>
                     <input type="text" id="serviceName" name="serviceName" placeholder="Service Title" required>
                     <br><br>
                     <input type="text" id="serviceDescription" name="serviceDescription" placeholder="Description" maxlength="20" >
                     <br><br>
                     <table>
-                        
                         <tbody>
                             <tr>
                                 <td>
@@ -40,7 +40,7 @@
                                     <input type="number" id="servicePrice" name="servicePrice" placeholder="Price" min="0"required>
                                 </td>
                                 <td>
-                                    <button class="btn-delete" onclick="removeRow(this)">Delete</button>
+                                    <button type="button" class="btn-delete" onclick="removeRow(this)">Delete</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -48,14 +48,11 @@
                     <button id="addRowBtn" onclick="addRow()">Add New Row</button>
                     <br><br>
                     
-                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="button" class="cancel-btn" >Cancel</button>
                     <button type="submit" class="submit-btn">Save</button>
                 </form>
             </div>
-
-
-
-
+            <div id="formContainer"></div>
 
             <template id="washId">
                 <form class="washForm">
@@ -65,19 +62,19 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="text" id="serviceName" name="serviceName"  placeholder="Specification (Ex. 5 kg)" required>
+                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]"  placeholder="Specification (Ex. 5 kg)" required>
                                 </td>
                                 <td>
-                                    <input type="number" id="servicePrice" name="servicePrice" placeholder="Price" required>
+                                    <input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required>
                                 </td>
                                 <td>
-                                    <button class="btn-delete" onclick="removeRow()">Delete</button>
+                                    <button type="button" class="btn-delete">Delete</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <br>
-                    <button id="addRowBtnWash" onclick="addRow()">Add Specification</button>
+                    <button type="button" id="addRowBtn">Add Specification</button>
                     <br><br>
                     <button type="button" class="cancel-btn">Cancel</button>
                     <button type="submit" class="submit-btn">Save</button>
@@ -94,19 +91,19 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="text" id="serviceSpecification" name="serviceSpecification"  placeholder="Specification (Ex. 5 kg)" required>
+                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]"  placeholder="Specification (Ex. 5 kg)" required>
                                 </td>
                                 <td>
-                                    <input type="number" id="servicePrice" name="servicePrice" placeholder="Price" required>
+                                    <input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required>
                                 </td>
                                 <td>
-                                    <button class="btn-delete" onclick="removeRow()">Delete</button>
+                                    <button type="button" class="btn-delete">Delete</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <br>
-                    <button id="addRowBtnDry" onclick="addRow()">Add Specification</button>
+                    <button type="button" id="addRowBtn" >Add Specification</button>
                     <br><br>
                     <button type="button" class="cancel-btn">Cancel</button>
                     <button type="submit" class="submit-btn">Save</button>
@@ -120,19 +117,19 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="text" id="serviceSpecification" name="serviceSpecification"  placeholder="Specification (Ex. 5 kg)" required>
+                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]"  placeholder="Specification (Ex. 5 kg)" required>
                                 </td>
                                 <td>
-                                    <input type="number" id="servicePrice" name="servicePrice" placeholder="Price" required>
+                                    <input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required>
                                 </td>
                                 <td>
-                                    <button class="btn-delete" onclick="removeRow()">Delete</button>
+                                    <button type="button" class="btn-delete">Delete</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <br>
-                    <button id="addRowBtnDeliver" onclick="addRow()">Add Specification</button>
+                    <button type="button" id="addRowBtn">Add Specification</button>
                     <br><br>
                     <button type="button" class="cancel-btn">Cancel</button>
                     <button type="submit" class="submit-btn">Save</button>
