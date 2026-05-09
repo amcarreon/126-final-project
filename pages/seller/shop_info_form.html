@@ -9,10 +9,7 @@
     <body>
         <div class="shopProfile" id="shopProfileID">
             <form class="shopProfileForm" id="shopProfileFormID" action="/seller/shop_info_form" method="post" enctype="multipart/form-data">
-
-                <input type="file" id="photoUpload" name="photoUpload" style="display: none;" required>
-                <label for="photoUpload" class="imgBox">Image</label>
-
+                <div class="photoUploadDiv"></div>
                 <h1>Store Profile Picture</h1>
                 
                 <div class="imgDiv">
@@ -27,11 +24,15 @@
                 <div class="descriptionDiv">
                     <input type="text" id="shopDescription" name="shopDescription" placeholder="Shop Description">
                 </div>        
-            <input type="tel" id="contactInfo" name="contactInfo" placeholder="Contact Information">
-            
-            <input type="text" id="socialMediaProfiles" name="socialMediaProfiles" placeholder="Social Media Profiles ">
-            <input type="text" id="location" name="location" placeholder="Location">
-            <button type="submit" class="submit">Save Changes</button>
+                <div class="contactDiv">
+                    <input type="tel" id="contactInfo" name="contactInfo" placeholder="Contact Information">
+                </div>
+                <div class="socialMediaDiv">
+                    <input type="text" id="socialMediaProfiles" name="socialMediaProfiles" placeholder="Social Media Profiles ">
+                </div>
+                <label for="addressRegion">Address:</label>
+                <input type="dropdown" id="addressRegion" name="addressRegion" placeholder="Address">
+                <button type="submit" class="submit">Save</button>
             <button type="button" id="cancelEdit">Cancel</button>
         </div>
 

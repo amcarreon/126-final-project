@@ -3,10 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../assets/css/shop_profile.css">
+        <script src="../../assets/js/shop_services_form.js" defer></script>
         <title>Laundry Services</title>
     </head>
     <body>
-        <h1>Laundry Services</h1>
+        <h1 class="laundryTitle">Laundry Services</h1>
 
             <div class="servicesBox">
                 <form class="serviceForm">
@@ -29,10 +31,17 @@
                                 <td>
                                     <input type="number" id="servicePrice" name="servicePrice" placeholder="0.00" step="0.01" required>
                                 </td>
+                                <td>
+                                    <button class="btn-edit" onclick="editRow()">Edit</button>
+                                    <button class="btn-delete" onclick="removeRow()">Delete</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
-                    <button type="submit" class="submit-btn">Add Service</button>
+                    <button id="addRowBtn" onclick="addRow()">Add New Row</button>
+                    <br><br>
+                    
+                    <button type="submit" class="submit-btn">Add Service</button>&nbsp;
                     <button type="cancel" class="cancel-btn">Cancel</button>
                 </form>
             </div>
