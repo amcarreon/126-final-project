@@ -2,10 +2,9 @@
 require_once '.../config/config.php';
 header('Content-Type: application/json');
 
+$address = $_REQUEST['address'] ?? '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['location'])) {
-    $address = $_POST['location'] ?? '';
-
+if(!empty($address)){
     $encoded_address = urlencode($address);
 
     $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$encoded_address}&key=" . GOOGLE_MAPS_API_KEY;
@@ -31,8 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['location'])) {
         'latitude' => $res['geometry']['location']['lat'],
         'longitude' => $res['geometry']['location']['lng']
     ]);
-        
-    
 }
 
 ?>
