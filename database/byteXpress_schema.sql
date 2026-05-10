@@ -22,7 +22,8 @@ CREATE TABLE shops (
 
 CREATE TABLE laundry_services (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    service_title VARCHAR(255) NOT NULL,
-    service_desc TEXT,
+    title VARCHAR(255) NOT NULL,
+    service_description TEXT,
+    service_specification VARCHAR(255),
     service_price DECIMAL(10,2)
 );
