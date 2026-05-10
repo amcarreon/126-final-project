@@ -1,9 +1,9 @@
-<? php
+<?php
 require_once '.../config/config.php';
 header('Content-Type: application/json');
 
 
-if ($_SERVER['REQUEST METHOD'] === 'POST' && !empty($_POST['location'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['location'])) {
     $address = $_POST['location'] ?? '';
 
     $encoded_address = urlencode($address);
@@ -15,29 +15,24 @@ if ($_SERVER['REQUEST METHOD'] === 'POST' && !empty($_POST['location'])) {
     $data = json_decode($res, true);
 
     if ($data['status'] !== 'OK') {
-        return [
+        echo json_encode ([
             'success' => false,
             'message' => 'Invalid Location'
-        ];
+        ]);
+        exit;
     }
 
     $res = $data['results'][0];
 
-    return [
-        echo json_encode ([
-            'success' => true,
-    
-            'formatted_address' =>
-                $res['formatted_address'],
+    echo json_encode ([
+        'success' => true,
 
-            'latitude' =>
-                $res['geometry']['location']['lat'],
-
-            'longitude' =>
-                $res['geometry']['location']['lng']
-        ]);
+        'formatted_address' => $res['formatted_address'],
+        'latitude' => $res['geometry']['location']['lat'],
+        'longitude' => $res['geometry']['location']['lng']
+    ]);
         
-    ];
+    
 }
 
 ?>
