@@ -1,24 +1,24 @@
 <?php
 
-require_once '../../config/database.php';
+require_once '../config/database.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $shopName = $_POST["shopName"];
-    $shopDesc = $_POST["shopDesc"];
+    $shopDesc = $_POST["shopDescription"];
     $contactInfo = $_POST["contactInfo"];
-    $socialMedia = $_POST["socialMedia"];
-    $location = $_POST["location"];
+    $socialMedia = $_POST["socialMediaProfiles"];
+    $location = $_POST["addressRegion"];
     $logoPath = null;
 
-    if (isset($_FILES["logo"]) && $_FILES["logo"]["error"] == 0) {
+    if (isset($_FILES["photoUpload"]) && $_FILES["photoUpload"]["error"] == 0) {
 
-        $uploadDir = "../../uploads/logos/";
+        $uploadDir = "../uploads/logos/";
 
-        $fileName = time() . "_" . basename($_FILES["logo"]["name"]);
+        $fileName = time() . "_" . basename($_FILES["photoUpload"]["name"]);
         $targetFile = $uploadDir . $fileName;
 
-        if (move_uploaded_file($_FILES["logo"]["tmp_name"], $targetFile)) {
+        if (move_uploaded_file($_FILES["photoUpload"]["tmp_name"], $targetFile)) {
                 $logoPath = "uploads/logos/" . $fileName;
             } else {
                 die("Failed to upload logo.");
