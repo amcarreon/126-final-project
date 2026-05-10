@@ -33,7 +33,7 @@ function validateForm() {
 
     // Email Validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (emailPattern.test(email)) {
+    if (!emailPattern.test(email)) {
         alert("Please enter a valid email address.");
         isValid = false;
     }
@@ -78,7 +78,7 @@ function validateLogin() {
 
     // Email Validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (emailPattern.test(email)) {
+    if (!emailPattern.test(email)) {
         alert("Please enter a valid email address.");
         isValid = false;
     }
@@ -93,13 +93,11 @@ function validateLogin() {
 
 loginForm.addEventListener('submit', async function(event) {
     event.preventDefault();
-
-
     if (validateLogin()) {
         const formData = new FormData(loginForm);
 
         try {
-            const response = await fetch('login_process.php', {
+            const response = await fetch('logIn.php', {
                 method: 'POST',
                 body: formData
             });

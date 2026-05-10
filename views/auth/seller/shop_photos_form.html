@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/shop_profile.css">
+    <title>Photos Display</title>
+</head>
+<body>
+    <!-- Main Photos Display Container - shows all added photos -->
+    <div class="photosContainer" id="photosContainer">
+        <!-- Dynamic photo slots will be added here -->
+    </div>
+
+    <!-- Modal for adding new photos -->
+    <div id="photoModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="addPhotoContainer">
+                <h1 class="titlePhotos">Add New Photo</h1>
+                <div class="addPhotoForm">
+                    <form id="modalPhotoForm">
+                        <div class="inputPhoto">
+                            <label for="modalPhotoURL" class="customUpload">Upload Photo</label>
+                            <input type="file" id="modalPhotoURL" name="photoURL" accept="image/*" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Add Photo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../../assets/js/photos_page.js"></script>
+</body>
+</html>
