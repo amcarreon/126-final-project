@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../assets/css/shop_profile.css">
+        <title>Laundry Services</title>
+    </head>
+    <body>
+        <h1 class="laundryTitle">Services</h1>
+        <div class="templateButtons">
+            <button id="washBtn" class="templateBtn">Wash</button>
+            <button id="dryBtn" class="templateBtn">Dry</button>
+            <button id="deliverBtn" class="templateBtn">Wash, Dry, Deliver</button>
+        </div>
+        <br>
+            <div class="servicesBox">
+                <form class="serviceForm">
+                    <input type="text" id="serviceName" name="serviceName" placeholder="Service Name" required>
+                    <br><br>
+                    <input type="text" id="serviceDescription" name="serviceDescription" placeholder="Description" maxlength="20" required>
+                    <br><br>
+                    <table>
+                        
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" id="serviceSpecification" name="serviceSpecification" placeholder="Specification (Ex. 5 kg)" required>
+                                </td>
+                                <td>
+                                    <input type="number" id="servicePrice" name="servicePrice" placeholder="Price" min="0"required>
+                                </td>
+                                <td>
+                                    <button class="btn-delete" onclick="removeRow()">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button id="addRowBtn" onclick="addRow()">Add New Row</button>
+                    <br><br>
+                    
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="submit-btn">Save</button>
+                </form>
+            </div>
+
+
+
+
+
+            <template id="washId">
+                <form class="washForm">
+                    <h1 class="washTemplate">Wash</h1>
+                    <p class="washDescription">Wash clothes at our shop.</p>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" id="serviceName" name="serviceName"  placeholder="Specification (Ex. 5 kg)" required>
+                                </td>
+                                <td>
+                                    <input type="number" id="servicePrice" name="servicePrice" placeholder="Price" required>
+                                </td>
+                                <td>
+                                    <button class="btn-delete" onclick="removeRow()">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <button id="addRowBtn" onclick="addRow()">Add New Row</button>
+                    <br><br>
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="submit-btn">Save</button>
+                </form>
+            </template>
+
+
+
+            <template id="dryId">
+                <form class="dryForm">
+                    <h1 class="dryTemplate">Dry</h1>
+                    <p class="dryDescription">Dry clothes at our shop.</p>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" id="serviceName" name="serviceName"  placeholder="Specification (Ex. 5 kg)" required>
+                                </td>
+                                <td>
+                                    <input type="number" id="servicePrice" name="servicePrice" placeholder="Price" required>
+                                </td>
+                                <td>
+                                    <button class="btn-delete" onclick="removeRow()">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <button id="addRowBtn" onclick="addRow()">Add New Row</button>
+                    <br><br>
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="submit-btn">Save</button>
+                </form>
+            </template>
+            <template id="deliverId">
+                <form class="deliverForm">
+                    <h1 class="deliverTemplate">Deliver</h1>
+                    <p class="deliverDescription">Wash and Dry on Delivery</p>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" id="serviceName" name="serviceName"  placeholder="Specification (Ex. 5 kg)" required>
+                                </td>
+                                <td>
+                                    <input type="number" id="servicePrice" name="servicePrice" placeholder="Price" required>
+                                </td>
+                                <td>
+                                    <button class="btn-delete" onclick="removeRow()">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <button id="addRowBtn" onclick="addRow()">Add New Row</button>
+                    <br><br>
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="submit-btn">Save</button>
+                </form>
+            </template>
+                    
+            <script src="../../assets/js/shop_services_form.js" defer></script>
+
+    </body>
+</html>
