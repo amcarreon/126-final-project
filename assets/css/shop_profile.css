@@ -1,107 +1,92 @@
-/*---------------shop_info_form.html------------------*/
-body {
-    background-image: url('../../Images/bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-}
-.shopProfile {
-    width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 100px;
-    background-color: rgba(255, 255, 255, 0.55);
-}
-.photoUploadDiv {
-    display: inline-block;
-    margin-left: 20px;
-    margin-top: 50px;
-    margin-bottom: -120px;
-    text-align: left;
-    background-color:#70c0e1;
-    border-radius: 2px;
-    padding: 100px 100px;
 
-}
-
-.imgDiv{
-    text-align: right;
-    padding-right: 335px;
-
-}
-input[type="file"] {
-    display: none;
-}
-.customUpload {
-    display: inline-block;
-    padding: 8px 25px;
-    cursor: pointer;
-    background-color: #004aad;
-    color: white;
-    border-radius: 4px;
-}
-.customUpload:hover {
-    background-color: #0056b3;
-}
-h1{
-    text-align: right;
-    color: #1800ad;
-    padding-right: 200px;
-    margin-top: -50px;
-}
-.nameDiv, .descriptionDiv, .contactDiv, .socialMediaDiv {
-    margin-top: 60px;
-    margin-left: 20px;
-    padding: 20px;
-
-}
-/*---------------shop_services_form.html------------------*/
-.laundryTitle {
-    text-align: left;
-    color: #1800ad;
-    margin-top: 30px;
-
-}
-.cancel-btn {
-    background-color: #004aad;
-    color: #f4f6f8; 
-    border: 1px solid #004aad;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.cancel-btn:hover {
-    background-color: #0d54a7;
-    color: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-#customModal {
-    display: none; 
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5); 
-    justify-content: center;
-    align-items: center;
-}
-
-#customModal.modal-active {
+.container {
     display: flex;
+    flex-direction: column;
+    min-height: 100vh;  
+    width: 100%;
 }
-.error-border {
-    border: 2px solid red;
+.header{
+    background-color: #43a8d6;
+    padding: 10px 20px;
+    width: 100%;  
+    height: 80px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
 }
-/*---------------shop_photo_form.html------------------*/
-.titlePhotos {
-    text-align: left;
-    color: #1800ad;
-    margin-top: 30px;
-    margin-top: 200px;
-    margin-bottom: 50px;
+ .footer {
+    background-color:#43a8d6;
+    padding: 10px 20px;
+    width: 100%;  
+    height: 80px; 
+    margin-top: 20px;
+    box-sizing: border-box;
+    
+}
+
+
+
+#mainPage {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: white;
+}
+
+.dashboardContainer {
+    display: flex;
+    flex-direction: row;
+    width: 95%;    
+    max-width: 1400px;  
+    gap: 20px;       
+    height: 85vh;
+}
+
+.shopInfoDiv {
+    flex: 2;          
+    display: flex;
+    border-radius: 40px;
+    padding: 20px;
+    width: 100%;       
+    box-sizing: border-box;
 
 }
 
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 4;
+    border-radius: 40px;
+    padding: 20px;
+    width: 100%;      
+    box-sizing: border-box;
+    border: 1px solid #ccc; 
+}
+
+
+
+.shopInfoFrame {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+.servicesPageFrame {
+    width: 100%;
+    height: 90%;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin-top: auto; /* This "pushes" it to the bottom */
+}
+
+.tabNavigation {
+    margin-bottom: 15px;
+    width: 100%;      
+
+    display: flex;
+    gap: 15px;
+}
+.tabNavigationContainer{
+    width: 100%;
+}

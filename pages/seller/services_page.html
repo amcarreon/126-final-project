@@ -3,44 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Laundry Services</title>
+        <link rel="stylesheet" href="../../assets/css/services_page.css">
+        <title>Services</title>
     </head>
-    <body>
+    <body class="servicesPage">
         <h1>Laundry Services</h1>
         <div class="servicesDiv">
             <form class="addServiceForm">
                 <button type="submit" class="submit-btn">Add Service</button>
             </form>
         </div>
-        <template>
-            <div class="servicesBox">
-                <form class="serviceForm">
-                    <input type="text" id="serviceName" name="serviceName" placeholder="Service Name" required>
-                    <br><br>
-                    <input type="text" id="serviceDesciption" name="serviceDescription" placeholder="Description">
-                    <br><br>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th style="text-align: left;">Service Description</th>
-                                <th style="text-align: left;">Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <input type="text" id="serviceName" name="serviceName"  required>
-                                </td>
-                                <td>
-                                    <input type="number" id="servicePrice" name="servicePrice" placeholder="0.00" step="0.01" required>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button type="submit" class="submit-btn">Add Service</button>
-                    <button type="cancel" class="cancel-btn">Cancel</button>
-                </form>
-            </div>
-        </templat>
+
     </body>
 </html>
