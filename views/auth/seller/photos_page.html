@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/shop_profile.css">
+    <title>Store Photos</title>
+</head>
+<body class="photosPage">
+    <!-- Fixed: Added missing wrapper div -->
+    <div class="photosDiv">
+        <div class="addPhotoForm" id="mainUploadTrigger">
+            <div class="inputGroup">
+                <label for="photoURL" class="customFileUpload" id="drop-zone">
+                    <div class="iconCircle">+</div>
+                    <span id="uploadText">Upload an image<br><small>or drag & drop</small></span>
+                    <p id="fileNameDisplay"></p>
+                </label>
+                <input type="file" id="photoURL" name="photoURL" accept="image/*" style="display: none;">
+            </div>
+        </div>
+    </div>
+    
+    <script src="../../assets/js/photos_page.js"></script>
+</body>
+</html>
