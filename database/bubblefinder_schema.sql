@@ -13,7 +13,6 @@ CREATE TABLE shops (
     owner_id INT NOT NULL,
     shop_name VARCHAR(255) NOT NULL,
     shop_desc TEXT,
-    contact_info VARCHAR(255) NOT NULL,
     location VARCHAR(255),
     logo VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -22,10 +21,19 @@ CREATE TABLE shops (
         ON DELETE CASCADE
 );
 
+CREATE TABLE contact_info(
+    contact_info_id INT AUTO_INCREMENT PRIMARY KEY,
+    shop_id INT NOT NULL,
+    contact_info TEXT,
+    FOREIGN KEY (shop_id) REFERENCES shops(shop_id)
+        ON DELETE CASCADE
+);
+
 CREATE TABLE social_media(
     soc_med_id INT AUTO_INCREMENT PRIMARY KEY,
     shop_id INT NOT NULL,
-    soc_med TEXT,
+    platform TEXT,
+    link TEXT,
     FOREIGN KEY (shop_id) REFERENCES shops(shop_id)
         ON DELETE CASCADE
 );
