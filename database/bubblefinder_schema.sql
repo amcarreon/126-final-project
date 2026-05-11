@@ -23,12 +23,12 @@ CREATE TABLE shops (
 );
 
 CREATE TABLE social_media(
-    id iNT AUTO_INCREMENT PRIMARY KEY,
+    soc_med_id INT AUTO_INCREMENT PRIMARY KEY,
     shop_id INT NOT NULL,
     soc_med TEXT,
     FOREIGN KEY (shop_id) REFERENCES shops(shop_id)
         ON DELETE CASCADE
-)
+);
 
 CREATE TABLE laundry_services (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -37,7 +37,7 @@ CREATE TABLE laundry_services (
     service_description TEXT,
     service_specification VARCHAR(255),
     service_price DECIMAL(10,2),
-    FOREIGN KEY (shop_id) REFERENCES shops(id)
+    FOREIGN KEY (shop_id) REFERENCES shops(shop_id)
         ON DELETE CASCADE
 );
 
@@ -46,6 +46,6 @@ CREATE TABLE shop_photos(
     shop_id INT NOT NULL,
     shop_name VARCHAR(255) NOT NULL,
     shop_photo VARCHAR(255) NOT NULL,
-    FOREIGN KEY (shop_id) REFERENCES shops(id)
+    FOREIGN KEY (shop_id) REFERENCES shops(shop_id)
         ON DELETE CASCADE
 )
