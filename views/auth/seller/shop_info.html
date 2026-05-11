@@ -4,12 +4,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Store Profile</title>
+        <link rel="stylesheet" href="../../../assets/css/shop_info.css">
     </head>
     <body class="shopInfoPage">
         <div class="storeProfile" id="storeProfileID">
             <header>
                 <div class="imgDiv">
-                    <img src="" alt="Store Image" class="storeImage">
+                    <img src="" alt="Store Image" class="storeImage" id="storeImageID">
                 </div>
                 <h1 class="storeName" id="storeNameID"></h1>
                 <section class="storeDescription" id="storeDescriptionID">
@@ -17,20 +18,26 @@
                 </section>
             </header>
 
+            <hr>
+
             <section class="contactInfo" id="contactInfoID">
                 <h2>Contact Information</h2>
                 <p id="contactInfoDetails"></p>
             </section>
+            <hr>
             <section class="socialMediaProfiles" id="socialMediaProfilesID">
                 <h2>Social Media Profiles</h2>
                 <ul id="socialMediaProfilesList"></ul>
             </section>
+            <hr>
             <section class="location" id="locationID">
                 <h2>Location</h2>
                 <p id="locationDetails"></p>
             </section>
-            <button class="editProfileButton">Edit Profile</button>
+            <hr>
+            <button class="editProfileButton" onclick="goToEditPage()">Edit Profile</button>
         </div>
 
+    <script src="/126-final-project/assets/js/shop_info_display.js"></script>
     </body>
 </html>
