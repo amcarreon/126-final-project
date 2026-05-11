@@ -28,16 +28,24 @@
                     <input type="text" id="shopDescription" name="shopDescription" placeholder="Shop Description">
                 </div>
 
-                <input type="tel" id="contactInfo" name="contactInfo" placeholder="Contact Information">
-            
-                <div class="socialMediaDiv">
-                    <select id="socialMediaPlatform" name="socialMediaPlatform">
-                        <option value="">Select Platform</option>
-                        <option value="facebook">Facebook</option>
-                        <option value="instagram">Instagram</option>
-                    </select>
-                    <input type="text" id="socialMediaLink" name="socialMediaLink" placeholder="Social Media Link">
+                <div class="contactsDiv" id="contactsContainer">
+                    <input type="text" name="contactInfo[]" placeholder="Contact (Phone/Email)">
                 </div>
+                <button type="button" id="addContact">+ Add Contact</button>
+            
+                <div class="socialMediaDiv" id="socialMediaContainer">
+                    <div class="socialMediaItem">
+                        <select name="socialMediaPlatform[]">
+                            <option value="">Select Platform</option>
+                            <option value="facebook">Facebook</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="instagram">YouTube</option>
+                        </select>
+                        <input type="text" name="socialMediaLink[]" placeholder="Social Media Link">
+                        <button type="button" class="removeMedia">Remove</button>
+                    </div>
+                </div>
+                <button type="button" id="addSocialMedia">+ Add Social Media</button>
 
                 <input type="text" id="location" name="location" placeholder="Location">
                 <button type="submit" class="submit">Save</button>
