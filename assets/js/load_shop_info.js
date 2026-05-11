@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    loadShopProfile(1);
+    loadShopProfile();
 
 });
 
-async function loadShopProfile(shopId) {
+async function loadShopProfile() {
 
     try {
 
-        const response = await fetch(`../../api/shopInfo_api.php?id=${shopId}`);
+        const response = await fetch(`../../api/shopInfo_api.php`);
         const result = await response.json();
 
         if (!result.success) {
