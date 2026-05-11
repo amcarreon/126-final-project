@@ -12,11 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $shopName = $_POST["shopName"];
     $shopDesc = $_POST["shopDescription"];
     $contactInfo = $_POST["contactInfo"];
-    $location = $_POST["addressRegion"];
+    $location = $_POST["location"];
     $logoPath = null;
-
-    
-
 
     if (isset($_FILES["photoUpload"]) && $_FILES["photoUpload"]["error"] == 0) {
 
@@ -42,6 +39,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Shop added successfully!";
     } else {
         echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+
+    $ownerId = $_SESSION['user_id'];
+
+    $stmt = $conn->prepare("SELECT shop_id FROM shops WHERE owner_id = ?");
+    $stmt->bind_param("i", $ownerId);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+    $shopId = $row['shop_id'];
+    $stmt->close();
+
+    $socialMediaList = $_POST['contactInfo[]'] ?? [];
+
+    if (!is_array($socialMediaList)) {
+        $socialMediaList = [$socialMediaList];
+    }
+
+    $stmt = $conn->prepare("INSERT INTO social_media (shop_id, soc_med) VALUES (?, ?)");
+
+    foreach ($socialMediaList as $socialMedia) {
+        $stmt->bind_param("is", $shopId, $socialMedia);
+        $stmt->execute();
     }
 
     $stmt->close();
