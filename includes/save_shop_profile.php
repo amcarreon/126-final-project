@@ -12,7 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $shopName = $_POST["shopName"];
     $shopDesc = $_POST["shopDescription"];
     $contactInfo = $_POST["contactInfo"];
-    $socialMedia = $_POST["socialMediaProfiles"];
     $location = $_POST["addressRegion"];
     $logoPath = null;
 
@@ -34,10 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 
-    $stmt = $conn->prepare("INSERT INTO shops (owner_id, shop_name, shop_desc, contact_info, social_media, location, logo)
-        VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO shops (owner_id, shop_name, shop_desc, contact_info, location, logo)
+        VALUES (?, ?, ?, ?, ?, ?)");
 
-    $stmt->bind_param("issssss",$ownerId, $shopName, $shopDesc, $contactInfo, $socialMedia, $location, $logoPath);
+    $stmt->bind_param("isssss",$ownerId, $shopName, $shopDesc, $contactInfo, $location, $logoPath);
 
     if ($stmt->execute()) {
         echo "Shop added successfully!";

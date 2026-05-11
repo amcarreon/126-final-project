@@ -9,12 +9,11 @@ CREATE TABLE users (
 );
 
 CREATE TABLE shops (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    shop_id INT AUTO_INCREMENT PRIMARY KEY,
     owner_id INT NOT NULL,
     shop_name VARCHAR(255) NOT NULL,
     shop_desc TEXT,
     contact_info VARCHAR(255) NOT NULL,
-    social_media VARCHAR(255),
     location VARCHAR(255),
     logo VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -22,6 +21,14 @@ CREATE TABLE shops (
     FOREIGN KEY (owner_id) REFERENCES users(user_id)
         ON DELETE CASCADE
 );
+
+CREATE TABLE social_media(
+    id iNT AUTO_INCREMENT PRIMARY KEY,
+    shop_id INT NOT NULL,
+    soc_med TEXT,
+    FOREIGN KEY (shop_id) REFERENCES shops(shop_id)
+        ON DELETE CASCADE
+)
 
 CREATE TABLE laundry_services (
     id INT AUTO_INCREMENT PRIMARY KEY,
