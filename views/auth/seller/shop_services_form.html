@@ -16,15 +16,16 @@
                 <button id="confirmNo">No, Go Back</button>
             </div>
         </div>
-        <h1 class="laundryTitle">Services</h1>
+        
+        
+            <div class="servicesBox">
+                <form class="serviceForm" id="serviceForm"  action="../../includes/save_service.php" method="POST" novalidate>
+                    <h1 class="laundryTitle">Services</h1>
         <div class="templateButtons">
             <button type="button" id="washBtn" class="templateBtn">WASH</button>
             <button type="button" id="dryBtn" class="templateBtn">DRY</button>
             <button type="button" id="deliverBtn" class="templateBtn">WASH, DRY, DELIVER</button>
         </div>
-        
-            <div class="servicesBox">
-                <form class="serviceForm" id="serviceForm"  action="../../includes/save_service.php" method="POST" novalidate>
                     <br>
                     <input type="text" id="serviceName" name="serviceName" placeholder="Service Title" required>
                     <br><br>
