@@ -54,4 +54,4 @@ function initMap() {
     }
 }
 
-window.onload = initMap();
+window.onload = initMap;

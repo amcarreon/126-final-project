@@ -5,7 +5,8 @@ const registerPasswordInput = document.getElementById('register_password');
 const loginForm = document.getElementById('logIn');
 const loginEmailInput = document.getElementById('login_email');
 const loginPasswordInput = document.getElementById('login_password');
-
+const logout_button = document.querySelector('#logout_button'); // wala pa logout button sa mga pages?
+// giadd ko nlng here ang logout
 /*const confirmInput = document.getElementById('confirm_password');*/
 
 function validateForm() {
@@ -59,12 +60,8 @@ registrationForm.addEventListener('submit', function(event) {
   }
 });
 
-
-
-function validateLogin() {
-
-
-    
+// login validation
+function validateLogin() {    
     const email = loginEmailInput.value.trim();
     const password = loginPasswordInput.value.trim();
 
@@ -106,7 +103,7 @@ loginForm.addEventListener('submit', async function(event) {
             if (contentType && contentType.includes("application/json")) {
                 const data = await response.json();
                 if (data.success) {
-                    window.location.href = "home.php";
+                    window.location.href = "home.php"; //wala naman ata tayo home.php?
                 } else {
                     alert(data.message);
                 }
@@ -120,3 +117,20 @@ loginForm.addEventListener('submit', async function(event) {
     }
 });
 
+
+// logout logic
+function logout(e) {
+    const logout_confirmation = confirm("Do you want to log out?");
+    if (!logout_confirmation) {
+        e.preventDefault();
+        return;
+    }
+
+    // redirect to login page
+    window.location.href = "login_form.php"
+}
+
+// when logout button is clicked, function logout will be called
+if (logout_button) {
+    logout_button.addEventListener("click", logout);
+}
