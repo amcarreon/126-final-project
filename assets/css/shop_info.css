@@ -1,0 +1,248 @@
+/* ==================== ROOT VARIABLES ==================== */
+:root {
+    --primary-blue: #5BA4D9;
+    --dark-blue: #1B5A8B;
+    --light-blue-bg: #E8F2F9;
+    --text-dark: #333333;
+    --text-muted: #666666;
+    --border-color: #D1E0ED;
+    --divider-color: #B8D4E8;
+}
+
+/* ==================== GLOBAL STYLES ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.shopInfoPage {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #f5f5f5;
+    color: var(--text-dark);
+}
+
+/* ==================== MAIN CONTAINER ==================== */
+.storeProfile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 420px;
+    background: linear-gradient(135deg, var(--light-blue-bg) 0%, #F0F7FC 100%);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(91, 164, 217, 0.1);
+    margin: 0 auto;
+}
+
+/* ==================== HEADER SECTION ==================== */
+.storeProfile header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.imgDiv {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    margin-top: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(27, 90, 139, 0.15);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgDiv img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.storeProfile h1 {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--dark-blue);
+    margin: 0;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+.storeDescription {
+    width: 100%;
+}
+
+.storeDescription p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* ==================== SECTIONS ==================== */
+.storeProfile section {
+    width: 100%;
+    margin: 12px 0;
+    padding: 0;
+    text-align: center; 
+
+}
+
+.storeProfile h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 10px 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+/* ==================== CONTACT INFO SECTION ==================== */
+.contactInfo {
+    padding: 16px 0;
+}
+
+.contactInfo h2::before {
+    content: "📞";
+    font-size: 16px;
+}
+
+.contactInfo p {
+    font-size: 13px;
+    color: var(--text-dark);
+    line-height: 1.8;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ==================== SOCIAL MEDIA SECTION ==================== */
+.socialMediaProfiles {
+    padding: 16px 0;
+}
+
+.socialMediaProfiles h2::before {
+    content: "🌐";
+    font-size: 16px;
+}
+
+.socialMediaProfiles ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.socialMediaProfiles li {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: 0;
+    padding: 0;
+    word-break: break-all;
+    line-height: 1.5;
+}
+
+.socialMediaProfiles li a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.socialMediaProfiles li a:hover {
+    color: var(--dark-blue);
+    text-decoration: underline;
+}
+
+/* ==================== LOCATION SECTION ==================== */
+.location {
+    padding: 16px 0;
+}
+
+.location h2::before {
+    content: "📍";
+    font-size: 16px;
+}
+
+.location p {
+    font-size: 13px;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ==================== HORIZONTAL DIVIDERS ==================== */
+.storeProfile hr {
+    width: 100%;
+    height: 1px;
+    border: none;
+    background: linear-gradient(90deg, transparent, var(--divider-color), transparent);
+    margin: 12px 0;
+    padding: 0;
+}
+
+/* ==================== BUTTON ==================== */
+.editProfileButton {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(27, 90, 139, 0.2);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.editProfileButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(27, 90, 139, 0.3);
+}
+
+.editProfileButton:active {
+    transform: translateY(0);
+}
+
+/* ==================== UTILITY CLASSES ==================== */
+.shopInfoPage .imgDiv {
+    width: 150px;
+    height: 150px;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .storeProfile {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .storeProfile h1 {
+        font-size: 22px;
+    }
+
+    .storeProfile h2 {
+        font-size: 13px;
+    }
+}

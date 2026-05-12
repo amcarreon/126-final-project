@@ -433,3 +433,61 @@ select {
     border:none;
     outline:none;
 }
+
+.shopPhotoForm{
+    color: #ffffff;
+    background-color:#70c0e1;
+    margin-top: 30px;
+    margin-left: 20px;
+    padding: 20px 350px;
+    border-radius: 20px;
+}
+
+/*---------------shop_photo_form.html-----------------*/
+.shopPhotoFormDiv {
+    width: 500px;
+    height: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 100px;
+    background-color: rgba(255, 255, 255, 0.55);
+}
+.uploadedAllPhotosContainer{
+    width: 300px;
+    height: 200px;
+    margin-left: 100px;
+    background-color: rgba(255, 255, 255, 0.774);
+
+}
+.shopPhotoContainer{
+    margin-top: 50px;
+    margin-left: 85px;
+
+
+}
+.cancel-btnPhotoForm {
+    background-color: #004aad;
+    color: #f4f6f8;
+    border: 1px solid #004aad;
+    padding: 8px 50px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+.cancel-btnPhotoForm:hover, .submit-btnPhotoForm:hover {
+    background-color: #0d54a7;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.submit-btnPhotoForm{
+    background-color: #004aad;
+    color: #f4f6f8;
+    border: 1px solid #004aad;
+    padding: 8px 50px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+}

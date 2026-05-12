@@ -3,24 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/shop_profile.css">
+    <link rel="stylesheet" href="../../../assets/css/shop_profile.css">
     <title>Store Photos</title>
 </head>
 <body class="photosPage">
-    <!-- Fixed: Added missing wrapper div -->
-    <div class="photosDiv">
-        <div class="addPhotoForm" id="mainUploadTrigger">
-            <div class="inputGroup">
-                <label for="photoURL" class="customFileUpload" id="drop-zone">
-                    <div class="iconCircle">+</div>
-                    <span id="uploadText">Upload an image<br><small>or drag & drop</small></span>
-                    <p id="fileNameDisplay"></p>
-                </label>
-                <input type="file" id="photoURL" name="photoURL" accept="image/*" style="display: none;">
-            </div>
+    <div class="photosPageContainer">
+        <div class="preview-grid" id="previewGrid">
+            
         </div>
+
+        <div class="upload-section">
+            <form id="uploadForm" class="addPhotoForm" enctype="multipart/form-data">
+                <div class="inputGroup">
+                    <label for="photoURL" class="customFileUpload" id="drop-zone">
+                        <div class="iconCircle">+</div>
+                        <span id="uploadText">Upload an image<br><small>or drag & drop</small></span>
+                        <p id="fileNameDisplay"></p>
+                    </label>
+                    <input type="file" id="photoURL" name="photoURL" accept="image/*">
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">Add Photo</button>
+            </form>
+        </div>
+
+        <div class="photosContainer" id="photosContainer"></div>
     </div>
-    
-    <script src="../../assets/js/photos_page.js"></script>
+    <script src="../../../assets/js/photos_page.js" defer></script>
+
 </body>
 </html>
