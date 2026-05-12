@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleDrop(e) {
         e.preventDefault();
-        dropZone.classList.remove('drag-over');
+        dropZone.classList.remove('drop'); // mali ata naming drag-over nakalagay kanina
         const files = e.dataTransfer.files;
         if (files.length > 0) {
             photoURLInput.files = files;
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const removeBtn = document.createElement('button');
             removeBtn.className = 'container-remove';
-            removeBtn.innerHTML = '×';
+            removeBtn.innerHTML = '×'; 
             removeBtn.onclick = () => removeImageContainer(container);
             
             container.appendChild(img);
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const removeBtn = document.createElement('button');
         removeBtn.className = 'remove-photo';
-        removeBtn.innerHTML = '×';
+        removeBtn.innerHTML = '×'; 
         removeBtn.onclick = () => photoDiv.remove();
         
         photoDiv.appendChild(img);
