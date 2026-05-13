@@ -491,3 +491,55 @@ select {
     transition: all 0.2s ease;
 
 }
+/*------------services_page.html----------*/
+
+.servicesPage{
+    text-align: left;
+    width: 900px;
+    height: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 100px;
+    background-color:#e8f4ff;
+
+}
+
+
+
+
+#uploadTextServices {
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.customFileUploadServices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px; 
+    height: 150px;
+    background-color: #A9D1F7;
+    border-radius: 20px; 
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+}
+
+
+.customFileUploadServices:hover {
+    background-color: #105db0;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.customFileUploadServices:active {
+    transform: translateY(0);
+    filter: brightness(0.9);
+}
