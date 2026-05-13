@@ -1,0 +1,56 @@
+.header{
+    display: flex;
+    background-color: #43a8d6;
+    padding: 10px 20px;
+    width: 100%;  
+    height: 80px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+ .footer {
+    background-color:#43a8d6;
+    padding: 10px 20px;
+    width: 100%;  
+    height: 80px; 
+    margin-top: 20px;
+    box-sizing: border-box;
+    
+}
+.customerHomeDiv{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px 50px;
+    background-color:#ffff;
+    
+
+}
+.shopContainers{
+    flex: 0 0 25%;
+    flex-direction: column;
+    background-color: #70c0e1;  
+    justify-content: center;
+    padding: 10px 5px;
+    height: 280px;
+    width: 300px;
+    border-radius: 30px;
+    border: 1px dotted #094661;  
+}
+.shopImageContainer{
+    display:flex;
+    flex-direction: column;
+    background-color: #fff;
+    height: 80%;
+    width: 280px;
+    margin-top: 15px;
+    margin-left:21px;
+    border-radius: 50px;
+    border: 1px dotted #094661;  
+
+}
+.shopName {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+}
