@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "byteXpress_schema";
+$dbname = "bubblefinder_schema";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

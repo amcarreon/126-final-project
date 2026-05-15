@@ -1,29 +1,3 @@
-// Get location from user
-async function detect_loc () {
-    const location = document.getElementById('location').value.trim();
-    
-    if (!location) return;
-
-    try {
-        const res = await fetch(`geocode.php?address=${encodeURIComponent(location)}`);
-        const result = await response.json();
-
-        if (result.success === true) {
-            const lat = result.latitude;
-            const lng = result.longitude;  
-
-            window.location.href = `location_page.html?lat=${lat}&lng=${lng}`;
-        }
-        else {
-            alert("Geocode failed: " + result.message);
-        }
-     
-    }
-    catch (error) {
-        console.error("Error loading: ", error);
-    }
-}
-
 // Display map
 const defaultLoc = { lat: 10.6409604, lng: 122.2377498 }; // Miagao Plaza
 
@@ -37,19 +11,35 @@ function initMap() {
 
     if (map_canvas) {
         const map = new google.maps.Map(map_canvas, {
-            zoom: 18, center: shop_loc
+            zoom: 18, 
+            center: shop_loc
         });
 
         const marker = new google.maps.Marker({
             position: shop_loc,
             map: map,
             draggable: true,
-            title: "Drag me to your exact location!"
+            label: "Drag me to your location!"
         });
 
         marker.addListener("dragend", () => {
-            const newLoc = marker.getPosition();
-            console.log("New shop location:", newLoc.lat(), newLoc.lng());
+            const newPos = marker.getPosition();
+            const lat = newPos.lat();
+            const lng = newPos.lng();
+
+            if (!lat & !lng) return;
+            
+            try {
+                document.getElementById('address-display').innerText = "Location found.";
+            
+                fetch(`../../api/geocode_api.php?lat=${lat}&lng=${lng}`)
+            }
+            
+            catch(error) {
+                console.error("Error loading page: ", error);
+            }
+
+            window.location.href = `location_page.html?lat=${lat}&lng=${lng}`;
         });
     }
 }

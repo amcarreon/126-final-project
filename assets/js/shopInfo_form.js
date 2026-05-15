@@ -239,6 +239,38 @@ class ShopProfileHandler {
 
         return true;
     }
+    
+
+    /**
+     * Validate location in geocode API
+     */
+
+    async validateLocation() {
+        const loc = this.location.value.trim();
+        const status = document.getElementById('location-status');
+        if (status) status.innerText = "Detecting location...";
+
+        try {
+            const res = await fetch(`geocode_api.php?address=${encodeURIComponent(loc)}`);
+            const result = await res.json();
+            
+            if (result.success === true) {
+                const lat = result.latitude;
+                const lng = result.longitude;
+        
+                window.location.href = `location_page.html?lat=${lat}&lng=${lng}`;
+            }
+            else {
+                if (status) status.innerText = "";
+                alert("Geocode failed: " + result.message);
+            }    
+            
+        }
+        catch(error) {
+            console.error("Error loading page: ", error);
+        }
+    }
+
 
     /**
      * Validate social media platform and link
