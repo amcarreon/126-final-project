@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../assets/css/shop_profile.css">
+        <title>Services Page</title>
+    </head>
+    <body class="servicesPage">
+        <template id="serviceCardTemplate">
+            <div class="serviceCard">
+                <div class="distinctServiceColor" style="background-color: var(--service-color, #ffb3b3);"><!--dynamic color dito--></div>
+                <div class="cardContent">
+                    <h2 class="serviceTitleCard"><!--Service Name--></h2>
+                    <p class="serviceDescriptionCard"><!--Service description goes here...--></p>
+                    <div class="tableServicesCard">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="specification">Specification</th>
+                                    <th class="price">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody class="serviceRowsContainer">
+                                <!-- Inject individual rows from database dito -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="buttonsDiv">
+                        <button type="button" class="editButtonService">Edit</button>
+                        <button type="reset" class="deleteButtonService">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+    </body>
+</html>
