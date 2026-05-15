@@ -108,3 +108,51 @@ input::placeholder {
     transition: all 0.2s ease;
 
 }
+
+
+/*---------------services_pageTemplates---------------*/
+.serviceCard {
+    height: 400px;
+    width: 400px;
+}
+.serviceTitleCard{
+    font-size:30px;
+    text-align: center;
+}
+.serviceDescriptionCard {
+    font-size: 20px;
+    text-align: center;
+    margin: 5px 30px 5px 30px;
+    text-align: justify;
+}
+table{
+    margin: 0px auto;
+    margin-left:80px;
+    margin-top: 10px;
+    display: block;
+}
+.specification, .price {
+    background-color: #a7d1f5;
+    padding: 5px 25px;
+    border: 1px solid black;
+}
+th{
+    padding: 5px 25px;
+    border: 1px solid black;
+}
+.editButtonService{
+    background-color: #a7d1f5;
+    padding: 5px 25px;
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-left: 110px;
+    border: 1px solid rgb(55, 116, 177);
+}
+.deleteButtonService {
+    background-color: #a7d1f5;
+    padding: 5px 25px;
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-left: 15px;
+    border: 1px solid rgb(55, 116, 177);
+}
