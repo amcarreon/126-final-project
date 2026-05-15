@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['email'] = $user['email'];
         $_SESSION['full_name'] = $user['full_name'];
 
-        header("Location: ../seller/shop_info_form.html");
+        header("Location: ../seller/shop_info_form.php");
 
     } else {
         echo "Invalid email or password";

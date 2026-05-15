@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $full_name = sanitize($_POST['register_name']);
     $password = $_POST['register_password'];
 
-    $action = register_user ($email, $full_name, $password);
+    $user_id = register_user($email, $full_name, $password);
 
      if ($user_id) {
 
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $_SESSION['email'] = $email;
         $_SESSION['full_name'] = $full_name;
 
-        header("Location: ../seller/shop_info_form.html");
+        header("Location: ../seller/shop_info_form.php");
         exit;
 
     } else {

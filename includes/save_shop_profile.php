@@ -71,6 +71,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute(); }
         
     $stmt->close(); 
+
+    header("Location: ../views/seller/shop_profile_manager.html");
         
 } 
 
