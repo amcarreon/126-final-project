@@ -1,45 +1,30 @@
 <?php
-
+session_start();
 require_once '../config/database.php';
 
 header("Content-Type: application/json");
 
-if (!isset($_GET['id'])) {
-    http_response_code(400);
+$ownerId = $_SESSION['user_id'];
 
-    echo json_encode([
-        "success" => false,
-        "message" => "Service ID is required"
-    ]);
+$stmt = $conn->prepare("SELECT id, title, service_description, service_specification, service_price FROM laundry_services
+    WHERE shop_id = (
+        SELECT shop_id FROM shops WHERE owner_id = ?
+    )
+");
 
-    exit;
-}
-
-$id = intval($_GET['id']);
-
-$sql = "SELECT id, service_title, service_desc, service_price FROM laundry_services WHERE id=?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $id);
+$stmt->bind_param("i", $ownerId);
 $stmt->execute();
 
 $result = $stmt->get_result();
 
-if (!$result) {
-    http_response_code(500);
-    echo json_encode([
-        "success" => false,
-        "message" => "Database query failed"
-    ]);
-    exit;
-}
+$data = [];
 
-$service = $result->fetch_assoc();
+while ($row = $result->fetch_assoc()) {
+    $data[] = $row;
+}
 
 echo json_encode([
     "success" => true,
-    "data" => $service
+    "data" => $data
 ]);
-
-$conn->close();
-
 ?>
