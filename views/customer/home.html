@@ -7,14 +7,14 @@
         <title>Home Page</title>
     </head>
     <body class="customerHome">
-        <div class="headerIframeBuyerHeader">
+        <header class="headerIframeBuyerHeader">
             <iframe class="headerIframe" src="buyer_header.html" scrolling="no" frameborder="0"></iframe>
-        </div>
-        <div class="headerIframeBuyerHeader">
             <iframe src="buyer_header.html" class="headerNavIframe" name="home-content"></iframe>
-        </div>
-        <br><br><br><br> 
-        <template id="shopCardTemplate">
+                </header>
+
+        
+        <main class="homeMainContent">
+            <template id="shopCardTemplate">
             <div class="customerHomeDiv">
                 <div class="shopContainers"> 
                     <div class="shopImageContainer">
@@ -23,7 +23,8 @@
                 </div>
             </div>
         </template>
-        <div class="footer"></div>
+        </main>
+        <footer class="footer"></footer>
         <script src="../../assets/js/customer_home.js"></script>
 
     </body>
