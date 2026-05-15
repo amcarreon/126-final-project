@@ -64,7 +64,7 @@ async function deleteService(serviceId) {
     }
 
     try {
-        const res = await fetch("../../api/delete_service.php", {
+        const res = await fetch("../../includes/delete_service.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
