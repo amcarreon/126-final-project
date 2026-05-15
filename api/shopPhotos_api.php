@@ -3,11 +3,11 @@ require_once '../config/database.php';
 
 header("Content-Type: application/json");
 
-$shopName = $_GET['shop_name'] ?? null;
+$shopId = $_GET['shop_id'] ?? null;
 
 try {
-        $stmt = $conn->prepare("SELECT id, shop_name, photoPath FROM shop_photos WHERE shop_name = ? ORDER BY id DESC");
-        $stmt->bind_param("s", $shopName);
+        $stmt = $conn->prepare("SELECT id, shop_photo FROM shop_photos WHERE shop_Id = ? ORDER BY id DESC");
+        $stmt->bind_param("i", $shopId);
 
     $stmt->execute();
     $result = $stmt->get_result();

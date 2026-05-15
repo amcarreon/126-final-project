@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../../includes/auth_functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -8,11 +9,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     $action = register_user ($email, $full_name, $password);
 
-    if ($action) {
-        header("Location: login.php?registered=true");
+     if ($user_id) {
+
+        $_SESSION['user_id'] = $user_id;
+        $_SESSION['email'] = $email;
+        $_SESSION['full_name'] = $full_name;
+
+        header("Location: ../seller/shop_info_form.html");
         exit;
-    }
-    else {
+
+    } else {
         $error = "Registration failed.";
     }
 }

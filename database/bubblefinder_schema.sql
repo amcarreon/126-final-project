@@ -17,6 +17,10 @@ CREATE TABLE shops (
     logo VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    is_deleted BOOLEAN DEFAULT false,
+    deleted_at TIMESTAMP NULL DEFAULT NULL,
+
     FOREIGN KEY (owner_id) REFERENCES users(user_id)
         ON DELETE CASCADE
 );
@@ -52,7 +56,6 @@ CREATE TABLE laundry_services (
 CREATE TABLE shop_photos(
     id INT AUTO_INCREMENT PRIMARY KEY,
     shop_id INT NOT NULL,
-    shop_name VARCHAR(255) NOT NULL,
     shop_photo VARCHAR(255) NOT NULL,
     FOREIGN KEY (shop_id) REFERENCES shops(shop_id)
         ON DELETE CASCADE
