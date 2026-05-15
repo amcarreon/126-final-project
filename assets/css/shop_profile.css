@@ -1,4 +1,6 @@
 
+/*----------shop_profile_manager----------*/
+
 .mainPageContainer {
     display: flex;
     flex-direction: column;
@@ -371,7 +373,7 @@ h1{
     border-radius: 20px;
 
 }
-#contactInfo {
+#contactInfoOne, #contactInfoTwo, #contactInfoThree {
     color: #ffffff;
     background-color:#70c0e1;
     margin-top: 30px;
