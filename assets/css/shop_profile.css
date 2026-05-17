@@ -1,0 +1,576 @@
+
+/*----------shop_profile_manager----------*/
+
+.mainPageContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;  
+    width: 100%;
+}
+.header{
+    display: flex;
+    background-color: #43a8d6;
+    padding: 10px 20px;
+    width: 100%;  
+    height: 80px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+ .footer {
+    background-color:#43a8d6;
+    padding: 10px 20px;
+    width: 100%;  
+    height: 80px; 
+    margin-top: 20px;
+    box-sizing: border-box;
+    
+}
+
+
+
+#mainPage {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: white;
+}
+
+.dashboardContainer {
+    display: flex;
+    flex-direction: row;
+    width: 95%;    
+    max-width: 1400px;  
+    gap: 20px;       
+    height: 85vh;
+}
+
+.shopInfoDiv {
+    flex: 2;          
+    display: flex;
+    border-radius: 40px;
+    padding: 20px;
+    width: 100%;       
+    box-sizing: border-box;
+
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 4;
+    border-radius: 40px;
+    padding: 20px;
+    width: 100%;      
+    box-sizing: border-box;
+    border: 1px solid #ccc; 
+}
+
+
+
+.shopInfoFrame {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.servicesPageFrame {
+    z-index: 9999; 
+    width: 100%;
+    height: 90%;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin-top: auto; 
+}
+
+
+.tabNavigation {
+    margin-bottom: 15px;
+    width: 100%;      
+    display: flex;
+    gap: 15px;
+}
+.tabNavigationContainer{
+    width: 100%;
+}
+/*------------------location page------------------*/
+.locationPage{
+    background-color: #e8f4ff;
+}
+/*------------------photos page------------------*/
+
+.photosPage {
+    background-color: #e8f4ff; 
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.photosPageContainer {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#photoURL {
+    display: none;
+}
+
+.customFileUpload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px; 
+    height: 150px;
+    background-color: #A9D1F7;
+    border-radius: 20px; 
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+}
+
+.customFileUpload:hover {
+    background-color: #8dbbe6;
+    transform: translateY(-5px);
+}
+
+.iconCircle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px; 
+    height: 45px;
+    background-color: #0E689B;
+    border-radius: 50%;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+#uploadText {
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+#uploadText small {
+    font-weight: normal;
+    opacity: 0.9;
+}
+
+.submit-btn {
+    display: none; 
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: #0E689B;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+}
+
+.customFileUpload.drag-over {
+    border: 2px dashed #0E689B;
+    background-color: #d1e9ff;
+}
+
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    gap: 1px;
+    margin-bottom: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2px;
+}
+
+.image-container {
+    position: relative;
+    margin-bottom: 20px;
+    width: 150px;
+    height: 150px;
+    border: 3px solid #28a745;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f8fff9;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.image-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.container-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.container-remove {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(220, 53, 69, 0.95);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s ease;
+}
+
+.container-remove:hover {
+    background: #dc3545;
+    transform: scale(1.1);
+}
+
+.photo-item {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+}
+
+.photo-item img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.remove-photo {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(220, 53, 69, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#fileNameDisplay {
+    display: none;
+}
+
+.drag-over {
+    border-color: #007bff !important;
+    background: #f0f8ff !important;
+}
+
+
+
+
+
+
+
+
+
+
+/*---------------shop_info_form.html------------------*/
+input{
+    text-align: left !important;  
+    border:none;
+    outline:none;
+}
+input::placeholder {  
+  color:#ffffff;     
+}
+
+.infoBody {
+    background-image: url('../../Images/bg.jpg');
+    background-size: cover;
+}
+
+.shopProfile {
+    text-align: left;
+    width: 900px;
+    margin: 70px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 100px;
+    background-color: rgba(255, 255, 255, 0.55);
+}
+.photoUploadDiv {
+    display: inline-block;
+    margin-left: 70px;
+    margin-top: 50px;
+    margin-bottom: -120px;
+    text-align: left;
+    background-color:#70c0e1;
+    border-radius: 2px;
+    padding: 100px 120px;
+
+
+}
+
+
+.imgDiv{
+    text-align: right;
+    padding-right: 335px;
+
+
+}
+input[type="file"] {
+    display: none;
+}
+.customUpload {
+    display: inline-block;
+    padding: 8px 25px;
+    cursor: pointer;
+    background-color: #004aad;
+    color: white;
+    border-radius: 4px;
+}
+.customUpload:hover {
+    background-color: #0056b3;
+}
+h1{
+    text-align: right;
+    color: #1800ad;
+    padding-right: 200px;
+    margin-top: -50px;
+}
+
+.nameDiv, .descriptionDiv, .socialMediaDiv {
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+#shopName{
+    text-align: left;
+    margin-top: 50px;
+    background-color:#70c0e1;
+    padding: 20px 650px 20px 50px;
+    border-radius: 20px;
+}
+ #shopDescription{
+    color: #ffffff;
+    background-color:#70c0e1;
+    padding: 40px 650px 40px 50px;
+    border-radius: 20px;
+
+}
+#contactInfoOne, #contactInfoTwo, #contactInfoThree {
+    color: #ffffff;
+    background-color:#70c0e1;
+    margin-top: 30px;
+    margin-left: 20px;
+    padding: 15px 650px 15px 50px;
+    border-radius: 20px;
+}
+#location{
+    color: #ffffff;
+    background-color:#70c0e1;
+    margin-top: 30px;
+    margin-left: 20px;
+    padding: 15px 650px 15px 50px;
+    border-radius: 20px;
+
+}
+.inputFB, .inputIG{
+    color: #ffffff;
+    background-color:#70c0e1;
+    border-radius: 20px;
+    margin-left: 50px;
+    border:none;
+    outline:none;
+    width: 86%;
+    padding: 15px 1px 15px 50px;
+}
+.socialMediaIcons {
+  position: relative; 
+  width: 100%;
+}
+
+.icon {
+  position: absolute;
+  padding: 10px;
+  min-width: 40px;
+  size: 50px;
+}
+
+.socialMediaDiv{
+    margin-left: 50px;
+    border:none;
+    outline:none;
+
+}
+.submit, #cancelEdit{
+    background-color:#004aad;
+    color: #ffffff;
+    padding: 20px 100px;
+    margin-top: 30px;
+    margin-left: 130px;
+    border:none;
+    outline:none;
+}
+
+.shopPhotoForm{
+    color: #ffffff;
+    background-color:#70c0e1;
+    margin-top: 30px;
+    margin-left: 20px;
+    padding: 20px 350px;
+    border-radius: 20px;
+}
+
+/*---------------shop_photo_form.html-----------------*/
+.shopPhotoFormDiv {
+    width: 500px;
+    height: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 100px;
+    background-color: rgba(255, 255, 255, 0.55);
+}
+.uploadedAllPhotosContainer{
+    width: 300px;
+    height: 200px;
+    margin-left: 100px;
+    background-color: rgba(255, 255, 255, 0.774);
+
+}
+.shopPhotoContainer{
+    margin-top: 50px;
+    margin-left: 85px;
+
+
+}
+.cancel-btnPhotoForm {
+    background-color: #004aad;
+    color: #f4f6f8;
+    border: 1px solid #004aad;
+    padding: 8px 50px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+.cancel-btnPhotoForm:hover, .submit-btnPhotoForm:hover {
+    background-color: #0d54a7;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.submit-btnPhotoForm{
+    background-color: #004aad;
+    color: #f4f6f8;
+    border: 1px solid #004aad;
+    padding: 8px 50px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+}
+/*------------services_page.html----------*/
+
+.servicesPage{
+    display: flex;
+    flex-direction: 3 column;
+    align-items: center;
+    justify-content: center;
+    width: 900px;
+    height: 200px;
+    margin: 45px auto;
+    border-radius: 100px;
+    background-color:#e8f4ff;
+    max-width: 100%; 
+    box-sizing: border-box;
+
+
+}
+.submit-btnServicePage {
+    display: none; 
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: #0E689B;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+}
+
+
+
+#uploadTextServices {
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.customFileUploadServices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px; 
+    height: 150px;
+    background-color: #A9D1F7;
+    border-radius: 20px; 
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+}
+
+.iconCircleService {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px; 
+    height: 45px;
+    background-color: #0E689B;
+    border-radius: 50%;
+    font-size: 28px;
+    margin-bottom: 12px;
+    margin-top: -19px;
+}
+
+
+.customFileUploadServices:hover {
+    background-color: #8dbbe6;
+    transform: translateY(-5px);
+
+}
+
+.customFileUploadServices:active {
+    transform: translateY(0);
+    filter: brightness(0.9);
+}
+
+#previewGridService {
+    display: grid;
+            grid-template-columns: repeat(auto, minmax(200px, 1fr));
+            gap: 15px;  /* Increased gap for visibility */
+            margin: 20px auto;
+            max-width: 1200px;
+            padding: 20px;
+
+}

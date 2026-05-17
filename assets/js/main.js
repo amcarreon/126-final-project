@@ -50,21 +50,54 @@ function validateForm() {
     return isValid;
 }
 //if validation fails, prevent form submission
+
+
 registrationForm.addEventListener('submit', function(event) {
-    if (!validateForm()) {
-        event.preventDefault();
-    }
+  const isValid = validateForm(); 
+  if (!isValid) {
+    event.preventDefault(); 
+  }
 });
+
+
+
+function validateLogin() {
+
+
+    
+    const email = loginEmailInput.value.trim();
+    const password = loginPasswordInput.value.trim();
+
+    let isValid = true;
+
+    // Check for empty fields
+    if ( !email || !password ) {
+        alert('Please fill in all fields.');
+        return false; 
+    }
+
+    // Email Validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        isValid = false;
+    }
+    if (password.length < 6) {
+        alert('Password must be at least 6 characters long.');
+        isValid = false;
+    }
+
+    return isValid;
+}
 
 
 loginForm.addEventListener('submit', async function(event) {
     event.preventDefault();
-
     if (validateLogin()) {
         const formData = new FormData(loginForm);
 
         try {
-            const response = await fetch('login_process.php', {
+            const response = await fetch('logIn.php', {
                 method: 'POST',
                 body: formData
             });
@@ -87,6 +120,3 @@ loginForm.addEventListener('submit', async function(event) {
     }
 });
 
-function validateLogin() {
-    return loginEmailInput.value.trim() !== "" && loginPasswordInput.value.trim() !== "";
-}

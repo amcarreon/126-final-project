@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../assets/css/shop_services_form.css">
+
+        <title>Laundry Services</title>
+    </head>
+    <body class="servicesBody">
+        <div id="customModal" class="modal-hidden">
+            <div id="formContainer"></div>
+            <div class="modal-content">
+                <p>Are you sure you want to cancel?</p>
+                <button id="confirmYes">Yes, Clear it</button>
+                <button id="confirmNo">No, Go Back</button>
+            </div>
+        </div>
+            <div class="servicesBox">
+                <form class="serviceForm" id="serviceForm"  action="../../includes/save_service.php" method="POST" novalidate>
+                    <h1 class="laundryTitle">Services</h1>
+                    <div class="templateButtons">
+                        <button type="button" id="washBtn" class="templateBtn">WASH</button>
+                        <button type="button" id="dryBtn" class="templateBtn">DRY</button>
+                        <button type="button" id="deliverBtn" class="templateBtn">WASH, DRY, DELIVER</button>
+                    </div>
+                    <br>
+                    <input type="text" id="serviceName" name="serviceName" placeholder="Service Title" required>
+                    <br><br>
+                    <input type="text" id="serviceDescription" name="serviceDescription" placeholder="Description" maxlength="20" >
+                    <br><br>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" id="serviceSpecification" name="serviceSpecification" placeholder="Specification (Ex. 5 kg)" required>
+                                </td>
+                                
+                                <td>
+                                    <input type="number" id="servicePrice" name="servicePrice" placeholder="Price" min="0"required>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn-delete" onclick="removeRow(this)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button id="addRowBtn" onclick="addRow()">Add New Row</button>
+                    <br><br>
+                    
+                    <button type="button" class="cancel-btn" >Cancel</button>
+                    <button type="submit" class="submit-btn">Save</button>
+                </form>
+            </div>
+            <div id="formContainer"></div>
+
+            <template id="washId">
+                <form class="washForm">
+                    <h1 class="washTemplate">Wash</h1>
+                    <p class="washDescription">Wash clothes at our shop.</p>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]"  placeholder="Specification (Ex. 5 kg)" required>
+                                </td>
+                                <td>
+                                    <input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn-deleteTemplate">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <button type="button" class="addRowBtnTemplate">Add Specification</button>
+                    <br><br>
+                    <button type="button" class="cancel-btnTemplate">Cancel</button>
+                    <button type="submit" class="submit-btnTemplate">Save</button>
+                </form>
+            </template>
+
+
+
+            <template id="dryId">
+                <form class="dryForm">
+                    <h1 class="dryTemplate">Dry</h1>
+                    <p class="dryDescription">Dry clothes at our shop.</p>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]"  placeholder="Specification (Ex. 5 kg)" required>
+                                </td>
+                                <td>
+                                    <input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn-deleteTemplate">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <button type="button" class="addRowBtnTemplate" >Add Specification</button>
+                    <br><br>
+                    <button type="button" class="cancel-btnTemplate">Cancel</button>
+                    <button type="submit" class="submit-btnTemplate">Save</button>
+                </form>
+            </template>
+            <template id="deliverId">
+                <form class="deliverForm">
+                    <h1 class="deliverTemplate">Deliver</h1>
+                    <p class="deliverDescription">Wash and Dry on Delivery</p>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]"  placeholder="Specification (Ex. 5 kg)" required>
+                                </td>
+                                <td>
+                                    <input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn-deleteTemplate">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <button type="button" class="addRowBtnTemplate">Add Specification</button>
+                    <br><br>
+                    <button type="button" class="cancel-btnTemplate">Cancel</button>
+                    <button type="submit" class="submit-btnTemplate">Save</button>
+                </form>
+            </template>
+                    
+        <script src="../../assets/js/shop_services_form.js" defer></script>
+
+    </body>
+</html>
