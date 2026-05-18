@@ -246,28 +246,24 @@ class ShopProfileHandler {
      */
 
     async validateLocation() {
-        const loc = this.location.value.trim();
-        const status = document.getElementById('location-status');
-        if (status) status.innerText = "Detecting location...";
+        if (!this.location.value.trim()) return false;
 
         try {
-            const res = await fetch(`geocode_api.php?address=${encodeURIComponent(loc)}`);
+            const res = await fetch(`geocode_api.php?action=geocode&address=${encodeURIComponent(this.location.value.trim())}`);
             const result = await res.json();
             
             if (result.success === true) {
-                const lat = result.latitude;
-                const lng = result.longitude;
-        
-                window.location.href = `location_page.html?lat=${lat}&lng=${lng}`;
+                window.location.href = `location_page.html?lat=${result.latitude}&lng=${result.longitude}`;
+                return true; 
             }
             else {
-                if (status) status.innerText = "";
-                alert("Geocode failed: " + result.message);
-            }    
-            
+                alert(result.message);
+                return false;
+            }
         }
-        catch(error) {
-            console.error("Error loading page: ", error);
+        catch (error){
+            console.error("Validation failed: ", error);
+            return false;
         }
     }
 

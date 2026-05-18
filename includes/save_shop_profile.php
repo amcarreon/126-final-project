@@ -1,6 +1,7 @@
 <?php
 
 require_once '../../config/database.php';
+require_once __DIR__ . '/../api/geocode_api.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -8,8 +9,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $shopDesc = $_POST["shopDesc"];
     $contactInfo = $_POST["contactInfo"];
     $socialMedia = $_POST["socialMedia"];
-    $location = $_POST["location"];
+    $location = null;
     $logoPath = null;
+
+    // Location validation before inserting to database
+    if (isset($_POST["location"]) && !empty($_POST["location"])) {
+        $validLoc = getValidAddress($loc, null, null); 
+        $location = $validLoc['formatted_address'];
+    }
 
     if (isset($_FILES["logo"]) && $_FILES["logo"]["error"] == 0) {
 
@@ -25,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
     }
 
-    $stmt = $conn->prepare("INSERT INTO shops (shop_name, shop_desc, contact_info, social_media, location, logo)
+    $stmt = $conn->prepare("INSERT INTO shops (shop_name, shop_desc, contact_info, social_media, shop_location, logo)
         VALUES (?, ?, ?, ?, ?, ?)");
 
     $stmt->bind_param("ssssss", $shopName, $shopDesc, $contactInfo, $socialMedia, $location, $logoPath);
