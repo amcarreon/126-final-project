@@ -15,9 +15,8 @@
             <div class="shopInfoDiv">
                 <iframe src="../customer/shop_info.html" title="Shop Info" class="shopInfoFrame"></iframe>
             </div>
-            <div class="newShopAdminButtons">
-                    <button type="button" class="shopReviewed">Mark as Reviewed</button>
-                    <button type="button" class="deleteShop">Delete Shop</button>
+            <div class="deletedShopAdminButton">
+                    <button type="button" class="restoreShop">Restore Shop</button>
             </div>
             <main class="mainContainer">
                 <div class="tabNavigationContainer">
@@ -36,14 +35,5 @@
         </div>
         <div class="footer"></div>
     </div>
-    <template id="deleteReasonTemplate">
-        <form class="deleteShopForm">
-            <h2 class="reasonTitle">REASON FOR DELETION</h2>
-            <input type="text" placeholder="Input violation">
-            <button type="button" class="cancelDeletion">CANCEL</button>
-            <button type="submit" class="proceedDeletion">DELETE</button>
-        </form>
-    </template>
-
 </body>
 </html>
