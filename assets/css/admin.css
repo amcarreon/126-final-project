@@ -1,0 +1,59 @@
+.statusMarkersDiv{
+    display: flex;
+    margin-top:150px;
+    margin-left:200px;
+    align-items: center;
+}
+.filterContainer{
+    margin-left: 150px;
+}
+.filterBtnActive{
+    border:none;
+    outline:none;
+    background-color: #0e2542;
+    color: white;
+    padding: 5px 30px;
+    border-radius: 8px;
+
+}
+.filterBtnNew{
+    border:none;
+    outline:none;
+    background-color: #166ca3;
+    color: white;
+    padding: 5px 30px;
+    border-radius: 8px;
+    margin-left: 15px;
+
+}
+.filterBtnDeleted{
+    border:none;
+    outline:none;
+    background-color: #166ca3;
+    color: white;
+    padding: 5px 30px;
+    border-radius: 8px;
+    margin-left: 15px;
+
+}
+.filterBtnDeleted{
+    border:none;
+    outline:none;
+    background-color: #166ca3;
+    color: white;
+    padding: 5px 30px;
+    border-radius: 8px;
+    margin-left: 15px;
+
+}
+
+.filterBtnEdited{
+    border:none;
+    outline:none;
+    background-color: #166ca3;
+    color: white;
+    padding: 5px 30px;
+    border-radius: 8px;
+    margin-left: 15px;
+
+}
