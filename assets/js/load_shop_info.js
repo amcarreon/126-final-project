@@ -18,7 +18,7 @@ async function loadShopProfile() {
 
         const shop = result.data;
 
-        document.querySelector(".storeImage").src = shop.logo;
+        document.querySelector(".storeImage").src = "/126-final-project/" + shop.logo;
         document.getElementById("storeNameID").textContent = shop.shop_name;
         document.getElementById("contactInfoDetails").textContent = shop.contact_info;
         document.getElementById("locationDetails").textContent = shop.location;

@@ -25,8 +25,8 @@ async function loadServices() {
             const title = clone.querySelector(".serviceTitleCard");
             const desc = clone.querySelector(".serviceDescriptionCard");
 
-            const editBtn = clone.querySelector(".editBtn");
-            const deleteBtn = clone.querySelector(".deleteBtn");
+            const editBtn = clone.querySelector(".editButtonService");
+            const deleteBtn = clone.querySelector(".deleteButtonService");
             const tbody = clone.querySelector(".serviceRowsContainer");
 
             if (tbody) {
@@ -42,7 +42,7 @@ async function loadServices() {
             if (desc) desc.textContent = service.service_description;
 
             if (editBtn) {
-                editBtn.onclick = () => editService(service.id);
+                editBtn.onclick = () => window.location.href = `../../pages/seller/edit_shop_services_form.html?id=${service.id}`;
             }
 
             if (deleteBtn) {
@@ -59,26 +59,23 @@ async function loadServices() {
 
 async function deleteService(serviceId) {
 
-    if (!confirm("Are you sure you want to delete this service?")) {
-        return;
-    }
+    if (!confirm("Are you sure you want to delete this service?")) return;
+
+    const formData = new FormData();
+    formData.append("service_id", serviceId);
 
     try {
         const res = await fetch("../../includes/delete_service.php", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: `service_id=${serviceId}`
+            body: formData
         });
 
         const data = await res.json();
+
         console.log(data);
 
         if (data.success) {
             alert("Deleted successfully");
-
-            // reload cards after delete
             loadServices();
         } else {
             alert(data.message || "Delete failed");

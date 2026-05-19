@@ -20,7 +20,7 @@ function displayShopInfo(shop) {
 
     // Display logo/image
     if (shop.logo) {
-        document.getElementById('storeImageID').src = shop.logo;
+        document.getElementById('storeImageID').src = "/126-final-project/" + shop.logo;
     }
 
     // Display contact info
@@ -41,7 +41,5 @@ function displayShopInfo(shop) {
 }
 
 function goToEditPage() {
-    const params = new URLSearchParams(window.location.search);
-    const shopId = params.get('id');
-    window.location.href = `/126-final-project/views/seller/shop_info_form.php?id=${shopId}`;
+    window.location.href =  "/126-final-project/views/seller/shop_info_form.php";
 }

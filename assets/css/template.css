@@ -1,0 +1,158 @@
+.washForm, .dryForm, .deliverForm {
+    text-align: left;
+    width: 900px;
+    height: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid  #cbd9e7;
+    border-radius: 100px;
+ 
+
+}
+.washTemplate, .dryTemplate, .deliverTemplate{
+    color: black;
+    text-align:center;
+    margin: 60px 40px 0px 40px;
+    background-color:  #9fc4e5;
+    padding: 15px;
+
+    border:none;
+    outline:none;
+    border: 1px dotted #166ca3;
+
+}
+.washDescription, .dryDescription, .deliverDescription {
+    color: black;
+    text-align:center;
+    margin: 30px 50px 20px 50px;
+    background-color: #9fc4e5;
+    padding: 20px 100px;
+    border-radius: 15px;
+    border:none;
+    outline:none;
+    border: 1px dotted #166ca3;
+
+}
+
+input::placeholder {
+    color: black;
+}
+.serviceSpecification{
+    background-color: #bbd9f3;
+    border:none;
+    outline:none;
+    padding: 10px 80px;
+    margin-left: 80px;
+    margin-block-end: 1px;
+    border-radius: 30px;
+    margin-top:10px;
+    border: 1px solid #166ca3;
+
+}
+.servicePrice{
+    background-color: #bbd9f3;
+    border:none;
+    outline:none;
+    padding: 10px 40px;
+    margin-left: 10px;
+    border-radius: 30px;
+    margin-top:10px;
+    border: 1px solid #166ca3;
+
+}
+.btn-deleteTemplate{
+    background-color: #bbd9f3;
+    border:none;
+    outline:none;
+    padding: 10px 30px;
+    margin-left: 50px;
+    border-radius: 30px;
+    margin-top:10px;
+}
+#addRowBtnTemplate{
+    background-color: #8faccb;
+    color: black;
+    border:none;
+    outline:none;
+    padding: 10px 30px;
+    margin-left: 67px;
+    margin-top:40px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+}
+.cancel-btnTemplate {
+    background-color: #a9cbe9;
+    color: black;
+    border: 0.1px solid #004bada1;
+    padding: 8px 50px;
+    margin-left: 270px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+.cancel-btnTemplate:hover, .submit-btn:hover {
+    background-color: #9ec0dd;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.submit-btnTemplate{
+    background-color: #a9cbe9;
+    color: black;
+    border: 0.1px double #004bada1;
+    padding: 8px 50px;
+    margin-left: 50px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+}
+
+
+/*---------------services_pageTemplates---------------*/
+.serviceCard {
+    height: 400px;
+    width: 400px;
+}
+.serviceTitleCard{
+    font-size:30px;
+    text-align: center;
+}
+.serviceDescriptionCard {
+    font-size: 20px;
+    text-align: center;
+    margin: 5px 30px 5px 30px;
+    text-align: justify;
+}
+table{
+    margin: 0px auto;
+    margin-left:80px;
+    margin-top: 10px;
+    display: block;
+}
+.specification, .price {
+    background-color: #a7d1f5;
+    padding: 5px 25px;
+    border: 1px solid black;
+}
+th{
+    padding: 5px 25px;
+    border: 1px solid black;
+}
+.editButtonService{
+    background-color: #a7d1f5;
+    padding: 5px 25px;
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-left: 110px;
+    border: 1px solid rgb(55, 116, 177);
+}
+.deleteButtonService {
+    background-color: #a7d1f5;
+    padding: 5px 25px;
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-left: 15px;
+    border: 1px solid rgb(55, 116, 177);
+}
