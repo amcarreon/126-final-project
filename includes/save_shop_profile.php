@@ -27,12 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt->bind_param("issss",$ownerId, $shopName, $shopDesc, $location, $logoPath); 
     
-    if ($stmt->execute()) { 
-        echo "Shop added successfully!"; 
-    } else { 
-        echo "Error: " . $stmt->error; 
-    } 
-    
+    $stmt->execute();
     $stmt->close(); 
     
     $ownerId = $_SESSION['user_id']; 

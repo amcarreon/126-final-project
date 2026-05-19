@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssssii", $shopName, $shopDesc, $location, $logoPath, $shopId, $ownerId);
 
     if ($stmt->execute()) {
-        header("Location: ../views/seller/shop_profile_manager.html");
+        header("Location: ../views/seller/shop_info.html");
         exit;
     } else {
         echo "Update failed: " . $stmt->error;
