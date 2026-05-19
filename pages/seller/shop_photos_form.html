@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../assets/css/shop_profile.css">
+        <title>Photos Form</title>
+    </head>
+
+    <body>
+        <div class="addPhotoContainer">
+            <div class="photoUploadDiv"></div>
+            <h1 class="titlePhotos">Photos</h1>
+            <div class="addPhotoForm">
+                <form method="POST" enctype="multipart/form-data" action="../../includes/save_photo.php">
+                    <div class="inputPhoto">
+                        <label for="photoURL" class="customUpload">Upload Photo</label>
+                        <input type="file" id="photoURL" name="photoUpload" placeholder="+" required>
+                        <button type="submit" class="customUpload" class="submit-btn">Save</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </body>
+</html>

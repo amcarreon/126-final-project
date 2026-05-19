@@ -1,0 +1,47 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+    loadShopProfile();
+
+});
+
+async function loadShopProfile() {
+
+    try {
+
+        const response = await fetch(`../../api/shopInfo_api.php`);
+        const result = await response.json();
+
+        if (!result.success) {
+            alert(result.message);
+            return;
+        }
+
+        const shop = result.data;
+
+        document.querySelector(".storeImage").src = "/126-final-project/" + shop.logo;
+        document.getElementById("storeNameID").textContent = shop.shop_name;
+        document.getElementById("contactInfoDetails").textContent = shop.contact_info;
+        document.getElementById("locationDetails").textContent = shop.location;
+        const socialList = document.getElementById("socialMediaProfilesList");
+
+        socialList.innerHTML = "";
+
+        const socials = shop.social_media.split(",");
+
+        socials.forEach(profile => {
+
+            const li = document.createElement("li");
+
+            li.textContent = profile.trim();
+
+            socialList.appendChild(li);
+
+        });
+
+    } catch (error) {
+
+        console.error("Error loading shop profile:", error);
+
+    }
+
+}

@@ -1,110 +1,76 @@
 <?php
-
+session_start();
 require_once '../config/database.php';
 
 header("Content-Type: application/json");
 
-// Handle GET request (load data)
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    if (!isset($_GET['id'])) {
-        http_response_code(400);
-        echo json_encode([
-            "success" => false,
-            "message" => "Shop ID is required"
-        ]);
-        exit;
-    }
-
-    $id = intval($_GET['id']);
-
-    $sql = "SELECT id, shop_name, shop_desc, contact_info, social_media, location, logo FROM shops WHERE id=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-
-    $result = $stmt->get_result();
-    $shop = $result->fetch_assoc();
-
-    if (!$shop) {
-        http_response_code(404);
-        echo json_encode([
-            "success" => false,
-            "message" => "Shop not found"
-        ]);
-        exit;
-    }
-
+if (!isset($_SESSION['user_id'])) {
+    http_response_code(401);
     echo json_encode([
-        "success" => true,
-        "data" => $shop
+        "success" => false,
+        "message" => "Unauthorized"
     ]);
+    exit;
 }
 
-// Handle POST request (save data)
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $shopId = $_POST['shopId'] ?? null;
-    $shopName = $_POST['shopName'] ?? '';
-    $shopDescription = $_POST['shopDescription'] ?? '';
-    $contactInfo = $_POST['contactInfo'] ?? '';
-    $socialMediaProfiles = $_POST['socialMediaProfiles'] ?? '';
-    $location = $_POST['location'] ?? '';
-    $photoUpload = $_FILES['photoUpload'] ?? null;
+$ownerId = $_SESSION['user_id'];
 
-    if (!$shopId || !$shopName || !$contactInfo || !$location) {
-        http_response_code(400);
-        echo json_encode([
-            "success" => false,
-            "message" => "Missing required fields"
-        ]);
-        exit;
-    }
 
-    $logoPath = null;
+$stmt = $conn->prepare("SELECT shop_id, shop_name, shop_desc, location, logo 
+                        FROM shops 
+                        WHERE owner_id = ?");
 
-    if ($photoUpload && $photoUpload['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = '../uploads/logos/';
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0755, true);
-        }
-        
-        $fileName = time() . '_' . basename($photoUpload['name']);
-        $uploadPath = $uploadDir . $fileName;
-        
-        if (move_uploaded_file($photoUpload['tmp_name'], $uploadPath)) {
-            $logoPath = 'uploads/logos/' . $fileName;
-        }
-    }
+$stmt->bind_param("i", $ownerId);
+$stmt->execute();
 
-    $sql = "UPDATE shops SET shop_name=?, shop_desc=?, contact_info=?, social_media=?, location=?";
-    $params = [$shopName, $shopDescription, $contactInfo, $socialMediaProfiles, $location];
-    $types = "sssss";
+$result = $stmt->get_result();
+$shop = $result->fetch_assoc();
 
-    if ($logoPath) {
-        $sql .= ", logo=?";
-        $params[] = $logoPath;
-        $types .= "s";
-    }
-
-    $sql .= " WHERE id=?";
-    $params[] = $shopId;
-    $types .= "i";
-
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param($types, ...$params);
-
-    if ($stmt->execute()) {
-        echo json_encode([
-            "success" => true,
-            "message" => "Shop profile updated successfully"
-        ]);
-    } else {
-        http_response_code(500);
-        echo json_encode([
-            "success" => false,
-            "message" => "Database update failed"
-        ]);
-    }
+if (!$shop) {
+    http_response_code(404);
+    echo json_encode([
+        "success" => false,
+        "message" => "Shop not found"
+    ]);
+    exit;
 }
+
+$shopId = $shop['shop_id'];
+
+
+$contacts = [];
+$stmt2 = $conn->prepare("SELECT contact_info FROM contact_info WHERE shop_id = ?");
+$stmt2->bind_param("i", $shopId);
+$stmt2->execute();
+$res2 = $stmt2->get_result();
+
+while ($row = $res2->fetch_assoc()) {
+    $contacts[] = $row;
+}
+
+$social = [];
+$stmt3 = $conn->prepare("SELECT platform, link FROM social_media WHERE shop_id = ?");
+$stmt3->bind_param("i", $shopId);
+$stmt3->execute();
+$res3 = $stmt3->get_result();
+
+while ($row = $res3->fetch_assoc()) {
+    $social[] = $row;
+}
+
+
+echo json_encode([
+    "success" => true,
+    "data" => [
+        "shop_id" => $shopId,
+        "shop_name" => $shop['shop_name'],
+        "shop_desc" => $shop['shop_desc'],
+        "location" => $shop['location'],
+        "logo" => $shop['logo'],
+        "contacts" => $contacts,
+        "socialMedia" => $social
+    ]
+]);
 
 $conn->close();
 ?>
