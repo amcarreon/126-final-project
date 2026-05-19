@@ -68,17 +68,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     );
 
     if ($stmt->execute()) {
-        echo json_encode([
-            "success" => true,
-            "message" => "Service updated successfully"
-        ]);
+        header("Location: ../views/seller/services_page.html");
+    exit;
     } else {
         echo json_encode([
-            "success" => false,
-            "message" => $stmt->error
-        ]);
+        "success" => false,
+        "message" => $stmt->error]);
     }
-
     $stmt->close();
 }
 

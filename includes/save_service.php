@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $ownerId = $_SESSION['user_id'];
-    $stmt = $conn->prepare("SELECT id FROM shops WHERE owner_id = ?");
+    $stmt = $conn->prepare("SELECT shop_id FROM shops WHERE owner_id = ?");
     $stmt->bind_param("i", $ownerId);
     $stmt->execute();
 
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("No shop found for this user");
     }
 
-    $shopId = $shop['id'];
+    $shopId = $shop['shop_id'];
     $serviceTitle = $_POST["serviceName"];
     $serviceDescription = $_POST["serviceDescription"];
     $serviceSpecification = $_POST["serviceSpecification"] ?? [];
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    echo "Service saved successfully!";
+    header("Location: ../views/seller/services_page.html");
 
     $stmt->close();
 }

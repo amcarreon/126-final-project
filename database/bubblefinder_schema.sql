@@ -1,3 +1,11 @@
+DROP TABLE IF EXISTS shop_photos;
+DROP TABLE IF EXISTS social_media;
+DROP TABLE IF EXISTS contact_info;
+DROP TABLE IF EXISTS laundry_services;
+DROP TABLE IF EXISTS shops;
+DROP TABLE IF EXISTS users;
+
+
 CREATE TABLE users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(255) UNIQUE NOT NULL,
