@@ -14,10 +14,10 @@
 
                 <div class="photoUploadDiv"></div>
                 <h1>Store Profile Picture</h1>
-
+                <img id="logoPreview" src="" alt="Shop Logo">
                 <div class="imgDiv">
                     <label for="photoUpload" class="customUpload">Upload Image</label>
-                    <input type="file" id="photoUpload" name="photoUpload" placeholder="+" required>
+                    <input type="file" id="photoUpload" name="photoUpload" placeholder="+">
                 </div>
 
                 
@@ -52,6 +52,6 @@
                 <button type="button" id="cancelEdit">Cancel</button>
             </form>
         </div>
-    <script src="../../assets/js/shop_info_form.js"></script>
+    <script src="../../assets/js/edit_shop_services_form.js"></script>
 </body>
 </html>

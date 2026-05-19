@@ -3,21 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../assets/css/shop_profile.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../assets/css/shop_services_form.css">
 
         <title>Shop Profile</title>
     </head>
     <body class="infoBody">
         <div class="shopProfile" id="shopProfileID">
             <form class="shopProfileForm" id="shopProfileFormID" action="../../includes/update_shop_info.php" method="post" enctype="multipart/form-data">
-
+                <input type="hidden" id="shop_id" name="shop_id">
                 <div class="photoUploadDiv"></div>
                 <h1>Store Profile Picture</h1>
-
+                <img id="logoPreview" src="" alt="Shop Logo">
                 <div class="imgDiv">
                     <label for="photoUpload" class="customUpload">Upload Image</label>
-                    <input type="file" id="photoUpload" name="photoUpload" placeholder="+" required>
+                    <input type="file" id="photoUpload" name="photoUpload" placeholder="+">
                 </div>
 
                 
@@ -52,6 +51,6 @@
                 <button type="button" id="cancelEdit">Cancel</button>
             </form>
         </div>
-    <script src="../../assets/js/shop_info_form.js"></script>
+    <script src="../../assets/js/edit_shop_services_form.js?v=1" defer></script>
 </body>
 </html>

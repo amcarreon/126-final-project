@@ -1,51 +1,57 @@
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+        <link rel="stylesheet" href="../../assets/css/shop_profile.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
         <title>Shop Profile</title>
     </head>
-    <body>
+    <body class="infoBody">
         <div class="shopProfile" id="shopProfileID">
-            <form class="shopProfileForm" id="shopProfileFormID" action="../../api/shopInfo_form.php" method="post" enctype="multipart/form-data">
+            <form class="shopProfileForm" id="shopProfileFormID" action="../../includes/save_shop_profile.php" method="post" enctype="multipart/form-data">
 
-                <input type="file" id="photoUpload" name="photoUpload" style="display: none;" required>
-
+                <div class="photoUploadDiv"></div>
                 <h1>Store Profile Picture</h1>
 
                 <div class="imgDiv">
                     <label for="photoUpload" class="customUpload">Upload Image</label>
+                    <input type="file" id="photoUpload" name="photoUpload" placeholder="+" required>
                 </div>
+
                 
                 <br><br>
 
                 <div class="nameDiv">
-                    <input type="text" id="shopName" name="shopName" placeholder="Shop Name">
+                    <input type="text" id="shopName" name="shopName" placeholder="Shop Name" required>
                 </div>
                 <div class="descriptionDiv">
-                    <input type="text" id="shopDescription" name="shopDescription" placeholder="Shop Description">
+                    <input type="text" id="shopDescription" name="shopDescription" placeholder="Shop Description" maxlength="100">
                 </div>
 
-                <input type="tel" id="contactInfo" name="contactInfo" placeholder="Contact Information">
-            
+                <input type="tel" id="contactInfo" name="contactInfo[]" placeholder="Contact Number">
+                <input type="tel" id="contactInfo" name="contactInfo[]" placeholder="Contact Number">
+                <input type="tel" id="contactInfo" name="contactInfo[]" placeholder="Contact Number">
                 <div class="socialMediaDiv">
-                    <select id="socialMediaPlatform" name="socialMediaPlatform">
-                        <option value="">Select Platform</option>
-                        <option value="facebook">Facebook</option>
-                        <option value="instagram">Instagram</option>
-                    </select>
-                    <input type="text" id="socialMediaLink" name="socialMediaLink" placeholder="Social Media Link">
+                    <div class="socialMediaIcons">
+                        <i class="fa fa-facebook icon"></i>
+                        <input type="text" class="inputFB" placeholder="Facebook Profile Link" name="socialMediaLink[]">
+                        <input type="hidden" name="socialMediaPlatform[]" value="Facebook">
+                    </div>
+                    <br><br>
+                    <div class="socialMediaIcons">
+                        <i class="fa fa-instagram icon"></i> 
+                        <input type="text"  class="inputIG" placeholder="Instagram Username" name="socialMediaLink[]">
+                        <input type="hidden" name="socialMediaPlatform[]" value="Instagram">
+                    </div>
                 </div>
 
-                <input type="text" id="location" name="location" placeholder="Location">
+                <input type="text" id="location" name="location" placeholder="Location" required>
                 <button type="submit" class="submit">Save</button>
                 <button type="button" id="cancelEdit">Cancel</button>
             </form>
         </div>
 
-    <script src="../../assets/js/shopInfo_form.js"></script>
-            
 </body>
 </html>

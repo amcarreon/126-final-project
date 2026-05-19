@@ -10,7 +10,7 @@
     </head>
     <body class="infoBody">
         <div class="shopProfile" id="shopProfileID">
-            <form class="shopProfileForm" id="shopProfileFormID" action="../../includes/update_shop_info.php" method="post" enctype="multipart/form-data">
+            <form class="shopProfileForm" id="shopProfileFormID" action="../../api/shopInfo_form.php" method="post" enctype="multipart/form-data">
 
                 <div class="photoUploadDiv"></div>
                 <h1>Store Profile Picture</h1>
@@ -30,20 +30,18 @@
                     <input type="text" id="shopDescription" name="shopDescription" placeholder="Shop Description" maxlength="100">
                 </div>
 
-                <input type="tel" id="contactInfo" name="contactInfo[]" placeholder="Contact Number">
-                <input type="tel" id="contactInfo" name="contactInfo[]" placeholder="Contact Number">
-                <input type="tel" id="contactInfo" name="contactInfo[]" placeholder="Contact Number">
+                <input type="tel" id="contactInfoOne" name="contactInfo" placeholder="Contact Number">
+                <input type="tel" id="contactInfoTwo" name="contactInfo" placeholder="Contact Number">
+                <input type="tel" id="contactInfoThree" name="contactInfo" placeholder="Contact Number">
                 <div class="socialMediaDiv">
                     <div class="socialMediaIcons">
                         <i class="fa fa-facebook icon"></i>
-                        <input type="text" name="socialMediaPlatform[]" value="facebook" hidden>
-                        <input type="text" name="socialMediaLink[]" class="inputFB" placeholder="Facebook Profile Link">
+                        <input type="text" class="inputFB" placeholder="Facebook Profile Link" name="inputNameFB">
                     </div>
                     <br><br>
                     <div class="socialMediaIcons">
                         <i class="fa fa-instagram icon"></i>
-                        <input type="text" name="socialMediaPlatform[]" value="instagram" hidden>
-                        <input type="text" name="socialMediaLink[]" class="inputIG" placeholder="Instagram Username">
+                        <input type="text" class="inputIG" placeholder="Instagram Username" name="inputNameIG">
                     </div>
                 </div>
 
@@ -52,6 +50,8 @@
                 <button type="button" id="cancelEdit">Cancel</button>
             </form>
         </div>
-    <script src="../../assets/js/shop_info_form.js"></script>
+
+    <script src="../../assets/js/shopInfo_form.js"></script>
+            
 </body>
 </html>

@@ -7,7 +7,7 @@
 
         <title>Laundry Services</title>
     </head>
-    <body>
+    <body class="servicesBody">
         <div id="customModal" class="modal-hidden">
             <div id="formContainer"></div>
             <div class="modal-content">
@@ -16,16 +16,14 @@
                 <button id="confirmNo">No, Go Back</button>
             </div>
         </div>
-        <h1 class="laundryTitle">Services</h1>
-        <div class="templateButtons">
-            <button type="button" id="washBtn" class="templateBtn">Wash</button>
-            <button type="button" id="dryBtn" class="templateBtn">Dry</button>
-            <button type="button" id="deliverBtn" class="templateBtn">Deliver</button>
-        </div>
-        
             <div class="servicesBox">
-                <form class="serviceForm" id="serviceForm"  action="../../includes/update_service.php" method="POST" novalidate>
-                    <input type="hidden" name="service_id" id="service_id" value="">
+                <form class="serviceForm" id="serviceForm"  action="../../includes/save_service.php" method="POST" novalidate>
+                    <h1 class="laundryTitle">Services</h1>
+                    <div class="templateButtons">
+                        <button type="button" id="washBtn" class="templateBtn">WASH</button>
+                        <button type="button" id="dryBtn" class="templateBtn">DRY</button>
+                        <button type="button" id="deliverBtn" class="templateBtn">WASH, DRY, DELIVER</button>
+                    </div>
                     <br>
                     <input type="text" id="serviceName" name="serviceName" placeholder="Service Title" required>
                     <br><br>
@@ -37,6 +35,7 @@
                                 <td>
                                     <input type="text" id="serviceSpecification" name="serviceSpecification" placeholder="Specification (Ex. 5 kg)" required>
                                 </td>
+                                
                                 <td>
                                     <input type="number" id="servicePrice" name="servicePrice" placeholder="Price" min="0"required>
                                 </td>
@@ -69,16 +68,16 @@
                                     <input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn-delete">Delete</button>
+                                    <button type="button" class="btn-deleteTemplate">Delete</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <br>
-                    <button type="button" id="addRowBtn">Add Specification</button>
+                    <button type="button" class="addRowBtnTemplate">Add Specification</button>
                     <br><br>
-                    <button type="button" class="cancel-btn">Cancel</button>
-                    <button type="submit" class="submit-btn">Save</button>
+                    <button type="button" class="cancel-btnTemplate">Cancel</button>
+                    <button type="submit" class="submit-btnTemplate">Save</button>
                 </form>
             </template>
 
@@ -98,16 +97,16 @@
                                     <input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn-delete">Delete</button>
+                                    <button type="button" class="btn-deleteTemplate">Delete</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <br>
-                    <button type="button" id="addRowBtn" >Add Specification</button>
+                    <button type="button" class="addRowBtnTemplate" >Add Specification</button>
                     <br><br>
-                    <button type="button" class="cancel-btn">Cancel</button>
-                    <button type="submit" class="submit-btn">Save</button>
+                    <button type="button" class="cancel-btnTemplate">Cancel</button>
+                    <button type="submit" class="submit-btnTemplate">Save</button>
                 </form>
             </template>
             <template id="deliverId">
@@ -124,20 +123,20 @@
                                     <input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn-delete">Delete</button>
+                                    <button type="button" class="btn-deleteTemplate">Delete</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <br>
-                    <button type="button" id="addRowBtn">Add Specification</button>
+                    <button type="button" class="addRowBtnTemplate">Add Specification</button>
                     <br><br>
-                    <button type="button" class="cancel-btn">Cancel</button>
-                    <button type="submit" class="submit-btn">Save</button>
+                    <button type="button" class="cancel-btnTemplate">Cancel</button>
+                    <button type="submit" class="submit-btnTemplate">Save</button>
                 </form>
             </template>
                     
-        <script src="../../assets/js/edit_shop_services_form.js" defer></script>
+        <script src="../../assets/js/shop_services_form.js" defer></script>
 
     </body>
 </html>
