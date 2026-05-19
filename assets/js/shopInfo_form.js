@@ -1,489 +1,214 @@
-/**
- * Shop Profile Form Handler
- * Manages form submission, image preview, validation, and API communication
- */
-
-class ShopProfileHandler {
+class ShopForm {
     constructor() {
         this.form = document.getElementById('shopProfileFormID');
         this.photoUpload = document.getElementById('photoUpload');
         this.cancelBtn = document.getElementById('cancelEdit');
         this.submitBtn = this.form.querySelector('.submit');
-        
-        // Form inputs
-        this.shopName = document.getElementById('shopName');
-        this.shopDescription = document.getElementById('shopDescription');
-        this.contactInfo = document.getElementById('contactInfo');
-        this.socialMedia = document.getElementById('socialMediaProfiles');
-        this.location = document.getElementById('location');
 
-        this.socialMediaPlatform = document.getElementById('socialMediaPlatform');
-        this.socialMediaLink = document.getElementById('socialMediaLink');
-        
-        this.shopId = this.getShopIdFromURL();
-        this.originalImage = null;
-        
+        this.shopId = new URLSearchParams(location.search).get('id') || null;
+        this.imageBase64 = null;
+
         this.init();
     }
 
-    /**
-     * Initialize event listeners and load existing shop data
-     */
     init() {
-        this.attachEventListeners();
-        this.loadShopData();
+        this.attachListeners();
+        this.photoUpload.required = !this.shopId;
+
+        if (this.shopId) {
+            this.loadData();
+        }
     }
 
-    /**
-     * Attach event listeners to form elements
-     */
-    attachEventListeners() {
-        // Image upload
+    attachListeners() {
         this.photoUpload.addEventListener('change', (e) => this.handleImageUpload(e));
-        
-        // Form submission
-        this.form.addEventListener('submit', (e) => this.handleFormSubmit(e));
-
-        // Social media platform change
-        this.socialMediaPlatform.addEventListener('change', () => this.handlePlatformChange());
-        
-        // Cancel button
-        if (this.cancelBtn) {
-            this.cancelBtn.addEventListener('click', () => this.handleCancel());
-        }
-
-        // Description toggle button
-        const toggleBtn = document.getElementById('toggleDescription');
-        if (toggleBtn) {
-            toggleBtn.addEventListener('click', () => this.toggleDescription());
-        }
+        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+        this.cancelBtn?.addEventListener('click', () => this.handleCancel());
     }
 
-    /**
-     * Extract shop ID from URL query parameters
-     */
-    getShopIdFromURL() {
-        const params = new URLSearchParams(window.location.search);
-        return params.get('id') || null;
-    }
-
-    /**
-     * Load existing shop data from API
-     */
-    async loadShopData() {
-        if (!this.shopId) {
-            console.warn('No shop ID provided');
-            return;
-        }
-
+    async loadData() {
         try {
-            const response = await fetch(`../../api/shopInfo_api.php?id=${this.shopId}`);
-            
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+            const res = await fetch(`/126-final-project/api/shopInfo_api.php?id=${this.shopId}`);
 
-            const result = await response.json();
+            if (!res.ok) throw new Error('Failed to load shop data');
 
-            if (result.success && result.data) {
-                this.populateForm(result.data);
-                this.originalImage = result.data.logo;
+            const data = await res.json();
+
+            if (data.success) {
+                this.populateForm(data.data);
             } else {
-                this.showError(result.message || 'Failed to load shop data');
+                throw new Error(data.message);
             }
         } catch (error) {
-            console.error('Error loading shop data:', error);
-            this.showError('Failed to load shop data. Please refresh the page.');
+            console.error(error);
+            this.notify('Failed to load shop data. Please refresh.', 'error');
         }
     }
 
-    /**
-     * Populate form fields with existing shop data
-     */
-    populateForm(shopData) {
-        this.shopName.value = shopData.shop_name || '';
-        const fullDesc = shopData.shop_desc || '';
-        this.shopDescription.value = this.truncateDescription(fullDesc, 30);
-        this.shopDescription.dataset.fullText = fullDesc;
-        this.shopDescription.dataset.expanded = 'false';
-        this.contactInfo.value = shopData.contact_info || '';
-        this.location.value = shopData.location || '';
-        
-        const socialData = shopData.social_media ? JSON.parse(shopData.social_media) : {};
-        this.socialMediaPlatform.value = socialData.platform || '';
-        this.socialMediaLink.value = socialData.link || '';
+    populateForm(shop) {
+        document.getElementById('shopName').value = shop.shop_name || '';
+        document.getElementById('shopDescription').value = shop.shop_desc || '';
+        document.getElementById('location').value = shop.location || '';
 
-        // Display existing logo if available
-        if (shopData.logo) {
-            this.displayImagePreview(shopData.logo);
+        const contactInputs = document.querySelectorAll('input[name="contactInfo"]');
+        if (shop.contacts?.length) {
+            shop.contacts.forEach((c, i) => {
+                if (contactInputs[i]) {
+                    contactInputs[i].value = c.contact_info;
+                }
+            });
+        }
+
+        if (shop.socialMedia?.length) {
+            shop.socialMedia.forEach(s => {
+                if (s.platform === 'facebook') {
+                    document.querySelector('.inputFB').value = s.link || '';
+                }
+                if (s.platform === 'instagram') {
+                    document.querySelector('.inputIG').value = s.link || '';
+                }
+            });
+        }
+
+        if (shop.logo) {
+            this.showImagePreview(shop.logo);
         }
     }
 
-    /**
-     * Truncate text to a word limit
-     */
-    truncateDescription(text, wordLimit = 30) {
-        const words = text.split(' ');
-        if (words.length > wordLimit) {
-            return words.slice(0, wordLimit).join(' ') + '...';
-        }
-        return text;
-    }
-
-    /**
-     * Toggle description between truncated and full text
-     */
-    toggleDescription() {
-        const isExpanded = this.shopDescription.dataset.expanded === 'true';
-        const toggleBtn = document.getElementById('toggleDescription');
-        
-        if (isExpanded) {
-            this.shopDescription.value = this.truncateDescription(this.shopDescription.dataset.fullText, 30);
-            toggleBtn.textContent = 'More...';
-        } else {
-            this.shopDescription.value = this.shopDescription.dataset.fullText;
-            toggleBtn.textContent = 'Less';
-        }
-        
-        this.shopDescription.dataset.expanded = !isExpanded;
-    }
-
-    /**
-     * Handle image file upload
-     */
-    handleImageUpload(event) {
-        const file = event.target.files[0];
-
+    handleImageUpload(e) {
+        const file = e.target.files[0];
         if (!file) return;
 
-        // Validate file type
-        const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-        if (!validTypes.includes(file.type)) {
-            this.showError('Please upload a valid image file (JPEG, PNG, GIF, or WebP)');
-            this.photoUpload.value = '';
+        if (!['image/jpeg', 'image/png', 'image/gif', 'image/webp'].includes(file.type)) {
+            this.notify('Invalid image type', 'error');
             return;
         }
 
-        // Validate file size (e.g., max 5MB)
-        const maxSize = 5 * 1024 * 1024;
-        if (file.size > maxSize) {
-            this.showError('Image size must be less than 5MB');
-            this.photoUpload.value = '';
+        if (file.size > 5 * 1024 * 1024) {
+            this.notify('Image must be under 5MB', 'error');
             return;
         }
 
-        // Read and display preview
         const reader = new FileReader();
-        reader.onload = (e) => {
-            this.displayImagePreview(e.target.result);
+        reader.onload = (r) => {
+            this.imageBase64 = r.target.result;
+            this.showImagePreview(this.imageBase64);
         };
         reader.readAsDataURL(file);
     }
 
-    /**
-     * Display image preview
-     */
-    displayImagePreview(imageSrc) {
+    showImagePreview(src) {
         const imgDiv = document.querySelector('.imgDiv');
-        
-        // Remove existing preview if present
-        const existingImg = imgDiv.querySelector('img');
-        if (existingImg) {
-            existingImg.remove();
-        }
+        const existing = imgDiv.querySelector('img');
+        if (existing) existing.remove();
 
         const img = document.createElement('img');
-        img.src = imageSrc;
-        img.alt = 'Shop logo preview';
+        img.src = src;
         img.style.maxWidth = '200px';
-        img.style.maxHeight = '200px';
         img.style.borderRadius = '8px';
-        img.style.marginTop = '10px';
-        img.style.objectFit = 'cover';
 
         imgDiv.appendChild(img);
     }
 
-    /**
-     * Validate form inputs
-     */
-    validateForm() {
-        const errors = [];
+    validate() {
+        const shopName = document.getElementById('shopName').value.trim();
+        const location = document.getElementById('location').value.trim();
+        const contacts = document.querySelectorAll('input[name="contactInfo"]');
 
-        if (!this.shopName.value.trim()) {
-            errors.push('Shop name is required');
+        if (!shopName) {
+            this.notify('Shop name is required', 'error');
+            return false;
         }
 
-        if (!this.contactInfo.value.trim()) {
-            errors.push('Contact information is required');
+        if (!location) {
+            this.notify('Location is required', 'error');
+            return false;
         }
 
-        if (!this.location.value.trim()) {
-            errors.push('Location is required');
-        }
-
-        const phoneRegex = /^[0-9+\-\s()]{10,}$/;
-        if (this.contactInfo.value && !phoneRegex.test(this.contactInfo.value)) {
-            errors.push('Please enter a valid contact number');
-        }
-
-        // Validate social media
-        if (!this.validateSocialMedia()) {
-            errors.push('Please enter a valid social media link');
-        }
-
-        if (errors.length > 0) {
-            this.showError(errors.join('\n'));
+        const hasContact = Array.from(contacts).some(i => i.value.trim());
+        if (!hasContact) {
+            this.notify('At least one contact is required', 'error');
             return false;
         }
 
         return true;
     }
 
-    /**
-     * Validate social media platform and link
-     */
-    validateSocialMedia() {
-        const platforms = [
-            document.getElementById('socialMediaPlatform').value,
-            document.querySelector('[name="socialMediaPlatform2"]')?.value || ''
-        ];
-        const links = [
-            document.getElementById('socialMediaLink').value.trim(),
-            document.querySelector('[name="socialMediaLink2"]')?.value.trim() || ''
-        ];
+    async handleSubmit(e) {
+        e.preventDefault();
 
-        const validators = {
-            facebook: /^(https?:\/\/)?(www\.)?facebook\.com\/[a-zA-Z0-9._-]+\/?$/,
-            instagram: /^(https?:\/\/)?(www\.)?instagram\.com\/[a-zA-Z0-9._-]+\/?$/
-        };
+        if (!this.validate()) return;
 
-        for (let i = 0; i < platforms.length; i++) {
-            const platform = platforms[i];
-            const link = links[i];
-
-            if (!platform && !link) continue; // Both empty is ok
-            if (platform && !link) return false; // Platform selected but no link
-            if (!platform && link) return false; // Link provided but no platform selected
-            
-            if (!validators[platform].test(link)) return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Handle adding new social media input when platform is selected
-     */
-    handlePlatformChange() {
-        const platform = this.socialMediaPlatform.value;
-        
-        if (platform) {
-            // Check if another row already exists
-            const existingRow = document.getElementById('socialMediaRow2');
-            if (!existingRow) {
-                // Create new row
-                const newRow = document.createElement('div');
-                newRow.id = 'socialMediaRow2';
-                newRow.className = 'socialMediaDiv';
-                newRow.innerHTML = `
-                    <select name="socialMediaPlatform2">
-                        <option value="">Select Platform</option>
-                        <option value="facebook">Facebook</option>
-                        <option value="instagram">Instagram</option>
-                    </select>
-                    <input type="text" name="socialMediaLink2" placeholder="Social Media Link">
-                    <button type="button" class="removeRow" onclick="this.parentElement.remove()">Remove</button>
-                `;
-                
-                // Insert after the first social media row
-                const firstRow = document.querySelector('.socialMediaDiv');
-                firstRow.parentNode.insertBefore(newRow, firstRow.nextSibling);
-            }
-        }
-    }
-
-    /**
-     * Handle form submission
-     */
-    async handleFormSubmit(event) {
-        event.preventDefault();
-
-        // Validate form
-        if (!this.validateForm()) {
-            return;
-        }
-
-        // Disable submit button to prevent duplicate submissions
         this.submitBtn.disabled = true;
         this.submitBtn.textContent = 'Saving...';
 
         try {
-            const formData = new FormData(this.form);
-            const socialMedia = {
-                platform: this.socialMediaPlatform.value,
-                link: this.socialMediaLink.value,
-                platform2: document.querySelector('[name="socialMediaPlatform2"]')?.value || '',
-                link2: document.querySelector('[name="socialMediaLink2"]')?.value || ''
-            };
-            formData.set('socialMediaProfiles', JSON.stringify(socialMedia));
+            const contacts = Array.from(document.querySelectorAll('input[name="contactInfo"]'))
+                .map(i => i.value.trim())
+                .filter(Boolean);
 
-            const response = await fetch(this.form.action, {
-                method: this.form.method,
-                body: formData
+            const social = [];
+            const fb = document.querySelector('.inputFB').value.trim();
+            const ig = document.querySelector('.inputIG').value.trim();
+
+            if (fb) social.push({ platform: 'facebook', link: fb });
+            if (ig) social.push({ platform: 'instagram', link: ig });
+
+            const res = await fetch('/126-final-project/includes/save_shop_profile.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    shop_id: this.shopId,
+                    shop_name: document.getElementById('shopName').value.trim(),
+                    shop_desc: document.getElementById('shopDescription').value.trim(),
+                    location,
+                    contacts,
+                    social_media: social,
+                    logo: this.imageBase64
+                })
             });
 
-            const result = await response.json();
+            const result = await res.json();
 
             if (result.success) {
-                this.showSuccess('Shop profile updated successfully!');
-                // Optionally redirect or reset form after short delay
+                this.notify('Saved successfully', 'success');
+
                 setTimeout(() => {
-                    // Uncomment to redirect: window.location.href = '/seller/dashboard';
-                }, 1500);
+                    const id = this.shopId || result.data.shop_id;
+                    location.href = `/126-final-project/shop_info.php?id=${id}`;
+                }, 1000);
             } else {
-                this.showError(result.message || 'Failed to save changes');
+                this.notify(result.message || 'Save failed', 'error');
             }
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            this.showError('An error occurred while saving. Please try again.');
+
+        } catch (err) {
+            console.error(err);
+            this.notify('Server error occurred', 'error');
         } finally {
-            // Re-enable submit button
             this.submitBtn.disabled = false;
-            this.submitBtn.textContent = 'Save Changes';
+            this.submitBtn.textContent = 'Save';
         }
     }
 
-    /**
-     * Handle cancel button click
-     */
     handleCancel() {
-        if (confirm('Are you sure you want to discard changes?')) {
+        if (confirm('Discard changes?')) {
             this.form.reset();
-            if (this.originalImage) {
-                this.displayImagePreview(this.originalImage);
-            } else {
-                const existingImg = document.querySelector('.imgDiv img');
-                if (existingImg) {
-                    existingImg.remove();
-                }
-            }
+            document.querySelector('.imgDiv img')?.remove();
+            this.imageBase64 = null;
         }
     }
 
-    /**
-     * Show error notification
-     */
-    showError(message) {
-        this.showNotification(message, 'error');
-    }
+    notify(message, type) {
+        const old = document.querySelector('.notification');
+        old?.remove();
 
-    /**
-     * Show success notification
-     */
-    showSuccess(message) {
-        this.showNotification(message, 'success');
-    }
+        const div = document.createElement('div');
+        div.className = `notification notification-${type}`;
+        div.innerHTML = `<span>${message}</span>`;
 
-    /**
-     * Display notification message
-     */
-    showNotification(message, type) {
-        // Remove existing notification if present
-        const existingNotification = document.querySelector('.notification');
-        if (existingNotification) {
-            existingNotification.remove();
-        }
-
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.innerHTML = `
-            <div class="notification-content">
-                <span>${message}</span>
-                <button class="notification-close" onclick="this.parentElement.parentElement.remove()">×</button>
-            </div>
-        `;
-
-        // Add basic styling if not present in CSS
-        if (!document.querySelector('style[data-notifications]')) {
-            const style = document.createElement('style');
-            style.setAttribute('data-notifications', '');
-            style.textContent = `
-                .notification {
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    padding: 16px;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-                    z-index: 9999;
-                    animation: slideIn 0.3s ease-out;
-                }
-
-                @keyframes slideIn {
-                    from {
-                        transform: translateX(400px);
-                        opacity: 0;
-                    }
-                    to {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
-                }
-
-                .notification-error {
-                    background-color: #fee;
-                    color: #c33;
-                    border-left: 4px solid #c33;
-                }
-
-                .notification-success {
-                    background-color: #efe;
-                    color: #3c3;
-                    border-left: 4px solid #3c3;
-                }
-
-                .notification-content {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    gap: 12px;
-                }
-
-                .notification-close {
-                    background: none;
-                    border: none;
-                    font-size: 24px;
-                    cursor: pointer;
-                    color: inherit;
-                    padding: 0;
-                    width: 24px;
-                    height: 24px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                .notification-close:hover {
-                    opacity: 0.7;
-                }
-            `;
-            document.head.appendChild(style);
-        }
-
-        document.body.appendChild(notification);
-
-        // Auto-remove after 5 seconds
-        setTimeout(() => {
-            if (notification.parentElement) {
-                notification.remove();
-            }
-        }, 5000);
+        document.body.appendChild(div);
+        setTimeout(() => div.remove(), 4000);
     }
 }
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    new ShopProfileHandler();
-});
+document.addEventListener('DOMContentLoaded', () => new ShopForm());

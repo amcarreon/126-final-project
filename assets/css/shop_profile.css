@@ -503,7 +503,7 @@ h1{
 
 }
 .submit-btnServicePage {
-    display: none; 
+    display: inline; 
     margin-top: 20px;
     padding: 10px 25px;
     background-color: #0E689B;

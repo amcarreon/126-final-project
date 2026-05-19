@@ -50,73 +50,31 @@ function validateForm() {
     return isValid;
 }
 //if validation fails, prevent form submission
+if (registrationForm) {
 
+    registrationForm.addEventListener('submit', function(event) {
 
-registrationForm.addEventListener('submit', function(event) {
-  const isValid = validateForm(); 
-  if (!isValid) {
-    event.preventDefault(); 
-  }
-});
+        if (!validateForm()) {
+            event.preventDefault();
+        }
 
+    });
 
-
-function validateLogin() {
-
-
-    
-    const email = loginEmailInput.value.trim();
-    const password = loginPasswordInput.value.trim();
-
-    let isValid = true;
-
-    // Check for empty fields
-    if ( !email || !password ) {
-        alert('Please fill in all fields.');
-        return false; 
-    }
-
-    // Email Validation
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        alert("Please enter a valid email address.");
-        isValid = false;
-    }
-    if (password.length < 6) {
-        alert('Password must be at least 6 characters long.');
-        isValid = false;
-    }
-
-    return isValid;
 }
 
 
-loginForm.addEventListener('submit', async function(event) {
-    event.preventDefault();
-    if (validateLogin()) {
-        const formData = new FormData(loginForm);
+if (loginForm) {
 
-        try {
-            const response = await fetch('logIn.php', {
-                method: 'POST',
-                body: formData
-            });
+    loginForm.addEventListener('submit', function(event) {
 
-            const contentType = response.headers.get("content-type");
-            if (contentType && contentType.includes("application/json")) {
-                const data = await response.json();
-                if (data.success) {
-                    window.location.href = "home.php";
-                } else {
-                    alert(data.message);
-                }
-            } else {
-                const text = await response.text();
-                console.log("Server said:", text);
-            }
-        } catch (error) {
-            console.error("Connection error:", error);
+        if (!validateLogin()) {
+            event.preventDefault();
         }
-    }
-});
 
+    });
+
+}
+
+function validateLogin() {
+    return loginEmailInput.value.trim() !== "" && loginPasswordInput.value.trim() !== "";
+}
