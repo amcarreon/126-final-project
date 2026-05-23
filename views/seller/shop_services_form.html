@@ -3,19 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<<< HEAD:views/seller/shop_services_form.html
         <link rel="stylesheet" href="../../assets/css/shop_services_form.css">
-
         <title>Laundry Services</title>
     </head>
     <body class="servicesBody">
-========
-        <link rel="stylesheet" href="../../assets/css/shop_profile.css">
-
-        <title>Laundry Services</title>
-    </head>
-    <body>
->>>>>>>> origin/sermonia-branch:pages/seller/shop_services_form.html
         <div id="customModal" class="modal-hidden">
             <div id="formContainer"></div>
             <div class="modal-content">
@@ -23,28 +14,15 @@
                 <button id="confirmYes">Yes, Clear it</button>
                 <button id="confirmNo">No, Go Back</button>
             </div>
-<<<<<<<< HEAD:views/seller/shop_services_form.html
         </div>
             <div class="servicesBox">
-                <form class="serviceForm" id="serviceForm"  action="../../includes/save_service.php" method="POST" novalidate>
+                <form class="serviceForm" id="serviceForm" action="../../includes/save_service.php" method="POST" novalidate>
                     <h1 class="laundryTitle">Services</h1>
                     <div class="templateButtons">
                         <button type="button" id="washBtn" class="templateBtn">WASH</button>
                         <button type="button" id="dryBtn" class="templateBtn">DRY</button>
                         <button type="button" id="deliverBtn" class="templateBtn">WASH, DRY, DELIVER</button>
                     </div>
-========
-        </div>
-        <h1 class="laundryTitle">Services</h1>
-        <div class="templateButtons">
-            <button type="button" id="washBtn" class="templateBtn">Wash</button>
-            <button type="button" id="dryBtn" class="templateBtn">Dry</button>
-            <button type="button" id="deliverBtn" class="templateBtn">Deliver</button>
-        </div>
-        
-            <div class="servicesBox">
-                <form class="serviceForm" id="serviceForm"  action="../../includes/save_service.php" method="POST" novalidate>
->>>>>>>> origin/sermonia-branch:pages/seller/shop_services_form.html
                     <br>
                     <input type="text" id="serviceName" name="serviceName" placeholder="Service Title" required>
                     <br><br>
@@ -58,7 +36,7 @@
                                 </td>
                                 
                                 <td>
-                                    <input type="number" id="servicePrice" name="servicePrice" placeholder="Price" min="0"required>
+                                    <input type="number" id="servicePrice" name="servicePrice" placeholder="Price" min="0" required>
                                 </td>
                                 <td>
                                     <button type="button" class="btn-delete" onclick="removeRow(this)">Delete</button>
@@ -69,7 +47,7 @@
                     <button id="addRowBtn" onclick="addRow()">Add New Row</button>
                     <br><br>
                     
-                    <button type="button" class="cancel-btn" >Cancel</button>
+                    <button type="button" class="cancel-btn">Cancel</button>
                     <button type="submit" class="submit-btn">Save</button>
                 </form>
             </div>
@@ -83,34 +61,24 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]"  placeholder="Specification (Ex. 5 kg)" required>
+                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]" placeholder="Specification (Ex. 5 kg)" required>
                                 </td>
                                 <td>
                                     <input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required>
                                 </td>
                                 <td>
-<<<<<<<< HEAD:views/seller/shop_services_form.html
                                     <button type="button" class="btn-deleteTemplate">Delete</button>
-========
-                                    <button type="button" class="btn-delete">Delete</button>
->>>>>>>> origin/sermonia-branch:pages/seller/shop_services_form.html
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <br>
-<<<<<<<< HEAD:views/seller/shop_services_form.html
                     <button type="button" class="addRowBtnTemplate">Add Specification</button>
-========
-                    <button type="button" id="addRowBtn">Add Specification</button>
->>>>>>>> origin/sermonia-branch:pages/seller/shop_services_form.html
                     <br><br>
                     <button type="button" class="cancel-btnTemplate">Cancel</button>
                     <button type="submit" class="submit-btnTemplate">Save</button>
                 </form>
             </template>
-
-
 
             <template id="dryId">
                 <form class="dryForm">
@@ -120,32 +88,25 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]"  placeholder="Specification (Ex. 5 kg)" required>
+                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]" placeholder="Specification (Ex. 5 kg)" required>
                                 </td>
                                 <td>
                                     <input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required>
                                 </td>
                                 <td>
-<<<<<<<< HEAD:views/seller/shop_services_form.html
                                     <button type="button" class="btn-deleteTemplate">Delete</button>
-========
-                                    <button type="button" class="btn-delete">Delete</button>
->>>>>>>> origin/sermonia-branch:pages/seller/shop_services_form.html
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <br>
-<<<<<<<< HEAD:views/seller/shop_services_form.html
-                    <button type="button" class="addRowBtnTemplate" >Add Specification</button>
-========
-                    <button type="button" id="addRowBtn" >Add Specification</button>
->>>>>>>> origin/sermonia-branch:pages/seller/shop_services_form.html
+                    <button type="button" class="addRowBtnTemplate">Add Specification</button>
                     <br><br>
                     <button type="button" class="cancel-btnTemplate">Cancel</button>
                     <button type="submit" class="submit-btnTemplate">Save</button>
                 </form>
             </template>
+
             <template id="deliverId">
                 <form class="deliverForm">
                     <h1 class="deliverTemplate">Deliver</h1>
@@ -154,27 +115,19 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]"  placeholder="Specification (Ex. 5 kg)" required>
+                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]" placeholder="Specification (Ex. 5 kg)" required>
                                 </td>
                                 <td>
                                     <input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required>
                                 </td>
                                 <td>
-<<<<<<<< HEAD:views/seller/shop_services_form.html
                                     <button type="button" class="btn-deleteTemplate">Delete</button>
-========
-                                    <button type="button" class="btn-delete">Delete</button>
->>>>>>>> origin/sermonia-branch:pages/seller/shop_services_form.html
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <br>
-<<<<<<<< HEAD:views/seller/shop_services_form.html
                     <button type="button" class="addRowBtnTemplate">Add Specification</button>
-========
-                    <button type="button" id="addRowBtn">Add Specification</button>
->>>>>>>> origin/sermonia-branch:pages/seller/shop_services_form.html
                     <br><br>
                     <button type="button" class="cancel-btnTemplate">Cancel</button>
                     <button type="submit" class="submit-btnTemplate">Save</button>
@@ -182,6 +135,5 @@
             </template>
                     
         <script src="../../assets/js/shop_services_form.js" defer></script>
-
     </body>
 </html>

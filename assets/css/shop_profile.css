@@ -318,18 +318,35 @@ input::placeholder {
     margin-left: 70px;
     margin-top: 50px;
     margin-bottom: -120px;
-    text-align: left;
-    background-color:#70c0e1;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #70c0e1;
     border-radius: 2px;
+    min-width: 200px;
+    min-height: 200px;
     padding: 100px 120px;
+    box-sizing: border-box;
+}
 
+.photoUploadDiv.has-preview {
+    padding: 12px;
+    margin-bottom: -20px;
+}
 
+.photoUploadDiv .previewImage {
+    display: block;
+    max-width: 220px;
+    max-height: 220px;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
 }
 
 
 .imgDiv{
     text-align: right;
-    padding-right: 335px;
+    padding-right: 3y35px;
 
 
 }

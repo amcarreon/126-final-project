@@ -26,7 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $user_id = register_user($email, $full_name, $password);
 
     if ($user_id) {
-        $_SESSION['user_id'] = $user_id;
+        session_regenerate_id(true);
+        $_SESSION['user_id'] = (int) $user_id;
         $_SESSION['email'] = $email;
         $_SESSION['full_name'] = $full_name;
 

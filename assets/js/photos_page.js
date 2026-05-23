@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const uploadForm = document.getElementById('uploadForm');
+    if (!uploadForm) return;
+
     const previewGrid = document.getElementById('previewGrid');
     const photoURLInput = document.getElementById('photoURL');
     const fileNameDisplay = document.getElementById('fileNameDisplay');

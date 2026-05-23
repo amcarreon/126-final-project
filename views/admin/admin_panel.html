@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/126-final-project/assets/css/admin.css">
+    <title>Admin - Shop Management</title>
+</head>
+<body class="adminHome">
+    <header class="adminHeader">
+        <h1>Admin Shop Management</h1>
+        <a href="/126-final-project/includes/admin_logout.php" class="adminBackLink">Logout</a>
+    </header>
+
+    <section class="adminStatsSection">
+        <div class="adminStatsGrid">
+            <button type="button" class="adminStatCard filterBtn" data-filter="all" id="filterAll">
+                <h2>Total shops</h2>
+                <p class="adminStatValue" id="statTotal">0</p>
+            </button>
+            <button type="button" class="adminStatCard filterBtn" data-filter="unreviewed" id="filterUnreviewed">
+                <h2>Unreviewed</h2>
+                <p class="adminStatValue" id="statUnreviewed">0</p>
+            </button>
+            <button type="button" class="adminStatCard filterBtn" data-filter="deleted" id="filterDeleted">
+                <h2>Deleted</h2>
+                <p class="adminStatValue" id="statDeleted">0</p>
+            </button>
+        </div>
+    </section>
+
+    <form id="searchForm" class="adminSearchForm">
+        <label for="searchInput">Search by shop name:</label>
+        <input type="search" id="searchInput" name="search" placeholder="Search shops">
+    </form>
+
+    <table border="1" cellpadding="8" cellspacing="0" id="shopsTable" class="adminShopsTable">
+        <thead>
+            <tr>
+                <th>Shop Name</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="shopsTableBody"></tbody>
+    </table>
+    <p id="emptyMessage" hidden>No shops found.</p>
+
+    <div id="deleteModal" class="adminModal" hidden>
+        <div class="adminModalBackdrop"></div>
+        <div class="adminModalContent">
+            <h2 class="reasonTitle">Reason for deletion</h2>
+            <form id="deleteForm">
+                <input type="hidden" id="deleteShopId" name="shop_id">
+                <label for="deletionReason">Reason:</label>
+                <input type="text" id="deletionReason" name="deletion_reason" required>
+                <div class="adminModalActions">
+                    <button type="button" id="cancelDeleteBtn" class="cancelDeletion">Cancel</button>
+                    <button type="submit" id="confirmDeleteBtn" class="proceedDeletion" disabled>Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="reasonModal" class="adminModal" hidden>
+        <div class="adminModalBackdrop"></div>
+        <div class="adminModalContent">
+            <h2 class="reasonTitle">Deletion reason</h2>
+            <p id="reasonModalText"></p>
+            <div class="adminModalActions">
+                <button type="button" id="closeReasonBtn" class="cancelDeletion">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/126-final-project/assets/js/admin_config.js"></script>
+    <script src="/126-final-project/assets/js/admin_auth.js"></script>
+    <script src="/126-final-project/assets/js/admin_panel.js?v=3"></script>
+</body>
+</html>

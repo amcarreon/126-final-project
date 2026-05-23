@@ -58,14 +58,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // Send to backend via AJAX
         fetch('../../pages/auth/register.php', {
             method: 'POST',
-            body: formData
+            body: formData,
+            credentials: 'same-origin',
+            cache: 'no-store',
         })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
                 successMsg.textContent = 'Account created! Redirecting...';
                 setTimeout(() => {
-                    window.location.href = '../seller/shop_info_form.php';
+                    window.top.location.href = '/126-final-project/views/seller/shop_info_form.html';
                 }, 1500);
             } else {
                 errorMsg.textContent = data.error || 'Registration failed. Please try again.';

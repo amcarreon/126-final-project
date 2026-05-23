@@ -3,15 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../../assets/css/auth.css">
-        <script src="../../assets/js/main.js" defer></script>
+        <link rel="stylesheet" href="../../assets/css/auth.css">
         <title>Authentication Page</title>
     </head>
     <body>
+        <div class="appDiv">
+            <header >
+                <h1 class="appName">BubbleFinder</h1>
+            </header>
+        </div>
         
         <div class="logInBox" id="logInBox">
             <h1 class="logInTitle">Welcome Back!</h1>
-            <form class="logIn">
+            <p id="loginError" class="error-message" hidden>Invalid email or password.</p>
+            <form class="logIn" method="POST" action="../../pages/auth/logIn.php">
                 <input type="email" id="login_email" name="login_email" placeholder="Email" required>
                 <br><br>
                 <input type="password" id="login_password" name="login_password" placeholder="Password" required>
@@ -22,5 +27,11 @@
             
         <h4>Don't have an account? <a href="register_form.html" class="link">Sign Up</a></h4>
         </div>
+
+    <script>
+        if (new URLSearchParams(window.location.search).get('error') === '1') {
+            document.getElementById('loginError').hidden = false;
+        }
+    </script>
     </body>
 </html>
