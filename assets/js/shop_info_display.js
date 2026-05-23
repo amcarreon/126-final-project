@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const params = new URLSearchParams(window.location.search);
+    const shopId = params.get('id');
 
-    fetch('../../api/shopInfo_api.php')
+    const apiUrl = shopId
+        ? `/126-final-project/api/shop_by_id_api.php?shop_id=${shopId}`
+        : '/126-final-project/api/shopInfo_api.php';
+
+    fetch(apiUrl, { credentials: 'same-origin' })
         .then(res => res.json())
         .then(data => {
             if (data.success) {
@@ -26,7 +32,10 @@ function displayShopInfo(shop) {
     // Display contact info
     let contactHTML = '';
     if (shop.contacts && shop.contacts.length > 0) {
-        contactHTML = shop.contacts.map(contact => contact.contact_info).join('<br>');
+        contactHTML = shop.contacts.map(contact => {
+            const value = typeof contact === 'string' ? contact : contact.contact_info;
+            return value;
+        }).join('<br>');
     }
     document.getElementById('contactInfoDetails').innerHTML = contactHTML || 'No contact info available';
 
@@ -41,5 +50,5 @@ function displayShopInfo(shop) {
 }
 
 function goToEditPage() {
-    window.location.href =  "/126-final-project/views/seller/shop_info_form.php";
+    window.location.href = '/126-final-project/views/seller/shop_info_form.html';
 }
