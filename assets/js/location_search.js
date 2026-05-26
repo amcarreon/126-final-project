@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
             $('#needs_geocoding').val('true');
         }
 
+        // store ang lat lng for map display
         $.ajax({
             url: '/126-final-project/includes/save_shop_profile.php',
             type: 'POST',

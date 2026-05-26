@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $final_lng     = $lng;
     }
 
+    // for maps display
     echo json_encode ([
         'success' => true,
         'location' => $location,
