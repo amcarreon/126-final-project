@@ -1,80 +1,84 @@
-const registrationForm = document.getElementById('signUp'); 
-const nameInput = document.getElementById('register_name');
-const registerEmailInput = document.getElementById('register_email');
-const registerPasswordInput = document.getElementById('register_password');
-const loginForm = document.getElementById('logIn');
-const loginEmailInput = document.getElementById('login_email');
-const loginPasswordInput = document.getElementById('login_password');
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('signUp');
+    const passwordInput = document.getElementById('register_password');
+    const toggleBtn = document.getElementById('toggle_password');
+    const registerBtn = document.getElementById('register_button');
+    const errorMsg = document.getElementById('error-message');
+    const successMsg = document.getElementById('success-message');
 
-/*const confirmInput = document.getElementById('confirm_password');*/
+    // Password requirements
+    const requirements = {
+        'length-check': (pwd) => pwd.length >= 8,
+        'uppercase-check': (pwd) => /[A-Z]/.test(pwd),
+        'number-check': (pwd) => /[0-9]/.test(pwd),
+        'special-check': (pwd) => /[^a-zA-Z\d]/.test(pwd)
+    };
 
-function validateForm() {
-    const name = nameInput.value.trim();
-    const email = registerEmailInput.value.trim();
-    const password = registerPasswordInput.value;
-    /*const confirmPassword = confirmInput.value;*/
-
-    let isValid = true;
-
-    // Check for empty fields
-    if (!name || !email || !password /*|| !confirmPassword*/) {
-        alert('Please fill in all fields.');
-        return false; 
-    }
-
-    // Name Validation
-    if (name.length <= 5) {
-        alert("Name must have greater than 5 characters");
-        isValid = false;
-    } else if (!name.includes(" ")) {
-        alert("Please write your full name (include a space).");
-        isValid = false;
-    }
-
-    // Email Validation
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        alert("Please enter a valid email address.");
-        isValid = false;
-    }
-
-    // Password Validation
-    if (password.length < 6) {
-        alert('Password must be at least 6 characters long.');
-        isValid = false;
-    } /*else if (password !== confirmPassword) {
-        alert('Passwords do not match.');
-        isValid = false;
-    }*/
-
-    return isValid;
-}
-//if validation fails, prevent form submission
-if (registrationForm) {
-
-    registrationForm.addEventListener('submit', function(event) {
-
-        if (!validateForm()) {
-            event.preventDefault();
-        }
-
+    // Toggle password visibility
+    toggleBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const type = passwordInput.type === 'password' ? 'text' : 'password';
+        passwordInput.type = type;
     });
 
-}
+    // Real-time password validation
+    passwordInput.addEventListener('input', function() {
+        let allMet = true;
 
-
-if (loginForm) {
-
-    loginForm.addEventListener('submit', function(event) {
-
-        if (!validateLogin()) {
-            event.preventDefault();
+        for (const [id, validator] of Object.entries(requirements)) {
+            const element = document.getElementById(id);
+            const isMet = validator(passwordInput.value);
+            
+            if (isMet) {
+                element.classList.add('met');
+            } else {
+                element.classList.remove('met');
+                allMet = false;
+            }
         }
 
+        // Enable button only if all requirements met
+        registerBtn.disabled = !allMet;
     });
 
-}
+    // Form submission
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        errorMsg.textContent = '';
+        successMsg.textContent = '';
+        registerBtn.disabled = true;
+        registerBtn.textContent = 'Creating...';
 
-function validateLogin() {
-    return loginEmailInput.value.trim() !== "" && loginPasswordInput.value.trim() !== "";
-}
+        // Prepare data
+        const formData = new FormData();
+        formData.append('register_name', document.getElementById('register_name').value);
+        formData.append('register_email', document.getElementById('register_email').value);
+        formData.append('register_password', passwordInput.value);
+
+        // Send to backend via AJAX
+        fetch('../../pages/auth/register.php', {
+            method: 'POST',
+            body: formData,
+            credentials: 'same-origin',
+            cache: 'no-store',
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                successMsg.textContent = 'Account created! Redirecting...';
+                setTimeout(() => {
+                    window.top.location.href = '/126-final-project/views/seller/shop_info_form.html';
+                }, 1500);
+            } else {
+                errorMsg.textContent = data.error || 'Registration failed. Please try again.';
+                registerBtn.disabled = false;
+                registerBtn.textContent = 'Create Account';
+            }
+        })
+        .catch(error => {
+            errorMsg.textContent = 'Network error. Please try again.';
+            registerBtn.disabled = false;
+            registerBtn.textContent = 'Create Account';
+        });
+    });
+});

@@ -4,7 +4,6 @@
     box-sizing: border-box; 
 }
 
-
 @font-face {
     font-family: 'Gladiola';
     src: url('../../Fonts/gladiola-regular-regular.ttf') format('truetype');
@@ -37,13 +36,7 @@
     font-weight: 100 900;
     font-style: italic;
 }
-@font-face{
-    font-family: 'Tomorrow';
-    src: url('../../Fonts/Tomorrow/Tomorrow-Bold.ttf') format('truetype');
-    font-weight: 100 900;
-    font-style: bold;
 
-}
 @font-face{
     font-family:'Gulya';
     src: url('../../Fonts/Gulya.otf') format('opnentype');
@@ -59,31 +52,10 @@ body {
     background-repeat: no-repeat;
 }
 
-/*
-red -- #630116
-another red -- #842B2F
-pink -- #AF5B73
-green -- #7E892B
-another green (warm?) -- #929F52
-gray -- #CEC3C1
-dark grey -- #3D4547
-beige -- #ECD0C2
-light greenblue - #EDEEE9
-white -- #FBF9F5
-.appDiv {
-    margin-left: 30px; 
-    width: 100%;       
-    max-width: 800px;  
-
-}
- */
-
 .container { 
     width: 80%;
     margin: 0 auto;
 }
-
-
 
 .signUpBox, .logInBox {
     background-color: rgba(252, 252, 252, 0.5);
@@ -92,7 +64,6 @@ white -- #FBF9F5
     padding: 40px;    
     width: auto;       
     min-width: 300px; 
-    padding: 20px;
     border-radius: 10px;
 }
 
@@ -106,7 +77,6 @@ white -- #FBF9F5
     padding: 10px;
     letter-spacing: 2px;
     font-family: 'Gladiola', sans-serif; 
-
 }
 
 .signUpTitle, .logInTitle{
@@ -119,16 +89,16 @@ white -- #FBF9F5
     font-family: 'Shrikhand', cursive;
     letter-spacing: 2px;
     font-style: bold, italic;
-
 }
+
 .signUp, .logIn, h4 {
     text-align: center;
     color:  rgb(9, 41, 41);
     margin: 20px auto;
     letter-spacing: 2px;
     font-family: 'Montserrat', sans-serif;
-
 }
+
 input[type="email"], 
 input[type="password"],
 input[type="text"]{
@@ -141,7 +111,7 @@ input[type="text"]{
     font-family: 'Montserrat', sans-serif;
 }
 
- .register_button, .login_button {
+.register_button, .login_button {
     border: 3px solid #6a9ebf;
     border-radius: 8px;
     padding: 4px 10px;
@@ -155,13 +125,13 @@ input[type="text"]{
     transition: all 0.3s ease;
     font-family: 'Gulya', sans-serif;
     text-transform: uppercase;
-
 }
 
 .login_button:hover {
     background-color: #7E892B;
     color: #ffffff;
 }
+
 .link {
     color:#b02a60;
     text-decoration: none;
@@ -171,11 +141,126 @@ input[type="text"]{
 .link:hover { 
     color: rgb(8, 116, 59); 
 }
+
 .link:active {
     color: rgb(225, 71, 15); 
     transform: scale(0.98); 
 }
 
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.password-container input {
+    width: 300px;
+    padding: 4px 10px;
+    padding-right: 40px;
+}
+
+.toggle-btn {
+    position: absolute;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 8px;
+    color: #014663;
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-btn:hover {
+    opacity: 0.7;
+}
+
+.password-requirements {
+    background: rgba(112, 192, 225, 0.2);
+    border: 2px solid #70c0e1;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px auto;
+    font-size: 14px;
+    max-width: 300px;
+    color: rgb(9, 41, 41);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.password-requirements p {
+    margin: 0 0 10px 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.password-requirements ul {
+    list-style: none;
+}
+
+.requirement {
+    margin: 6px 0;
+    color: #70c0e1;
+    transition: color 0.2s ease;
+}
+
+.requirement.met {
+    color: #7E892B;
+    font-weight: 500;
+}
+
+.error-message {
+    color: #842B2F;
+    margin: 10px auto;
+    max-width: 300px;
+    display: none;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.error-message:not(:empty) {
+    display: block;
+}
+
+.success-message {
+    color: #7E892B;
+    margin: 10px auto;
+    max-width: 300px;
+    display: none;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.success-message:not(:empty) {
+    display: block;
+}
+
+.register_button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #d0e8f2;
+    border-color: #a8d5e8;
+}
+
+.register_button:disabled:hover {
+    background: #d0e8f2;
+    color: #014663;
+}
+
+.register_button:not(:disabled) {
+    transition: all 0.3s ease;
+}
+
+.register_button:not(:disabled):hover {
+    background-color: #7E892B;
+    color: #ffffff;
+    border-color: #929F52;
+}
 
 @media (max-width: 768px) {
   .container { width: 90%; }

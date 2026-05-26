@@ -2,7 +2,9 @@
 session_start();
 require_once '../config/database.php';
 
-header("Content-Type: application/json");
+header('Content-Type: application/json');
+header('Cache-Control: no-store, no-cache, must-revalidate');
+header('Pragma: no-cache');
 
 if (!isset($_SESSION['user_id'])) {
     http_response_code(401);
@@ -16,7 +18,8 @@ if (!isset($_SESSION['user_id'])) {
 $ownerId = $_SESSION['user_id'];
 
 
-$stmt = $conn->prepare("SELECT shop_id, shop_name, shop_desc, location, logo 
+$stmt = $conn->prepare("SELECT shop_id, shop_name, shop_desc, location, logo,
+                               is_deleted, deletion_reason
                         FROM shops 
                         WHERE owner_id = ?");
 
@@ -67,6 +70,8 @@ echo json_encode([
         "shop_desc" => $shop['shop_desc'],
         "location" => $shop['location'],
         "logo" => $shop['logo'],
+        "is_deleted" => (int) $shop['is_deleted'] === 1,
+        "deletion_reason" => $shop['deletion_reason'],
         "contacts" => $contacts,
         "socialMedia" => $social
     ]

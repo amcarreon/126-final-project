@@ -20,11 +20,10 @@ function register_user($email, $full_name, $password) {
     $stmt->bind_param("sss", $email, $full_name, $hashed_pass);
 
     if ($stmt->execute()) {
-        return true;
+        return (int) $conn->insert_id;
     }
-    else {
-        return false;
-    }
+
+    return false;
 }
 
 ?>

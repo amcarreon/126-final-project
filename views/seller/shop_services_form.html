@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../assets/css/shop_services_form.css">
-
         <title>Laundry Services</title>
     </head>
     <body class="servicesBody">
@@ -17,7 +16,7 @@
             </div>
         </div>
             <div class="servicesBox">
-                <form class="serviceForm" id="serviceForm"  action="../../includes/save_service.php" method="POST" novalidate>
+                <form class="serviceForm" id="serviceForm" action="../../includes/save_service.php" method="POST" novalidate>
                     <h1 class="laundryTitle">Services</h1>
                     <div class="templateButtons">
                         <button type="button" id="washBtn" class="templateBtn">WASH</button>
@@ -37,7 +36,7 @@
                                 </td>
                                 
                                 <td>
-                                    <input type="number" id="servicePrice" name="servicePrice" placeholder="Price" min="0"required>
+                                    <input type="number" id="servicePrice" name="servicePrice" placeholder="Price" min="0" required>
                                 </td>
                                 <td>
                                     <button type="button" class="btn-delete" onclick="removeRow(this)">Delete</button>
@@ -48,7 +47,7 @@
                     <button id="addRowBtn" onclick="addRow()">Add New Row</button>
                     <br><br>
                     
-                    <button type="button" class="cancel-btn" >Cancel</button>
+                    <button type="button" class="cancel-btn">Cancel</button>
                     <button type="submit" class="submit-btn">Save</button>
                 </form>
             </div>
@@ -62,7 +61,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]"  placeholder="Specification (Ex. 5 kg)" required>
+                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]" placeholder="Specification (Ex. 5 kg)" required>
                                 </td>
                                 <td>
                                     <input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required>
@@ -81,8 +80,6 @@
                 </form>
             </template>
 
-
-
             <template id="dryId">
                 <form class="dryForm">
                     <h1 class="dryTemplate">Dry</h1>
@@ -91,7 +88,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]"  placeholder="Specification (Ex. 5 kg)" required>
+                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]" placeholder="Specification (Ex. 5 kg)" required>
                                 </td>
                                 <td>
                                     <input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required>
@@ -103,12 +100,13 @@
                         </tbody>
                     </table>
                     <br>
-                    <button type="button" class="addRowBtnTemplate" >Add Specification</button>
+                    <button type="button" class="addRowBtnTemplate">Add Specification</button>
                     <br><br>
                     <button type="button" class="cancel-btnTemplate">Cancel</button>
                     <button type="submit" class="submit-btnTemplate">Save</button>
                 </form>
             </template>
+
             <template id="deliverId">
                 <form class="deliverForm">
                     <h1 class="deliverTemplate">Deliver</h1>
@@ -117,7 +115,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]"  placeholder="Specification (Ex. 5 kg)" required>
+                                    <input type="text" class="serviceSpecification" name="serviceSpecification[]" placeholder="Specification (Ex. 5 kg)" required>
                                 </td>
                                 <td>
                                     <input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required>
@@ -137,6 +135,5 @@
             </template>
                     
         <script src="../../assets/js/shop_services_form.js" defer></script>
-
     </body>
 </html>

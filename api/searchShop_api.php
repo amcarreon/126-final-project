@@ -12,7 +12,7 @@ try {
     $stmt = $conn->prepare("
         SELECT shop_id, shop_name, shop_desc, location, logo
         FROM shops
-        WHERE shop_name LIKE ?
+        WHERE shop_name LIKE ? AND is_deleted = 0
         ORDER BY shop_name ASC
     ");
 
