@@ -1,65 +1,42 @@
-// Display map
-const defaultLoc = { lat: 10.641345268116764, lng: 122.2357864230011 }; // Miagao Plaza
-function initMap() {
-    const parameters = new URLSearchParams(window.location.search);
-    const lat_coords = parseFloat(parameters.get('lat')) || defaultLoc.lat;
-    const lng_coords = parseFloat(parameters.get('lng')) || defaultLoc.lng;
-    const shop_loc = { lat: lat_coords, lng: lng_coords };
-    const status = document.getElementById('location-status');
+if (typeof google === 'undefined' && window.parent && window.parent.google) {
+    window.google = window.parent.google;
+}
 
-    if (status) status.innerText = "Detecting location...";
+function initMap() {
+    const defaultLoc = { lat: 10.641345268116764, lng: 122.2357864230011 }; // Miagao Plaza
 
     const map_canvas = document.getElementById('map');
-
     if (!map_canvas) return;
 
+    let lat = sessionStorage.getItem('shop_lat');
+    let lng = sessionStorage.getItem('shop_lng');
+
+    let shop_loc = defaultLoc;
+
+    if (lat && lng) {
+        shop_loc = { lat: parseFloat(lat), lng: parseFloat(lng) };
+    }
+    else {
+        console.warn("No coordinates available. Using default location.");
+    }
+
     const map = new google.maps.Map(map_canvas, {
-        zoom: 18, 
-        center: shop_loc
+        zoom: 18,
+        center: shop_loc,
+        mapTypeControl: false
     });
 
-    const marker = new google.maps.Marker({
+    new google.maps.Marker({
         position: shop_loc,
         map: map,
-        draggable: true,
-        label: "Drag me to your location!"
+        animation: google.maps.Animation.DROP
     });
-
-    marker.addListener("dragend", () => {
-        const newPos = marker.getPosition();
-        const markerlat = newPos.lat();
-        const markerlng = newPos.lng();
-
-        if (markerlat == null || markerlng == null) return;
-
-        await detect_loc(markerlat, markerlng);     
-    });   
 }
 
 window.onload = initMap;
 
-// Get location from marker
-async function detect_loc(lat, lng) {
-    try {
-        const res = await fetch(`geocode_api.php?action=coordinates&lat=${lat}&lng=${lng}`);
-        const result = await res.json();
-
-        if (result.success === true) {
-            document.getElementById('location-status').innerText = "Location found!";
-            document.getElementById('address-display').innerText = result.formatted_address;
-            
-            const newURL = `location_page.html?lat=${lat}&lng=${lng}`;
-            window.history.replaceState({}, '', newURL);
-        }
-
-        else {
-            document.getElementById('location-status').innerText = "Invalid location.";
-            alert("Validation failed: " + result.message);
-        }
-
+document.addEventListener("DOMContentLoaded", function() {
+    if (typeof google !== 'undefined' && google.maps) {
+        initMap();
     }
-    catch (error) {
-        console.error("Request cannot be completed: ", error);
-        document.getElementById('location-status').innerText = "Error during validation.";
-    }
-}
+});

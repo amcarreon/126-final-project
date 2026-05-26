@@ -1,77 +1,45 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/../config/database.php';
 
 header('Content-Type: application/json');
 
-function getValidAddress($loc, $lat, $lng){
+// location validation in case of manual typing of address
+function getValidAddress($loc, $lat, $lng) {
     $url = "";
 
-    if (!empty($loc)){
+    if (!empty($loc)) {
         $encodedLoc = urlencode($loc);
-        $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$encodedLoc}&key=" . GOOGLE_MAPS_API_KEY;
-    }
-
-    else if (isset($lat, $lng) && is_numeric($lat) && is_numeric($lng)) {
+        $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$encodedLoc}&components=country:PH&key=" . GOOGLE_MAPS_API_KEY;
+    } 
+    else if (!empty($lat) && !empty($lng)) {
         $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng={$lat},{$lng}&key=" . GOOGLE_MAPS_API_KEY;
-    }
-
+    } 
     else {
-        return [
-            'success' => false,
-            'message' => 'Error: Missing address string or coordinates.'
-        ];
+        return ['success' => false, 'message' => 'Missing address string parameter or coordinate markers.'];
     }
 
-    $res = file_get_contents($url);
+    $res = @file_get_contents($url);
+    if ($res === false) {
+        return ['success' => false, 'message' => 'Unable to establish secure transmission connection with Google servers.'];
+    }
 
     $data = json_decode($res, true);
 
-    if ($res === false || !$data || !isset($data['status'])) {
-        return [
-            'success' => false,
-            'message' => 'Error: Google Maps API failed or invalid response.'
-        ];
-    }
-
-    if ($data['status'] === 'OK') {
-        $res = $data['results'][0];
+    if (isset($data['status']) && $data['status'] === 'OK') {
+        $result = $data['results'][0];
 
         return [
             'success' => true,
-            'formatted_address' => $res['formatted_address'],
-            'latitude' => $res['geometry']['location']['lat'],
-            'longitude' => $res['geometry']['location']['lng']
+            'formatted_address' => $result['formatted_address'],
+            'latitude' => $result['geometry']['location']['lat'],
+            'longitude' => $result['geometry']['location']['lng']
         ];
-    }
-
+    } 
     else {
-        $error = ($data['status'] === 'ZERO_RESULTS') ? "We couldn't locate..." : "Server error.";
-        return [
-            'success' => false,
-            'message' => 'Error: '. $error ];
+        $status = $data['status'] ?? 'UNKNOWN';
+        $error = ($status === 'ZERO_RESULTS') ? "Location position could not be accurately pinned." : "Google API Error Status: {$status}";
+        return ['success' => false, 'message' => $error];
     }
 }
 
-$action = $_GET['action'] ?? '';
-
-if ($action === 'geocode') {
-    $loc = $_GET['address'] ?? '';
-    $result = getValidAddress($loc, null, null);
-    echo json_encode($result);
-    exit;
-}
-
-if ($action === 'coordinates') {
-    $lat = $_GET['lat'] ?? '';
-    $lng = $_GET['lng'] ?? '';
-    $result = getValidAddress(null, $lat, $lng);
-    echo json_encode($result);
-    exit;
-}
-
-if (isset($_GET['location']) && !count(debug_backtrace())) {
-    $result = getValidAddress($_GET['location'], null, null);
-    echo json_encode($result);
-    exit;
-}
+?>

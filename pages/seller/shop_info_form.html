@@ -3,41 +3,67 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../assets/css/shop_profile.css">
+        <link rel="stylesheet" href="/126-final-project/assets/css/shop_profile.css?v=2">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Shop Profile</title>
     </head>
-    <body>
+    <body class="infoBody">
         <div class="shopProfile" id="shopProfileID">
-            <form class="shopProfileForm" id="shopProfileFormID" action="/seller/shop_info_form" method="post" enctype="multipart/form-data">
+            <form class="shopProfileForm" id="shopProfileFormID"
+                  action="../../includes/save_shop_profile.php"
+                  method="post"
+                  enctype="multipart/form-data">
+
                 <div class="photoUploadDiv"></div>
                 <h1>Store Profile Picture</h1>
-                
+
                 <div class="imgDiv">
                     <label for="photoUpload" class="customUpload">Upload Image</label>
-                    <input type="file" id="photoUpload" name="photoUpload" placeholder="+" required>
+                    <input type="file" id="photoUpload" name="photoUpload" accept="image/*">
                 </div>
-                
+
                 <br><br>
 
                 <div class="nameDiv">
-                    <input type="text" id="shopName" name="shopName" placeholder="Shop Name">
+                    <input type="text" id="shopName" name="shopName" placeholder="Shop Name" required>
                 </div>
                 <div class="descriptionDiv">
                     <input type="text" id="shopDescription" name="shopDescription" placeholder="Shop Description" maxlength="100">
-                </div>        
-                <div class="contactDiv">
-                    <input type="tel" id="contactInfo" name="contactInfo" placeholder="Contact Information">
                 </div>
-                <div class="socialMediaDiv">
-                    <input type="text" id="socialMediaProfiles" name="socialMediaProfiles" placeholder="Social Media Profiles ">
-                </div>
-                <label for="addressRegion">Address:</label>
-                <input type="dropdown" id="addressRegion" name="addressRegion" placeholder="Address">
-                <button type="submit" class="submit">Save</button>
-            <button type="button" id="cancelEdit">Cancel</button>
-        </div>
 
+                <input type="tel" name="contactInfo[]" placeholder="Contact Number">
+                <input type="tel" name="contactInfo[]" placeholder="Contact Number">
+                <input type="tel" name="contactInfo[]" placeholder="Contact Number">
+
+                <div class="socialMediaDiv">
+                    <div class="socialMediaIcons">
+                        <i class="fa fa-facebook icon"></i>
+                        <input type="hidden" name="socialMediaPlatform[]" value="facebook">
+                        <input type="text" name="socialMediaLink[]" class="inputFB" placeholder="Facebook Profile Link">
+                    </div>
+                    <br><br>
+                    <div class="socialMediaIcons">
+                        <i class="fa fa-instagram icon"></i>
+                        <input type="hidden" name="socialMediaPlatform[]" value="instagram">
+                        <input type="text" name="socialMediaLink[]" class="inputIG" placeholder="Instagram Username">
+                    </div>
+                </div>
+
+                <div class="search-loc-container">
+                    <input type="text" id="location" name="location" placeholder="Location" required>
+                    <input type="hidden" id="lat" name="lat">
+                    <input type="hidden" id="lng" name="lng">
+                    <input type="hidden" id="needs_geocoding" name="needs_geocoding" value="false">
+                </div>
+                
+                <button type="submit" class="submit">Save</button>
+                <button type="button" id="cancelEdit">Cancel</button>
             </form>
-            
-</body>
+        </div>
+    
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu9H5AEsy_4DJbElJd780ySxJLlyjjlpw&libraries=places&region=PH&loading=async&callback=initMap"></script>
+        <script src="../../assets/js/location_search.js?v=1.0.1"></script>
+        <script src="/126-final-project/assets/js/shop_info_form.js?v=4" defer></script>
+    </body>
 </html>

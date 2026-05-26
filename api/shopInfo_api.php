@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     $id = intval($_GET['id']);
 
-    $sql = "SELECT id, shop_name, shop_desc, contact_info, social_media, shop_location, logo FROM shops WHERE id=?";
+    $sql = "SELECT id, shop_name, shop_desc, contact_info, social_media, location, logo FROM shops WHERE id=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    $sql = "UPDATE shops SET shop_name=?, shop_desc=?, contact_info=?, social_media=?, shop_location=?";
+    $sql = "UPDATE shops SET shop_name=?, shop_desc=?, contact_info=?, social_media=?, location=?";
     $params = [$shopName, $shopDescription, $contactInfo, $socialMediaProfiles, $location];
     $types = "sssss";
 
