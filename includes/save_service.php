@@ -54,7 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    header("Location: ../views/seller/services_page.html");
 
     $stmt->close();
 }

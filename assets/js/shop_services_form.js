@@ -6,10 +6,10 @@ const addRow = () => {
     
 
     const serviceCell = newRow.insertCell(0);
-    serviceCell.innerHTML = '<input type="text" id="serviceSpecification_${counter} name="serviceSpecification" placeholder="Specification (Ex. 5 kg)" required>';
+    serviceCell.innerHTML = '<input type="text" id="serviceSpecification_${counter}" name="serviceSpecification[]" placeholder="Specification (Ex. 5 kg)" required>';
     
     const priceCell = newRow.insertCell(1);
-    priceCell.innerHTML = '<input type="number" id="servicePrice_${counter}" name="servicePrice" placeholder="Price" min="0" required>';
+    priceCell.innerHTML = '<input type="number" id="servicePrice_${counter}" name="servicePrice[]" placeholder="Price" min="0" required>';
 
     const actionCell = newRow.insertCell(2);
     actionCell.innerHTML = `
@@ -81,25 +81,15 @@ form.addEventListener('submit', function(event) {
 async function executeSave() {
     const formData = new FormData(form);
 try {
-        const response = await fetch("../..//save_data.php", {
+        const response = await fetch("../../includes/save_service.php", {
             method: "POST",
             body: formData
         });
 
         const data = await response.text(); 
 
-        if (data.toLowerCase().includes("successfully")) {
-            errors.push("Success: " + data);
-            form.reset();
-
-            const tableBody = document.querySelector("table tbody");
-            while (tableBody.rows.length > 1) {
-                tableBody.deleteRow(1);
-            }
-            document.querySelector('#errorBox').innerHTML = '';
-        } else {
-            errors.push(" Failed: " + data);
-        }
+        window.location.href = "../../views/seller/services_page.html";
+        
     } catch (error) {
         console.error("Error:", error);
         errors.push("An error occurred while saving. Check console for details.");
