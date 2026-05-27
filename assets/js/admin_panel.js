@@ -172,9 +172,7 @@ function renderTable() {
 
         const nameCell = document.createElement("td");
         const nameLink = document.createElement("a");
-        nameLink.href = shop.is_deleted
-            ? `deleted_shop.html?id=${shop.shop_id}`
-            : `shop_detail.html?id=${shop.shop_id}`;
+        nameLink.href = `shop_detail.html?id=${shop.shop_id}`;
         nameLink.textContent = shop.shop_name;
         nameCell.appendChild(nameLink);
 
@@ -190,9 +188,7 @@ function renderTable() {
 
         row.addEventListener("click", (e) => {
             if (e.target.closest("button") || e.target.closest("a")) return;
-            const dest = shop.is_deleted
-                ? `deleted_shop.html?id=${shop.shop_id}`
-                : `shop_detail.html?id=${shop.shop_id}`;
+            const dest = `shop_detail.html?id=${shop.shop_id}`;
             window.location.href = dest;
         });
 
