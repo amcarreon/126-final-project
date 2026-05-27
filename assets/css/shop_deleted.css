@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    background-color: #7fbedb;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: #625a5a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.warning-container {
+    background-color: #ffffff;
+    max-width: 720px;
+    max-height: 480px;
+    width: 100%;
+    display: block;
+    flex-direction: column;
+    gap: 25px;
+    margin: 100px;
+    border: 70px solid #ffffff;
+    border-radius: 15px;
+}
+
+.x-mark {
+    color: #d71414;
+    font-size: 90px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.main-title {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    line-height: 1.5;
+}
+
+#deletionReasonBox {
+    padding-top: 15px;
+    padding-bottom: 5px;
+    line-height: 1.5;
+}
+
+#deletionReasonBox h2 {
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba(76, 75, 75, 0.9);
+    margin-bottom: 6px;
+}
+
+#sellerDeletionReason {
+    font-size: 15px;
+    color: rgba(76, 75, 75, 0.9);
+    padding-bottom: 18px;
+}
+
+.details-link {
+    color:  rgba(76, 75, 75, 0.9);
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.details-link:hover {
+    color: #1c1c1c;
+}

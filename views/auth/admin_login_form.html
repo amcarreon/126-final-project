@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/126-final-project/assets/css/auth.css">
+    <title>Admin Login</title>
+</head>
+<body>
+
+    <div class="appDiv">
+        <header >
+            <h1 class="appName">BubbleFinder</h1>
+        </header>
+    </div>
+        
+    <div class="logInBox" id="logInBox">
+        <h1 class="logInTitle">Admin Login</h1>
+        <p id="loginError" class="error-message" hidden></p>
+        <form class="logIn" method="POST" action="../../pages/auth/logIn.php">
+        <input type="password" id="admin_password" name="admin_password" required autocomplete="current-password" placeholder="Password">
+        <br><br>
+        <button type="submit" id="login_button" class="login_button">Log in</button>
+        </form>
+        
+        <h4>Don't have an account? <a href="register_form.html" class="link">Sign Up</a></h4>
+    </div>
+
+    <script>
+        if (new URLSearchParams(window.location.search).get("error") === "1") {
+            document.getElementById("loginError").hidden = false;
+        }
+    </script>
+</body>
+</html>

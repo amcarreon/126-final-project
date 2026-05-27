@@ -3,12 +3,23 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Seller Page</title>
+        <link rel="stylesheet" href="../../assets/css/shop_profile.css">
+        <title>Shop Profile Manager</title>
     </head>
     
     <body id="mainPage">
-        <div class="container">
-            <div class ="header"></div>
+        <div class="mainPageContainer">
+            <div class="header">
+                <nav class="navigation">
+                    <div class="header-left">
+                        <a href="shop_profile_manager.html" class="nav">BubbleFinder</a>
+                    </div>
+
+                    <div class="header-right">
+                        <button type="submit" id="logout_button" class="logout_button">Logout</button>
+                    </div>
+                </nav>
+            </div>
         <div class="dashboardContainer">
             <div class="shopInfoDiv">
                 <iframe src="shop_info.html" title="Shop Info" class="shopInfoFrame"></iframe>
@@ -18,10 +29,10 @@
                 <div class="tabNavigationContainer">
                 <div>
                     <nav class="tabNavigation">
-                    <a href="services_page.html" target="contentFrame">SERVICES</a>
-                    <a href="photos_page.html" target="contentFrame">PHOTOS</a>
-                    <a href="location_page.html" target="contentFrame">LOCATION</a>
-		</nav>
+                        <a href="services_page.html" target="contentFrame">SERVICES</a>
+                        <a href="photos_page.html" target="contentFrame">PHOTOS</a>
+                        <a href="location_page.html" target="contentFrame">LOCATION</a>
+                    </nav>
                 </div>
                 <hr>
                 </div>
@@ -30,9 +41,22 @@
             </main>
         </div>
         <div class="footer">
+            <div class="footer-left">
+                <a href="shop_profile_manager.html" class="footer-logo">BubbleFinder</a>
             </div>
+
+            <div class="footer-center">
+                <label for="contacts" class="footer-label">Get in Touch</label>
+                    <p class="contacts">09673106767</p>
+                <label for="email" class="footer-label">Email Us On</label>    
+                    <a href="mailto:bubblefinder_inquiry@gmail.com" class="contacts">bubblefinder_inquiry@gmail.com</a>
+            </div>
+            
+            <div class="footer-right">
+                <a href="/about.html">About the Developers</a>
+            </div>
+        </div>
 </div>
-        
-        <link rel="stylesheet" href="../../assets/css/shop_profile.css">
-    </body>
+        <script src="../../assets/js/seller_shop_guard.js"></script>
+</body>
 </html>
