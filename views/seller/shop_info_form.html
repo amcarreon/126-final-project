@@ -5,53 +5,56 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../assets/css/shop_profile.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
         <title>Shop Profile</title>
     </head>
     <body class="infoBody">
-        <div class="shopProfile" id="shopProfileID">
-            <form class="shopProfileForm" id="shopProfileFormID" action="../../api/shopInfo_form.php" method="post" enctype="multipart/form-data">
+         <div class="shopProfile" id="shopProfileID">
+            <h1>Store Profile Form</h1> 
+            <form class="shopProfileForm" id="shopProfileFormID" action="../../includes/save_shop_profile.php" method="post" enctype="multipart/form-data">
 
-                <div class="photoUploadDiv"></div>
-                <h1>Store Profile Picture</h1>
+                    
+                    <div class="imgDiv">
+                        <div class="photoColumn">
+                            <div class="photoUploadDiv"></div>
+                            <label for="photoUpload" class="customUpload">Upload Image</label>
+                            <input type="file" id="photoUpload" name="photoUpload" accept="image/*">
+                        </div>
 
-                <div class="imgDiv">
-                    <label for="photoUpload" class="customUpload">Upload Image</label>
-                    <input type="file" id="photoUpload" name="photoUpload" placeholder="+" required>
-                </div>
+                        <div class="basicInfo">
+                            <h3 class="titleBasicInfo">Basic Info</h3>
+                            <input type="text" id="shopName" name="shopName" placeholder="Shop Name" required>
+                            <input type="text" id="shopDescription" name="shopDescription" placeholder="Shop Description" maxlength="100">
+                        </div>
 
-                
+                        
+                    </div>
+
                 <br><br>
-
-                <div class="nameDiv">
-                    <input type="text" id="shopName" name="shopName" placeholder="Shop Name" required>
-                </div>
-                <div class="descriptionDiv">
-                    <input type="text" id="shopDescription" name="shopDescription" placeholder="Shop Description" maxlength="100">
-                </div>
-
-                <input type="tel" id="contactInfoOne" name="contactInfo" placeholder="Contact Number">
-                <input type="tel" id="contactInfoTwo" name="contactInfo" placeholder="Contact Number">
-                <input type="tel" id="contactInfoThree" name="contactInfo" placeholder="Contact Number">
+                
+               <h3 class="titleContacts">Contacts</3><br>
+                <input type="tel" id="contactInfoOne" name="contactInfo[]" placeholder="Contact Number">
+                <input type="tel" id="contactInfoTwo" name="contactInfo[]" placeholder="Contact Number">
+                <input type="tel" id="contactInfoThree" name="contactInfo[]" placeholder="Contact Number">
+                <h3 class="titleSocialMedia">Social Media Links</h3>
                 <div class="socialMediaDiv">
                     <div class="socialMediaIcons">
                         <i class="fa fa-facebook icon"></i>
-                        <input type="text" class="inputFB" placeholder="Facebook Profile Link" name="inputNameFB">
+                        <input type="hidden" name="socialMediaPlatform[]" value="facebook">
+                        <input type="text" name="socialMediaLink[]" class="inputFB" placeholder="Facebook Profile Link">
                     </div>
-                    <br><br>
                     <div class="socialMediaIcons">
                         <i class="fa fa-instagram icon"></i>
-                        <input type="text" class="inputIG" placeholder="Instagram Username" name="inputNameIG">
+                        <input type="hidden" name="socialMediaPlatform[]" value="instagram">
+                        <input type="text" name="socialMediaLink[]" class="inputIG" placeholder="Instagram Username">
                     </div>
                 </div>
-
-                <input type="text" id="location" name="location" placeholder="Location" required>
+                <h3 class="titleLocation">Location</h3>
+                <input type="text" id="location" name="location" placeholder="Location" maxlength="10000" required>
                 <button type="submit" class="submit">Save</button>
                 <button type="button" id="cancelEdit">Cancel</button>
             </form>
         </div>
 
-    <script src="../../assets/js/shopInfo_form.js"></script>
-            
-</body>
+        <script src="/126-final-project/assets/js/shop_info_form.js?v=3" defer></script>
+    </body>
 </html>
