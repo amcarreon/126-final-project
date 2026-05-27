@@ -53,7 +53,6 @@
                     <input type="text" id="location" name="location" placeholder="Location" required>
                     <input type="hidden" id="lat" name="lat">
                     <input type="hidden" id="lng" name="lng">
-                    <input type="hidden" id="needs_geocoding" name="needs_geocoding" value="false">
                 </div>
                 
                 <button type="submit" class="submit">Save</button>
@@ -61,9 +60,11 @@
             </form>
         </div>
     
+
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu9H5AEsy_4DJbElJd780ySxJLlyjjlpw&libraries=places&region=PH&loading=async&callback=initMap"></script>
-        <script src="../../assets/js/location_search.js?v=1.0.1"></script>
+        <script src="../../assets/js/location_search.js?v=2.0.1"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu9H5AEsy_4DJbElJd780ySxJLlyjjlpw&libraries=places&region=PH&callback=initAutocomplete" async defer></script>
         <script src="/126-final-project/assets/js/shop_info_form.js?v=4" defer></script>
+
     </body>
 </html>

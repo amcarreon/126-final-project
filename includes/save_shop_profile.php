@@ -5,50 +5,11 @@ if (!isset($_SESSION['user_id'])) {
     } 
 require_once '../config/database.php';
 
-// from shop_info_form.js and location_search.js
-// communicates with geocode_api.php for location validation in case user types the location manually
-require_once __DIR__ . '/../api/geocode_api.php';
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") { 
     $ownerId = $_SESSION['user_id']; 
     $shopName = $_POST["shopName"]; 
     $shopDesc = $_POST["shopDescription"]; 
-    $initial_location = $_POST['location'] ?? '';
-    $lat = $_POST['lat'] ?? '';
-    $lng = $_POST['lng'] ?? '';
-    $needs_geocoding = $_POST['needs_geocoding'] ?? 'false';
-    $logoPath = null;
-
-    $location = '';
-    $final_lat ='';
-    $final_lng = '';
-    
-    if ($needs_geocoding === 'true') {
-        // User typed manually: geocode_api.php verify
-        $geoResult = getValidAddress($initial_location, null, null);
-
-        if ($geoResult['success']) {
-            $location = $geoResult['formatted_address'];
-            $final_lat     = $geoResult['latitude'];
-            $final_lng     = $geoResult['longitude'];
-        } else {
-            echo json_encode(['success' => false, 'message' => $geoResult['message']]);
-            exit();
-        }
-    } else {
-        // User used the autocomplete => save to database
-        $location = $initial_location;
-        $final_lat     = $lat;
-        $final_lng     = $lng;
-    }
-
-    // for maps display
-    echo json_encode ([
-        'success' => true,
-        'location' => $location,
-        'lat' => $final_lat,
-        'lng' => $final_lng
-    ]);
+    $location = $_POST['location'] ?? '';
 
     if (isset($_FILES["photoUpload"]) && $_FILES["photoUpload"]["error"] == 0) { 
         $uploadDir = "../uploads/logos/"; $fileName = time() . "_" . basename($_FILES["photoUpload"]["name"]); 
@@ -67,14 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $stmt->execute();
     $stmt->close(); 
-
-    // Maps Display for Loc
-    echo json_encode([
-        'success' => true,
-        'lat' => $final_lat,
-        'lng' => $final_lng
-    ]);
-    exit();
     
     $ownerId = $_SESSION['user_id']; 
     $platforms = $_POST['socialMediaPlatform'] ?? []; 

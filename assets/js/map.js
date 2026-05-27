@@ -8,12 +8,19 @@ function initMap() {
     const map_canvas = document.getElementById('map');
     if (!map_canvas) return;
 
+    const status = document.getElementById('location-status');
+    const loc_display = document.getElementById('address-display');
+
     let lat = sessionStorage.getItem('shop_lat');
     let lng = sessionStorage.getItem('shop_lng');
-
+    let shop_loc_name = sessionStorage.getItem('loc');
     let shop_loc = defaultLoc;
 
+    if (status) status.innerText = "Detecting your location";
+
     if (lat && lng) {
+        if (status) status.innerText = "Location found!";
+        if (loc_display) loc_display.innerText = shop_loc_name;
         shop_loc = { lat: parseFloat(lat), lng: parseFloat(lng) };
     }
     else {
@@ -33,7 +40,7 @@ function initMap() {
     });
 }
 
-window.onload = initMap;
+window.initMap = initMap;
 
 document.addEventListener("DOMContentLoaded", function() {
     if (typeof google !== 'undefined' && google.maps) {
