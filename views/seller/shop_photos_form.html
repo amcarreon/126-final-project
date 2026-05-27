@@ -5,11 +5,23 @@
     <link rel="stylesheet" href="../../assets/css/shop_profile.css">    <title>Photo Form</title>
 </head>
 <body class="shopPhotoForm">
-    <div class="shopPhotoFormDiv">
+    <form id="uploadForm" class="addPhotoForm" enctype="multipart/form-data">
+                <div class="inputGroup">
+                    <label for="photoURL" class="customFileUpload" id="drop-zone">
+                        <div class="iconCircle">+</div>
+                        <span id="uploadText">Upload an image<br></span>
+                        <p id="fileNameDisplay"></p>
+                    </label>
+                    <input type="file" id="photoURL" name="photoURL" accept="image/*">
+                </div>
+                <div class="shopPhotoFormDiv">
         <div class="uploadedAllPhotosContainer"></div>
-        <div class="shopPhotoContainer">
-            <button type="reset" class="submit-btnPhotoForm" id="submitBtnPhotoForm">Cancel</button>
-            <button type="submit" class="submit-btnPhotoForm" id="submitBtnPhotoForm">Save</button>
+            <div class="shopPhotoContainer">
+                <div id="photosPageContainer"></div>
+                <button type="button" class="submit-btnPhotoForm" id="cancelBtnPhotoForm">Cancel</button>
+                <button type="submit" class="submit-btnPhotoForm" id="submitBtnPhotoForm">Save</button>
         </div>
-    </div>
+        </div>
+    </form>
+    <script src="../../assets/js/photo_upload_form.js"></script>
 </body>
