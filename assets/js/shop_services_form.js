@@ -127,3 +127,17 @@ confirmYes.addEventListener('click', () => {
 confirmNo.addEventListener('click', () => {
     modal.classList.remove("modal-active");
 });
+
+//populate forms
+function addNameAndDesc(name, desc){
+    document.getElementById("serviceName").value = name;
+    document.getElementById("serviceDescription").value = desc;
+}
+const wash = document.getElementById('washBtn');
+wash.addEventListener('click', function() {addNameAndDesc("Wash", "Wash clothes at our shop!");});
+
+const dry = document.getElementById('dryBtn');
+dry.addEventListener('click', function() {addNameAndDesc("Dry", "Dry clothes at our shop!")});
+
+const deliver = document.getElementById('deliverBtn');
+deliver.addEventListener('click', function() {addNameAndDesc("Deliver", "Wash and Dry on Delivery")});
