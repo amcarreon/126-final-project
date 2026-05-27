@@ -10,15 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const fileNameDisplay = document.getElementById('fileNameDisplay');
     const dropZone = document.getElementById('drop-zone');
 
-    // =========================
-    // HIDE ELEMENTS INITIALLY
-    // =========================
+
     previewContainer.classList.add("hidden");
     submitBtn.classList.add("hidden");
     cancelBtn.classList.add("hidden");
-    // =========================
-    // IMAGE PREVIEW
-    // =========================
+
     fileInput.addEventListener("change", () => {
 
         const file = fileInput.files[0];
@@ -61,12 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
         reader.readAsDataURL(file);
     });
 
-    // =========================
-    // CANCEL BUTTON
-    // =========================
-    cancelBtn.addEventListener("click", () => {
 
-    // Reset file input
+    cancelBtn.addEventListener("click", () => {
     form.reset();
 
     // Clear preview
@@ -84,9 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
     fileNameDisplay.textContent = "";
     });
 
-    // =========================
-    // FORM SUBMIT
-    // =========================
     form.addEventListener('submit', async (e) => {
 
         e.preventDefault();
