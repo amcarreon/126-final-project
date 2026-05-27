@@ -90,17 +90,11 @@ function renderShops(shops) {
 }
 
 window.addEventListener("message", (e) => {
+    const keyword = String(e.data || "").toLowerCase().trim();
 
-    if (typeof e.data !== "string") return;
-
-    const keyword = (e.data || "").toLowerCase().trim();
 
     const filtered = allShops.filter(shop => {
-        return (
-            shop.shop_name?.toLowerCase().includes(keyword) ||
-            shop.location?.toLowerCase().includes(keyword) ||
-            shop.shop_desc?.toLowerCase().includes(keyword)
-        );
+        return shop.shop_name.toLowerCase().includes(keyword);
     });
 
     renderShops(filtered);
