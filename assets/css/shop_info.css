@@ -21,20 +21,25 @@ body.shopInfoPage {
     background-color: #f5f5f5;
     color: var(--text-dark);
 }
+html, body.shopInfoPage {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
 
 /* ==================== MAIN CONTAINER ==================== */
 .storeProfile {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 420px;
+    max-width: 100%;        /* was 420px — remove the cap */
     background: linear-gradient(135deg, var(--light-blue-bg) 0%, #F0F7FC 100%);
     border-radius: 16px;
-    padding: 24px;
+    padding: 16px;          /* slightly tighter padding for narrow column */
     box-shadow: 0 4px 15px rgba(91, 164, 217, 0.1);
-    margin: 0 auto;
+    margin: 0;              /* was 0 auto — no centering needed */
 }
-
 /* ==================== HEADER SECTION ==================== */
 .storeProfile header {
     display: flex;
