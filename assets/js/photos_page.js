@@ -7,13 +7,40 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "shop_photos_form.html";
     });
 
-    const shopId = 2;
+    async function getShopInfo() {
 
-    async function loadPhotos() {
+        try {
+
+            const response = await fetch("../../api/shopInfo_api.php", {
+                method: "GET",
+                credentials: "include"
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+
+                const shopId = data.data.shop_id;
+
+                console.log("Shop ID:", shopId);
+
+                loadPhotos(shopId);
+
+            } else {
+                console.log(data.message);
+            }
+
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+
+    async function loadPhotos(shopId) {
 
         try {
 
             const response = await fetch(`../../api/shopPhotos_api.php?shop_id=${shopId}`);
+
             const data = await response.json();
 
             if (data.status !== "success") {
@@ -38,5 +65,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    loadPhotos();
+    getShopInfo();
 });
