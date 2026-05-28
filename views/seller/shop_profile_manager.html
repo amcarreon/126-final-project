@@ -4,14 +4,21 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../assets/css/shop_profile.css">
+                <link rel="stylesheet" href="../../assets/css/header_footer.css">
+
+        
         <title>Shop Profile Manager</title>
     </head>
     
     <body id="mainPage">
         <div class="mainPageContainer">
             <div class ="header">
+                <p class="bubbleFinder">BubbleFinder</p>
                 <button class="logoutButton">
-                    <span>Logout</span>
+                    
+                    <a href="../customer/index.html" style="color: inherit; text-decoration: none;">
+                        <span>Logout</span>
+                    </a>
                 </button>
             </div>
         <div class="dashboardContainer">
@@ -23,7 +30,8 @@
                 <div class="tabNavigationContainer">
                 <div>
                     <nav class="tabNavigation">
-                        <a href="services_page.html" target="contentFrame">SERVICES</a>
+                        
+                        <a href="services_page.html" target="contentFrame"style="overflow: hidden;">SERVICES</a>
                         <a href="photos_page.html" target="contentFrame">PHOTOS</a>
                         <a href="location_page.html" target="contentFrame">LOCATION</a>
                     </nav>
@@ -31,10 +39,30 @@
                 <hr>
                 </div>
                 
-                <iframe name="contentFrame" src="services_page.html" class="servicesPageFrame"></iframe>
+                <iframe name="contentFrame" src="services_page.html" class="servicesPageFrame" style="overflow: hidden;"></iframe>
             </main>
         </div>
-        <div class="footer"></div>
+        <footer class="site-footer">
+        <div class="site-footer__left">
+            <a href="#" class="site-footer__logo">BubbleFinder</a>
+        </div>
+ 
+        <div class="site-footer__center">
+            <span class="site-footer__label">Contact Us</span>
+            <a href="tel:+1234567890" class="site-footer__contact">09765854581</a>
+            <a href="mailto:hello@brand.com" class="site-footer__contact site-footer__email-link">bubblefinder@gmail.com</a>
+ 
+            <span class="site-footer__label">Miagao,Iloilo</span>
+            <span class="site-footer__contact">Visayas, Philippines</span>
+        </div>
+ 
+        <div class="site-footer__right">
+            <a href="#">Home</a><br /><br />
+            <a href="#">About</a><br /><br />
+            <a href="#">Services</a><br /><br />
+            <a href="#">Contact</a>
+        </div>
+    </footer>
 </div>
         <script src="../../assets/js/seller_shop_guard.js"></script>
 </body>
