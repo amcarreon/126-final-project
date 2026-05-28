@@ -4,29 +4,32 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../assets/css/shop_profile.css">
+        <link rel="stylesheet" href="../../assets/css/shop_services_form.css">
         <title>Services Page</title>
     </head>
     <body class="servicesPage">
+
+        <!-- ======= ADD SERVICE BUTTON ======= -->
         <div class="servicesDiv">
-            
             <form class="addServiceForm" enctype="multipart/form-data">
                 <div class="inputGroupServices" id="servicesDivButton">
-                    <label for="photoURL" class="customFileUploadServices" id="drop-zone">
+                    <a href="javascript:void(0)" class="customFileUploadServices" id="drop-zone" onclick="openServicePopup()">
                         <div class="iconCircleService">+</div>
                         <span id="uploadTextServices">Add a service</span>
-                    </label>
-                    <button type="button" class="submit-btnServicePage" onClick="window.location.href = './shop_services_form.html'">Add Service</button>
+                    </a>
                 </div>
-                
             </form>
         </div>
+
+        <!-- ======= SERVICE CARDS ======= -->
         <div id="servicesContainer"></div>
+
         <template id="serviceCardTemplate">
             <div class="serviceCard">
-                <div class="distinctServiceColor" style="background-color: var(--service-color, #ffb3b3);"><!--dynamic color dito--></div>
+                <div class="distinctServiceColor" style="background-color: var(--service-color, #ffb3b3);"></div>
                 <div class="cardContent">
-                    <h2 class="serviceTitleCard"><!--Service Name--></h2>
-                    <p class="serviceDescriptionCard"><!--Service description goes here...--></p>
+                    <h2 class="serviceTitleCard"></h2>
+                    <p class="serviceDescriptionCard"></p>
                     <div class="tableServicesCard">
                         <table>
                             <thead>
@@ -35,9 +38,7 @@
                                     <th class="price">Price</th>
                                 </tr>
                             </thead>
-                            <tbody class="serviceRowsContainer">
-                                <!-- Inject individual rows from database dito -->
-                            </tbody>
+                            <tbody class="serviceRowsContainer"></tbody>
                         </table>
                     </div>
                     <div class="buttonsDiv">
@@ -47,6 +48,131 @@
                 </div>
             </div>
         </template>
+
+        <!-- ======= POPUP OVERLAY ======= -->
+        <div class="servicesPopUp" id="servicesPopUp">
+
+            <!-- Confirm Cancel Modal -->
+            <div id="customModal" class="modal-hidden">
+                <div id="formContainer"></div>
+                <div class="modal-content">
+                    <p>Are you sure you want to cancel?</p>
+                    <button id="confirmYes">Yes, Clear it</button>
+                    <button id="confirmNo">No, Go Back</button>
+                </div>
+            </div>
+
+            <div class="actualServicesForm">
+                <div class="servicesBox">
+                    <form class="serviceForm" id="serviceForm" action="../../includes/save_service.php" method="POST" novalidate>
+                        <h1 class="laundryTitle">Services</h1>
+
+                        <div class="templateButtons">
+                            <button type="button" id="washBtn" class="templateBtn">WASH</button>
+                            <button type="button" id="dryBtn" class="templateBtn">DRY</button>
+                            <button type="button" id="deliverBtn" class="templateBtn">WASH, DRY, DELIVER</button>
+                        </div>
+
+                        <br>
+                        <input type="text" id="serviceName" name="serviceName" placeholder="Service Title" required>
+                        <input type="text" id="serviceDescription" name="serviceDescription" placeholder="Description" maxlength="20">
+                        <br><br>
+
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="text" class="serviceSpecification" name="serviceSpecification[]" placeholder="Specification (Ex. 5 kg)" required>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" min="0" required>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn-delete" onclick="removeRow(this)">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <button type="button" id="addRowBtn" onclick="addRow()">Add New Row</button>
+                        <br><br>
+
+                        <div id="errorBox"></div>
+
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="submit-btn">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======= TEMPLATES ======= -->
+        <template id="washId">
+            <form class="washForm">
+                <h1 class="washTemplate">Wash</h1>
+                <p class="washDescription">Wash clothes at our shop.</p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="serviceSpecification" name="serviceSpecification[]" placeholder="Specification (Ex. 5 kg)" required></td>
+                            <td><input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required></td>
+                            <td><button type="button" class="btn-deleteTemplate">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <button type="button" class="addRowBtnTemplate">Add Specification</button>
+                <br><br>
+                <button type="button" class="cancel-btnTemplate">Cancel</button>
+                <button type="submit" class="submit-btnTemplate">Save</button>
+            </form>
+        </template>
+
+        <template id="dryId">
+            <form class="dryForm">
+                <h1 class="dryTemplate">Dry</h1>
+                <p class="dryDescription">Dry clothes at our shop.</p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="serviceSpecification" name="serviceSpecification[]" placeholder="Specification (Ex. 5 kg)" required></td>
+                            <td><input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required></td>
+                            <td><button type="button" class="btn-deleteTemplate">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <button type="button" class="addRowBtnTemplate">Add Specification</button>
+                <br><br>
+                <button type="button" class="cancel-btnTemplate">Cancel</button>
+                <button type="submit" class="submit-btnTemplate">Save</button>
+            </form>
+        </template>
+
+        <template id="deliverId">
+            <form class="deliverForm">
+                <h1 class="deliverTemplate">Deliver</h1>
+                <p class="deliverDescription">Wash and Dry on Delivery</p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="serviceSpecification" name="serviceSpecification[]" placeholder="Specification (Ex. 5 kg)" required></td>
+                            <td><input type="number" class="servicePrice" name="servicePrice[]" placeholder="Price" required></td>
+                            <td><button type="button" class="btn-deleteTemplate">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <button type="button" class="addRowBtnTemplate">Add Specification</button>
+                <br><br>
+                <button type="button" class="cancel-btnTemplate">Cancel</button>
+                <button type="submit" class="submit-btnTemplate">Save</button>
+            </form>
+        </template>
+
+        <!-- ======= SCRIPTS ======= -->
         <script src="../../assets/js/load_service_cards.js"></script>
+        <script src="../../assets/js/shop_services_form.js" defer></script>
+
     </body>
 </html>
