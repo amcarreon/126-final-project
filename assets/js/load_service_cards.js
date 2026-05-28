@@ -1,30 +1,34 @@
 document.addEventListener("DOMContentLoaded", loadServices);
 
 async function loadServices() {
-
     const container = document.getElementById("servicesContainer");
     const template = document.getElementById("serviceCardTemplate");
 
     if (!container || !template) return;
 
     try {
-        const res = await fetch("../../api/shopService_api.php");
+        const res = await fetch("Location: shopService_api.php");
+
+        // If not authorized or request failed, silently stop
+        if (!res.ok) {
+            container.innerHTML = "";
+            return;
+        }
+
         const data = await res.json();
 
         if (!data.success) {
-            container.innerHTML = data.message;
+            container.innerHTML = "";
             return;
         }
 
         container.innerHTML = "";
 
         data.data.forEach(service => {
-
             const clone = template.content.cloneNode(true);
 
             const title = clone.querySelector(".serviceTitleCard");
             const desc = clone.querySelector(".serviceDescriptionCard");
-
             const editBtn = clone.querySelector(".editButtonService");
             const deleteBtn = clone.querySelector(".deleteButtonService");
             const tbody = clone.querySelector(".serviceRowsContainer");
@@ -53,12 +57,12 @@ async function loadServices() {
         });
 
     } catch (err) {
+        // Silently fail — don't show raw errors to the user
         console.error("Error loading services:", err);
     }
 }
 
 async function deleteService(serviceId) {
-
     if (!confirm("Are you sure you want to delete this service?")) return;
 
     const formData = new FormData();
@@ -71,8 +75,6 @@ async function deleteService(serviceId) {
         });
 
         const data = await res.json();
-
-        console.log(data);
 
         if (data.success) {
             alert("Deleted successfully");
