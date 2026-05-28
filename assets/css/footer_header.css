@@ -1,0 +1,148 @@
+@font-face {
+    font-family: 'GladiolaDisplay';
+    src: url('../../Fonts/gladiola-regular-regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+    background-color: #47a5d0;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px 50px;
+    max-width: 100%;
+    margin-top: 20px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.site-footer__left .site-footer__logo {
+    font-size: 26px;
+    font-style: bold;
+    text-shadow: 0 0 0px white;
+    text-align: left;
+    padding: 10px;
+    letter-spacing: 2px;
+    font-family: 'GladiolaDisplay', sans-serif;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.site-footer__left .site-footer__logo:hover {
+    color: #093e76;
+}
+
+.site-footer__center {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: left;
+}
+
+.site-footer__label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.site-footer__center .site-footer__contact {
+    font-size: 15px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.site-footer__email-link:hover {
+    color: #49a6d7;
+    text-decoration: underline;
+}
+
+.site-footer__right {
+    padding-top: 8px;
+}
+
+.site-footer__right a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.site-footer__right a:hover {
+    color: #093e76;
+}
+
+/* ===== HEADER ===== */
+.site-header {
+    background-color: #43a8d6;
+    color: #ffffff;
+    padding: 10px 7px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 100%;
+    margin-bottom: 20px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.site-header__nav-bar {
+    background-color: #43a8d6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px 30px;
+    cursor: auto;
+}
+
+.site-header__nav-link {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-header__left .site-header__nav-link {
+    font-size: 35px;
+    font-style: bold;
+    text-shadow: 0 0 0px white;
+    text-align: left;
+    padding: 10px;
+    letter-spacing: 2px;
+    font-family: 'GladiolaDisplay', sans-serif;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.site-header__right {
+    display: flex;
+    align-items: center;
+}
+
+.site-header__right .site-header__logout-btn {
+    background-color: #1571a7;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid rgba(251, 250, 250, 0.462);
+    padding: 8px 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.site-header__left .site-header__nav-link:hover {
+    color: #093e76;
+}
+
+.site-header__right .site-header__logout-btn:hover {
+    background-color: #4f9cc8;
+    color: #093e76;
+    font-weight: bold;
+}
